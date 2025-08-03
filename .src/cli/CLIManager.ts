@@ -11,12 +11,17 @@ import {
     ProjectHealth, 
     EnvironmentConfig
 } from '../types/index.js';
+import { DocumentationCommands } from './DocumentationCommands.js';
 
 export class CLIManager {
+    private documentationCommands: DocumentationCommands;
+
     constructor(
         private sessionManager: SessionManager,
         private configManager: ConfigManager
-    ) {}
+    ) {
+        this.documentationCommands = new DocumentationCommands();
+    }
 
     /**
      * Show current system and session status
@@ -72,6 +77,19 @@ export class CLIManager {
     }
 
     /**
+     * Handle documentation commands for Dual Claude System
+     */
+    async handleDocs(args: string[]): Promise<number> {
+        try {
+            return await this.documentationCommands.handleDocsCommand(args);
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : String(error);
+            console.error(chalk.red('❌ Error handling documentation command:'), errorMessage);
+            return 1;
+        }
+    }
+
+    /**
      * Start interactive CLI mode
      */
     async startInteractive(): Promise<void> {
@@ -89,6 +107,7 @@ export class CLIManager {
                         { name: '🔄 Close session', value: 'close' },
                         { name: '📊 Show status', value: 'status' },
                         { name: '⚙️ Show configuration', value: 'config' },
+                        { name: '📚 Documentation commands', value: 'docs' },
                         { name: '🧹 Clean history', value: 'clean' },
                         { name: '❌ Exit', value: 'exit' }
                     ]
@@ -110,6 +129,9 @@ export class CLIManager {
                             break;
                         case 'config':
                             await this.showConfiguration();
+                            break;
+                        case 'docs':
+                            await this.interactiveDocsMenu();
                             break;
                         case 'clean':
                             await this.interactiveCleanHistory();
@@ -422,6 +444,37 @@ export class CLIManager {
             await this.sessionManager.cleanHistory(true);
         } else {
             console.log(chalk.blue('History cleaning cancelled'));
+        }
+    }
+
+    /**
+     * Interactive documentation commands menu
+     */
+    private async interactiveDocsMenu(): Promise<void> {
+        const { action } = await inquirer.prompt([{
+            type: 'list',
+            name: 'action',
+            message: 'Choose documentation command:',
+            choices: [
+                { name: '📖 Show merged documentation', value: 'show' },
+                { name: '🔄 Regenerate documentation', value: 'regenerate' },
+                { name: '✅ Validate documentation', value: 'validate' },
+                { name: '✏️ Edit project documentation', value: 'edit' },
+                { name: '🔧 Debug documentation system', value: 'debug' },
+                { name: '⬅️ Back to main menu', value: 'back' }
+            ]
+        }]);
+
+        if (action === 'back') {
+            return;
+        }
+
+        const result = await this.handleDocs([action]);
+        
+        if (result !== 0) {
+            console.log(chalk.red(`\n❌ Documentation command '${action}' completed with errors.`));
+        } else {
+            console.log(chalk.green(`\n✅ Documentation command '${action}' completed successfully.`));
         }
     }
 

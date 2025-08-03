@@ -181,6 +181,132 @@ EOF
 chmod +x "$WRAPPER_PATH"
 log_success "Wrapper script creato: ces-cli"
 
+# 4.5 Genera CLAUDE-MASTER.md iniziale
+log_info "Generando documentazione master..."
+
+# Verifica se lo script di merge esiste
+MERGE_SCRIPT="$CES_ROOT/scripts/merge-claude-docs.sh"
+if [ -f "$MERGE_SCRIPT" ] && [ -x "$MERGE_SCRIPT" ]; then
+    # Esegui il merge script dal contesto del progetto
+    cd "$PROJECT_ROOT"
+    
+    # Prova a generare il master document
+    if "$MERGE_SCRIPT" --merge --verbose 2>/dev/null; then
+        log_success "CLAUDE-MASTER.md generato"
+    else
+        log_warning "Generazione CLAUDE-MASTER.md fallita"
+        log_info "Possibili cause:"
+        log_info "  - CES CLAUDE.md non trovato nei percorsi standard"
+        log_info "  - Project CLAUDE.md non esistente (verrà creato template)"
+        log_info "  - Permissions mancanti"
+        
+        # Tenta una generazione con template base
+        CLAUDE_MASTER_PATH="$PROJECT_ROOT/CLAUDE-MASTER.md"
+        if [ ! -f "$PROJECT_ROOT/CLAUDE.md" ]; then
+            log_info "Creando CLAUDE.md template per il progetto..."
+            cat > "$PROJECT_ROOT/CLAUDE.md" << EOF
+# 📋 PROJECT DOCUMENTATION: $PROJECT_NAME
+
+> This file contains project-specific instructions that extend CES system documentation.
+> It will be automatically merged with CES CLAUDE.md when sessions start.
+
+## 🎯 Project Overview
+
+**Project Name**: $PROJECT_NAME  
+**Type**: [Web App / API / Library / CLI Tool]  
+**Primary Language**: [JavaScript/TypeScript/Python/etc]  
+**Started**: $(date +%Y-%m-%d)
+
+### Description
+[Provide a brief description of what this project does and its main goals]
+
+## 🏗️ Architecture
+
+### Project Structure
+\`\`\`
+$PROJECT_NAME/
+├── src/           # [Describe source code organization]
+├── tests/         # [Describe test structure]
+├── docs/          # [Describe documentation]
+└── ...
+\`\`\`
+
+## 🔧 Development Guidelines
+
+### Coding Standards
+- **Style Guide**: [ESLint/Prettier/Black/etc]
+- **Naming Conventions**: [camelCase/snake_case/etc]
+- **File Organization**: [How files should be organized]
+
+### Git Workflow
+- **Branch Strategy**: [main/develop/feature branches]
+- **Commit Messages**: [Conventional commits/Custom format]
+- **PR Process**: [Review requirements]
+
+## 🚀 Custom Workflows
+
+### Build Process
+\`\`\`bash
+# Commands for building the project
+npm run build
+\`\`\`
+
+### Testing
+\`\`\`bash
+# Commands for testing
+npm test
+\`\`\`
+
+### Deployment
+\`\`\`bash
+# Deployment process
+npm run deploy
+\`\`\`
+
+## ⚠️ Important Notes
+
+### Known Issues
+- [List any known issues and workarounds]
+
+### Security Considerations
+- [Any security notes specific to this project]
+
+---
+
+**Last Updated**: $(date +%Y-%m-%d)  
+**Maintained By**: [Team/Person Name]
+
+<!--
+This file is automatically merged with CES CLAUDE.md.
+To see the merged result: ./ces-cli docs show
+To regenerate: ./ces-cli docs regenerate
+-->
+EOF
+            log_success "CLAUDE.md template creato"
+        fi
+        
+        # Prova nuovamente il merge dopo aver creato il template
+        if "$MERGE_SCRIPT" --merge --verbose 2>/dev/null; then
+            log_success "CLAUDE-MASTER.md generato dopo creazione template"
+        else
+            log_warning "Merge fallito anche con template. Configurazione manuale richiesta."
+        fi
+    fi
+    
+    # Torna alla directory CES
+    cd "$CES_ROOT"
+else
+    log_warning "Script merge-claude-docs.sh non trovato o non eseguibile"
+    log_info "Path atteso: $MERGE_SCRIPT"
+fi
+
+if [ -f "$PROJECT_ROOT/CLAUDE-MASTER.md" ]; then
+    log_success "CLAUDE-MASTER.md disponibile per Claude Code CLI"
+    log_info "Percorso: $PROJECT_ROOT/CLAUDE-MASTER.md"
+else
+    log_warning "CLAUDE-MASTER.md non generato - funzionalità dual-claude non attiva"
+fi
+
 # 4. Configurazione ambiente CES
 log_info "Configurando ambiente CES..."
 

@@ -1,0 +1,144 @@
+# 📋 PROJECT DOCUMENTATION: {{PROJECT_NAME}}
+
+> This file contains project-specific instructions that extend CES system documentation.
+> It will be automatically merged with CES CLAUDE.md when sessions start.
+
+## 🎯 Project Overview
+
+**Project Name**: {{PROJECT_NAME}}  
+**Type**: [Web App / API / Library / CLI Tool]  
+**Primary Language**: [JavaScript/TypeScript/Python/etc]  
+**Started**: {{DATE}}
+
+### Description
+[Provide a brief description of what this project does and its main goals]
+
+## 🏗️ Architecture
+
+### Project Structure
+```
+{{PROJECT_NAME}}/
+├── src/           # [Describe source code organization]
+├── tests/         # [Describe test structure]
+├── docs/          # [Describe documentation]
+└── ...
+```
+
+### Key Components
+- **Component A**: [Description]
+- **Component B**: [Description]
+- **Component C**: [Description]
+
+## 🔧 Development Guidelines
+
+### Coding Standards
+- **Style Guide**: [ESLint/Prettier/Black/etc]
+- **Naming Conventions**: [camelCase/snake_case/etc]
+- **File Organization**: [How files should be organized]
+
+### Git Workflow
+- **Branch Strategy**: [main/develop/feature branches]
+- **Commit Messages**: [Conventional commits/Custom format]
+- **PR Process**: [Review requirements]
+
+## 📦 Project-Specific Dependencies
+
+### Required Tools
+- **Tool A**: Version X.Y - [Purpose]
+- **Tool B**: Version X.Y - [Purpose]
+
+### Development Dependencies
+```json
+{
+  "devDependencies": {
+    // List key dev dependencies
+  }
+}
+```
+
+## 🚀 Custom Workflows
+
+### Build Process
+```bash
+# Commands for building the project
+npm run build
+```
+
+### Testing
+```bash
+# Commands for testing
+npm test
+```
+
+### Deployment
+```bash
+# Deployment process
+npm run deploy
+```
+
+## 🔌 MCP Server Customization
+
+### Additional MCP Servers
+```yaml
+# Project-specific MCP servers to activate
+- server: custom-server
+  priority: high
+  config:
+    option1: value1
+```
+
+## ⚙️ Environment Variables
+
+### Required Variables
+- `PROJECT_API_KEY`: [Description]
+- `PROJECT_DB_URL`: [Description]
+
+### Optional Variables
+- `DEBUG_MODE`: [Description]
+- `FEATURE_FLAG_X`: [Description]
+
+## 📋 Task Management
+
+### Current Sprint Goals
+1. [ ] Task 1
+2. [ ] Task 2
+3. [ ] Task 3
+
+### Backlog Items
+- Feature A
+- Bug Fix B
+- Refactor C
+
+## ⚠️ Important Notes
+
+### Known Issues
+- Issue 1: [Description and workaround]
+- Issue 2: [Description and workaround]
+
+### Security Considerations
+- [Any security notes specific to this project]
+
+### Performance Notes
+- [Any performance considerations]
+
+## 📚 Additional Resources
+
+### Documentation
+- [Link to API docs]
+- [Link to design docs]
+- [Link to wiki]
+
+### External Services
+- Service A: [URL and purpose]
+- Service B: [URL and purpose]
+
+---
+
+**Last Updated**: {{DATE}}  
+**Maintained By**: [Team/Person Name]
+
+<!--
+This file is automatically merged with CES CLAUDE.md.
+To see the merged result: ./ces-cli docs show
+To regenerate: ./ces-cli docs regenerate
+-->
