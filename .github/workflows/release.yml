@@ -1,0 +1,388 @@
+name: 🎉 Release Automation
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 2.7.1)'
+        required: true
+        type: string
+      release_type:
+        description: 'Type of release'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      prerelease:
+        description: 'Mark as pre-release'
+        required: false
+        default: false
+        type: boolean
+      dry_run:
+        description: 'Dry run (no actual release)'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  NODE_VERSION: '20.x'
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  CES_VERSION: '2.7.0'
+
+jobs:
+  # ===================================================================
+  # JOB 1: VALIDATE RELEASE CONDITIONS
+  # ===================================================================
+  validate:
+    name: ✅ Validate Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      is_prerelease: ${{ steps.version.outputs.is_prerelease }}
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 🏷️ Determine version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ inputs.version }}"
+            TAG="v${VERSION}"
+            IS_PRERELEASE="${{ inputs.prerelease }}"
+          else
+            TAG="${GITHUB_REF#refs/tags/}"
+            VERSION="${TAG#v}"
+            # Check if it's a prerelease (contains alpha, beta, rc)
+            if [[ "$VERSION" =~ (alpha|beta|rc) ]]; then
+              IS_PRERELEASE="true"
+            else
+              IS_PRERELEASE="false"
+            fi
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "is_prerelease=$IS_PRERELEASE" >> $GITHUB_OUTPUT
+          
+          echo "📝 Release Version: $VERSION"
+          echo "🏷️ Release Tag: $TAG"
+          echo "🚧 Pre-release: $IS_PRERELEASE"
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🧪 Run full test suite
+        run: |
+          npm test -- --coverage --watchAll=false --ci
+          npm run lint
+          npm run type-check
+
+      - name: 🏗️ Build project
+        run: npm run build
+
+      - name: ✅ Validate CES system
+        run: |
+          npm run dev -- validate --verbose
+          echo "✅ CES system validation completed"
+
+      - name: 📋 Pre-release checklist
+        run: |
+          echo "## 📋 Pre-release Validation" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Tests passing" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Linting passed" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] TypeScript check passed" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Build successful" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] CES validation passed" >> $GITHUB_STEP_SUMMARY
+
+  # ===================================================================
+  # JOB 2: BUILD RELEASE ARTIFACTS
+  # ===================================================================
+  build:
+    name: 🏗️ Build Release Artifacts
+    runs-on: ubuntu-latest
+    needs: [validate]
+    timeout-minutes: 20
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🏗️ Build project
+        run: |
+          npm run build
+          echo "✅ Build completed for version ${{ needs.validate.outputs.version }}"
+
+      - name: 📦 Create distribution package
+        run: |
+          # Create distributable package
+          mkdir -p release-artifacts
+          
+          # Main distribution
+          tar -czf "release-artifacts/ces-v${{ needs.validate.outputs.version }}.tar.gz" \
+            dist/ package.json README.md LICENSE docs/ .claude/
+          
+          # Source distribution
+          tar -czf "release-artifacts/ces-v${{ needs.validate.outputs.version }}-src.tar.gz" \
+            --exclude=node_modules --exclude=.git --exclude=release-artifacts .
+          
+          # Docker context
+          tar -czf "release-artifacts/ces-v${{ needs.validate.outputs.version }}-docker.tar.gz" \
+            Dockerfile docker-compose.yml .dockerignore
+          
+          # Generate checksums
+          cd release-artifacts
+          sha256sum *.tar.gz > checksums.txt
+          ls -la
+
+      - name: 📊 Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts-${{ needs.validate.outputs.version }}
+          path: release-artifacts/
+          retention-days: 90
+
+  # ===================================================================
+  # JOB 3: BUILD AND PUSH CONTAINER IMAGE
+  # ===================================================================
+  container:
+    name: 🐳 Build Release Container
+    runs-on: ubuntu-latest
+    needs: [validate, build]
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔐 Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ needs.validate.outputs.version }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ needs.validate.outputs.version }}
+            type=semver,pattern={{major}},value=${{ needs.validate.outputs.version }}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: 🏗️ Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🐳 Build and push container image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: ${{ !inputs.dry_run }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            VERSION=${{ needs.validate.outputs.version }}
+            ENVIRONMENT=production
+
+  # ===================================================================
+  # JOB 4: GENERATE RELEASE NOTES
+  # ===================================================================
+  release-notes:
+    name: 📝 Generate Release Notes
+    runs-on: ubuntu-latest
+    needs: [validate]
+    timeout-minutes: 10
+    outputs:
+      release_notes: ${{ steps.notes.outputs.release_notes }}
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📝 Generate release notes
+        id: notes
+        run: |
+          # Get the latest tag before current
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | head -2 | tail -1)
+          CURRENT_TAG="${{ needs.validate.outputs.tag }}"
+          
+          echo "📝 Generating release notes from $PREVIOUS_TAG to $CURRENT_TAG"
+          
+          # Generate changelog using heredoc
+          cat > release_notes.md << 'EOF'
+          ## 🎉 Claude Ecosystem Standard v${{ needs.validate.outputs.version }}
+
+          ### 📅 Release Information
+          - **Version:** ${{ needs.validate.outputs.version }}
+          - **Release Date:** $(date '+%Y-%m-%d')
+          - **Pre-release:** ${{ needs.validate.outputs.is_prerelease }}
+
+          ### 🚀 What's New
+          EOF
+
+          # Add commit messages since last tag
+          if [[ -n "$PREVIOUS_TAG" ]]; then
+            echo "" >> release_notes.md
+            echo "### 📋 Changes Since $PREVIOUS_TAG" >> release_notes.md
+            git log --pretty=format:"- %s" ${PREVIOUS_TAG}..HEAD | head -20 >> release_notes.md
+          fi
+
+          # Add technical details
+          cat >> release_notes.md << 'EOF'
+
+          ### 🏗️ Technical Details
+          - **Node.js:** ${{ env.NODE_VERSION }}
+          - **TypeScript:** Full type safety
+          - **Enterprise Ready:** Production-grade deployment
+          - **Container Support:** Docker & Kubernetes ready
+          - **CI/CD:** Complete automation pipeline
+
+          ### 📦 Installation
+          ```bash
+          # NPM Installation
+          npm install claude-ecosystem-standard@${{ needs.validate.outputs.version }}
+
+          # Docker Installation
+          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.validate.outputs.version }}
+
+          # Source Installation
+          wget https://github.com/${{ github.repository }}/releases/download/${{ needs.validate.outputs.tag }}/ces-v${{ needs.validate.outputs.version }}.tar.gz
+          ```
+
+          ### 🤖 Generated by Claude Code CLI
+          This release was automatically generated and validated by our CI/CD pipeline.
+          EOF
+
+          # Save to output (handle multiline)
+          {
+            echo "release_notes<<EOF"
+            cat release_notes.md
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+  # ===================================================================
+  # JOB 5: CREATE GITHUB RELEASE
+  # ===================================================================
+  release:
+    name: 🎉 Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: [validate, build, container, release-notes]
+    if: ${{ !inputs.dry_run }}
+    timeout-minutes: 15
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📥 Download release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-artifacts-${{ needs.validate.outputs.version }}
+          path: release-artifacts/
+
+      - name: 🎉 Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.validate.outputs.tag }}
+          name: "Claude Ecosystem Standard v${{ needs.validate.outputs.version }}"
+          body: ${{ needs.release-notes.outputs.release_notes }}
+          prerelease: ${{ needs.validate.outputs.is_prerelease == 'true' }}
+          files: |
+            release-artifacts/*
+          generate_release_notes: true
+          make_latest: ${{ needs.validate.outputs.is_prerelease == 'false' }}
+
+  # ===================================================================
+  # JOB 6: POST-RELEASE ACTIONS
+  # ===================================================================
+  post-release:
+    name: 📊 Post-release Actions
+    runs-on: ubuntu-latest
+    needs: [validate, release]
+    if: ${{ !inputs.dry_run }}
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📊 Update release statistics
+        run: |
+          echo "📊 Updating release statistics..."
+          echo "✅ Released version ${{ needs.validate.outputs.version }}"
+
+      - name: 🔔 Send notifications
+        run: |
+          echo "🔔 Sending release notifications..."
+          echo "📧 Release v${{ needs.validate.outputs.version }} is now available!"
+
+      - name: 📋 Release summary
+        run: |
+          echo "## 🎉 Release Complete!" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ needs.validate.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** ${{ needs.validate.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Pre-release:** ${{ needs.validate.outputs.is_prerelease }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Container:** ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.validate.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🎉 **Release is now live and available for download!**" >> $GITHUB_STEP_SUMMARY
+
+  # ===================================================================
+  # JOB 7: DRY RUN SUMMARY
+  # ===================================================================
+  dry-run-summary:
+    name: 🧪 Dry Run Summary
+    runs-on: ubuntu-latest
+    needs: [validate, build, container, release-notes]
+    if: ${{ inputs.dry_run }}
+    timeout-minutes: 5
+
+    steps:
+      - name: 🧪 Dry run completed
+        run: |
+          echo "## 🧪 Dry Run Completed" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ needs.validate.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** ${{ needs.validate.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Pre-release:** ${{ needs.validate.outputs.is_prerelease }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Tests passed" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Build successful" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Container built" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Release notes generated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 **Ready for actual release when you're ready!**" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,220 @@
+name: 📚 Documentation Issue
+description: Report an issue with Claude Ecosystem Standard documentation
+title: "[DOCS] "
+labels: ["documentation", "low-priority"]
+assignees:
+  - technical-writer
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 Documentation Issue Report
+        
+        Help us improve CES documentation by reporting unclear, missing, or incorrect information.
+
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: Documentation Type
+      description: What type of documentation needs attention?
+      options:
+        - README.md
+        - CLAUDE.md
+        - API Documentation
+        - CLI Reference
+        - Installation Guide
+        - Configuration Guide
+        - Troubleshooting Guide
+        - Examples/Tutorials
+        - Code Comments
+        - Error Messages
+        - GitHub Templates
+        - Change Log
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-category
+    attributes:
+      label: Issue Category
+      description: What kind of documentation issue is this?
+      options:
+        - Missing Information
+        - Incorrect Information
+        - Outdated Information
+        - Unclear/Confusing
+        - Typo/Grammar
+        - Broken Links
+        - Missing Examples
+        - Code Examples Don't Work
+        - Translation Issue
+        - Formatting Issue
+        - Accessibility Issue
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: doc-location
+    attributes:
+      label: Document Location
+      description: Where is the documentation issue? (file path, URL, or section)
+      placeholder: e.g., README.md line 45, https://docs.example.com/api, "Installation" section
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content
+      description: What does the documentation currently say? (copy/paste exact text)
+      placeholder: |
+        ```
+        [Paste the current problematic content here]
+        ```
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: What's wrong with the current documentation?
+      placeholder: |
+        Describe the documentation issue:
+        - What is unclear or incorrect?
+        - What information is missing?
+        - What caused confusion?
+        - What would make it better?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-improvement
+    attributes:
+      label: Suggested Improvement
+      description: How should the documentation be improved?
+      placeholder: |
+        Suggest improvements:
+        - Corrected text
+        - Additional information needed
+        - Better examples
+        - Clearer explanations
+        - Links to add
+
+  - type: textarea
+    id: context
+    attributes:
+      label: User Context
+      description: What were you trying to accomplish when you found this issue?
+      placeholder: |
+        - What task were you trying to complete?
+        - What is your experience level?
+        - How did you arrive at this documentation?
+        - What would have helped you succeed faster?
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: User Type
+      description: What describes you best?
+      options:
+        - New User (first time with CES)
+        - Beginner Developer
+        - Experienced Developer
+        - System Administrator
+        - DevOps Engineer
+        - Technical Writer
+        - Enterprise User
+        - Open Source Contributor
+        - Other
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Priority Level
+      description: How important is fixing this documentation?
+      options:
+        - Low - Minor improvement
+        - Medium - Affects user experience
+        - High - Blocks users from completing tasks
+        - Critical - Causes user confusion or errors
+    validations:
+      required: true
+
+  - type: textarea
+    id: related-docs
+    attributes:
+      label: Related Documentation
+      description: Are there other related documentation issues or improvements?
+      placeholder: |
+        - Other sections that need similar updates
+        - Cross-references that should be added
+        - Related examples that would help
+        - Documentation that works well as a reference
+
+  - type: textarea
+    id: examples-needed
+    attributes:
+      label: Examples Needed
+      description: What examples would help clarify this documentation?
+      placeholder: |
+        - Code examples
+        - Command line examples  
+        - Configuration examples
+        - Use case scenarios
+        - Step-by-step tutorials
+
+  - type: checkboxes
+    id: platforms
+    attributes:
+      label: Platform Relevance
+      description: Which platforms does this documentation issue affect?
+      options:
+        - label: Windows
+        - label: macOS
+        - label: Linux
+        - label: Docker
+        - label: Kubernetes
+        - label: CI/CD systems
+        - label: All platforms
+
+  - type: checkboxes
+    id: doc-features
+    attributes:
+      label: Documentation Features
+      description: What documentation features would help?
+      options:
+        - label: More code examples
+        - label: Screenshots/diagrams
+        - label: Video tutorials
+        - label: Interactive examples
+        - label: Troubleshooting sections
+        - label: FAQ section
+        - label: Cross-references
+        - label: Search functionality
+
+  - type: textarea
+    id: audience-consideration
+    attributes:
+      label: Audience Consideration
+      description: Who else would benefit from this documentation improvement?
+      placeholder: |
+        - New team members
+        - External contributors
+        - Enterprise users
+        - DevOps teams
+        - System administrators
+        - Different skill levels
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other context that would help improve the documentation
+      placeholder: |
+        - Common questions you've seen
+        - Feedback from other users
+        - Industry best practices
+        - Accessibility considerations
+        - Internationalization needs

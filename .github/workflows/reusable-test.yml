@@ -1,0 +1,176 @@
+name: 'Reusable: Test Suite'
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version to use'
+        required: false
+        default: '20.x'
+        type: string
+      test-type:
+        description: 'Type of tests to run (unit, integration, e2e, all)'
+        required: false
+        default: 'all'
+        type: string
+      environment:
+        description: 'Environment to test against'
+        required: false
+        default: 'test'
+        type: string
+      anthropic-tests:
+        description: 'Include Anthropic AI integration tests'
+        required: false
+        default: false
+        type: boolean
+      cache-key-suffix:
+        description: 'Additional cache key suffix'
+        required: false
+        default: ''
+        type: string
+    outputs:
+      coverage:
+        description: 'Test coverage percentage'
+        value: ${{ jobs.test.outputs.coverage }}
+      success:
+        description: 'Test suite success status'
+        value: ${{ jobs.test.outputs.success }}
+      test-results:
+        description: 'Test results summary'
+        value: ${{ jobs.test.outputs.results }}
+    secrets:
+      ANTHROPIC_API_KEY:
+        description: 'Anthropic API key for AI tests'
+        required: false
+      NPM_TOKEN:
+        description: 'NPM token for private packages'
+        required: false
+
+jobs:
+  test:
+    name: Run Test Suite
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    outputs:
+      coverage: ${{ steps.coverage.outputs.percentage }}
+      success: ${{ steps.test.outcome == 'success' }}
+      results: ${{ steps.summary.outputs.results }}
+    
+    steps:
+      - name: 🛒 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            **/package-lock.json
+
+      - name: 📦 Install Dependencies
+        run: |
+          npm ci --prefer-offline --no-audit
+          npm run build
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 🔍 Validate CES Configuration
+        run: |
+          npm run dev -- validate --verbose
+          echo "✅ CES configuration validated"
+
+      - name: 🧪 Run Unit Tests
+        if: inputs.test-type == 'unit' || inputs.test-type == 'all'
+        id: unit-tests
+        run: |
+          npm run test:unit -- --coverage --ci --watchAll=false
+          echo "unit-tests=passed" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: 🔗 Run Integration Tests
+        if: inputs.test-type == 'integration' || inputs.test-type == 'all'
+        id: integration-tests
+        run: |
+          npm run test:integration -- --ci --watchAll=false
+          echo "integration-tests=passed" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: 🤖 Run AI Integration Tests
+        if: inputs.anthropic-tests && (inputs.test-type == 'e2e' || inputs.test-type == 'all')
+        id: ai-tests
+        run: |
+          npm run test:ai -- --ci --watchAll=false
+          echo "ai-tests=passed" >> $GITHUB_OUTPUT
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CES_ANTHROPIC_MODEL: claude-3-haiku-20240307
+          CES_ANTHROPIC_MAX_TOKENS: 1024
+        continue-on-error: true
+
+      - name: 🎭 Run E2E Tests  
+        if: inputs.test-type == 'e2e' || inputs.test-type == 'all'
+        id: e2e-tests
+        run: |
+          npm run test:e2e -- --ci
+          echo "e2e-tests=passed" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: 📊 Extract Coverage
+        id: coverage
+        run: |
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('coverage/coverage-summary.json')).total.lines.pct)")
+            echo "percentage=$COVERAGE" >> $GITHUB_OUTPUT
+            echo "📊 Test coverage: $COVERAGE%"
+          else
+            echo "percentage=0" >> $GITHUB_OUTPUT
+            echo "⚠️ No coverage report found"
+          fi
+
+      - name: 📋 Generate Test Summary
+        id: summary
+        run: |
+          RESULTS="{"
+          RESULTS="$RESULTS\"unit\":\"${{ steps.unit-tests.outputs.unit-tests || 'skipped' }}\","
+          RESULTS="$RESULTS\"integration\":\"${{ steps.integration-tests.outputs.integration-tests || 'skipped' }}\","
+          RESULTS="$RESULTS\"ai\":\"${{ steps.ai-tests.outputs.ai-tests || 'skipped' }}\","
+          RESULTS="$RESULTS\"e2e\":\"${{ steps.e2e-tests.outputs.e2e-tests || 'skipped' }}\","
+          RESULTS="$RESULTS\"coverage\":\"${{ steps.coverage.outputs.percentage }}%\""
+          RESULTS="$RESULTS}"
+          echo "results=$RESULTS" >> $GITHUB_OUTPUT
+
+      - name: 📤 Upload Coverage Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-${{ inputs.node-version }}-${{ inputs.cache-key-suffix }}
+          path: coverage/
+          retention-days: 30
+
+      - name: 📤 Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ inputs.node-version }}-${{ inputs.cache-key-suffix }}
+          path: |
+            test-results.xml
+            jest-results.json
+          retention-days: 7
+
+      - name: 🎯 Final Test Status
+        id: test
+        run: |
+          if [[ "${{ steps.unit-tests.outcome }}" == "failure" ]] || 
+             [[ "${{ steps.integration-tests.outcome }}" == "failure" ]] || 
+             [[ "${{ steps.ai-tests.outcome }}" == "failure" ]] || 
+             [[ "${{ steps.e2e-tests.outcome }}" == "failure" ]]; then
+            echo "❌ Some tests failed"
+            exit 1
+          else
+            echo "✅ All tests passed"
+            exit 0
+          fi

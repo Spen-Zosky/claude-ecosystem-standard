@@ -1,0 +1,136 @@
+# ===================================================================
+# CLAUDE ECOSYSTEM STANDARD (CES) v2.6.0 - DOCKER IGNORE
+# ===================================================================
+
+# Git and version control
+.git/
+.gitignore
+.gitattributes
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build outputs (will be rebuilt in container)
+dist/
+build/
+*.tsbuildinfo
+
+# Development files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and runtime data
+logs/
+*.log
+.ces-logs/
+.ces-cache/
+.ces-temp/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Testing
+coverage/
+.nyc_output/
+jest-results.json
+
+# Cache directories
+.cache/
+.npm
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# Backup files
+*.backup
+*-backup-*
+*.bak
+
+# Archive files
+*.tar.gz
+*.zip
+*.rar
+
+# CI/CD artifacts
+.github/artifacts/
+release-artifacts/
+build-artifacts/
+test-results/
+security-reports/
+performance-reports/
+
+# Documentation (not needed in container)
+docs/
+.docs/
+*.md
+!package.json
+
+# Docker development files
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile.dev
+.dockerignore
+
+# Container build context
+docker-build-context/
+.docker/
+
+# Claude CLI (keep only essential config)
+.claude/settings.local.json
+.claude/*.tmp
+.claude/session-*
+.claude/hook.log
+
+# Monitoring and metrics
+monitoring/
+grafana-data/
+prometheus-data/
+loki-data/
+
+# Development scripts
+scripts/dev-*
+scripts/test-*
+
+# Release management
+release_notes.md
+checksums.txt
+
+# Enterprise documentation
+COMPLETION-SUMMARY-*.md
+FINAL-SOLUTION.md
+IMMEDIATE-FIX.md
+NEXT-STEPS.md
+NODEJS-SETUP-GUIDE.md
+QUICK-TEST-COMMANDS.md
+TESTING-GUIDE.md
+CES-COMPREHENSIVE-IMPROVEMENTS.md
+
+# Keep only essential files for production container:
+# - src/ (source code)
+# - package.json (dependencies)
+# - tsconfig.json (TypeScript config)
+# - .claude/claude_desktop_config.json (MCP config)
+# - .claude/startup-hook.cjs (startup hook)
+# - .env.template (environment template)

@@ -1,0 +1,147 @@
+# Dependencies - mantieni directory vuota ma escludi contenuti
+node_modules/
+.node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build outputs rigenerati da installazione/build  
+.dist/
+dist/
+build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+*-debug.log
+*-error.log
+
+# CES Specific Logs and Runtime
+.ces-logs/
+.ces-cache/
+.ces-temp/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# ESLint cache
+.eslintcache
+
+# Jest
+jest-results.json
+coverage/
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# Backup files
+*.backup
+*-backup-*
+*.bak
+
+# Archive files e backup compressi
+*.tar.gz
+*.zip
+*.rar  
+.backups/
+
+# Session files
+session-logs/
+.engagement/
+backups/
+
+# Cache directories
+.cache/
+.ces.cache/
+.ces.tmp/
+
+# Claude Code CLI - keep configuration and structure
+.claude/*
+!.claude/README.md
+!.claude/claude_desktop_config.json
+!.claude/startup-hook.cjs
+!.claude/hook-launcher.sh
+!.claude/agents/
+.claude/agents/*
+!.claude/agents/.gitkeep
+# Ignore hook logs and dynamic files
+.claude/hook.log
+.claude/settings.local.json
+.claude/*.tmp
+.claude/session-*
+
+# Dispatcher (temporary integration files)
+.dispatcher/
+
+# CI/CD Artifacts
+.github/workflows/tmp/
+.github/artifacts/
+release-artifacts/
+build-artifacts/
+test-results/
+coverage/
+security-reports/
+performance-reports/
+
+# Container Build Context
+.dockerignore.tmp
+docker-build-context/
+.docker/
+
+# Release Management
+release_notes.md
+checksums.txt
+*.tar.gz.tmp
+
+# File con credenziali/chiavi hardcoded - sicurezza
+*credentials*
+*secrets*
+*api-keys*
+*apikeys*
+*.key
+*.pem
+*.cert
+*.p12
+*.pfx
+# Pattern specifici per Anthropic API keys
+*sk-ant-*
+# File di configurazione con potenziali credenziali
+*config.local*
+*settings.local*
+.env.*

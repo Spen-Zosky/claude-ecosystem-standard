@@ -1,0 +1,131 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [],
+      "env": {}
+    },
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-serena",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "."
+      ],
+      "env": {}
+    },
+    "arxiv": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@futurelab-studio/latest-science-mcp"
+      ],
+      "env": {}
+    },
+    "mongodb": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-mongo-server"
+      ],
+      "env": {
+        "MONGODB_URI": "${MONGODB_URI:-mongodb://localhost:27017/project_db}"
+      }
+    },
+    "postgresql": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@henkey/postgres-mcp-server"
+      ],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "${POSTGRES_CONNECTION_STRING:-postgresql://localhost:5432/project_db}"
+      }
+    },
+    "git": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "."
+      ],
+      "env": {}
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-puppeteer"
+      ],
+      "env": {
+        "ALLOW_DANGEROUS": "true",
+        "PUPPETEER_LAUNCH_OPTIONS": "{\"headless\": false, \"args\": [\"--no-sandbox\", \"--disable-setuid-sandbox\", \"--disable-dev-shm-usage\"]}"
+      }
+    },
+    "brave": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY:-}"
+      }
+    },
+    "youtube": {
+      "command": "uvx",
+      "args": [
+        "mcp-youtube"
+      ],
+      "env": {}
+    },
+    "google-drive": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google/mcp-server-gdrive"
+      ],
+      "env": {}
+    },
+    "bigquery": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google/mcp-server-bigquery"
+      ],
+      "env": {}
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem"
+      ],
+      "env": {
+        "FILESYSTEM_ALLOWED_DIRS": "${FILESYSTEM_ALLOWED_DIRS:-./src,./docs,./config,./scripts,./tests}"
+      }
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sqlite"
+      ],
+      "env": {
+        "SQLITE_DB_PATH": "${SQLITE_DB_PATH:-./data/development.db}"
+      }
+    },
+    "kubernetes": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-kubernetes-server"
+      ],
+      "env": {
+        "KUBECONFIG": "${KUBECONFIG:-~/.kube/config}",
+        "K8S_NAMESPACE": "${K8S_NAMESPACE:-default}"
+      }
+    }
+  }
+}

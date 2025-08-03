@@ -1,0 +1,223 @@
+name: 'Reusable: Build & Package'
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: 'Node.js version to use'
+        required: false
+        default: '20.x'
+        type: string
+      build-type:
+        description: 'Build type (development, production, docker)'
+        required: false
+        default: 'production'
+        type: string
+      target-platform:
+        description: 'Target platform (linux, windows, macos, all)'
+        required: false
+        default: 'linux'
+        type: string
+      include-anthropic:
+        description: 'Include Anthropic SDK in build'
+        required: false
+        default: true
+        type: boolean
+      cache-key:
+        description: 'Custom cache key'
+        required: false
+        default: ''
+        type: string
+    outputs:
+      artifact-name:
+        description: 'Name of the build artifact'
+        value: ${{ jobs.build.outputs.artifact-name }}
+      build-version:
+        description: 'Build version'
+        value: ${{ jobs.build.outputs.version }}
+      build-success:
+        description: 'Build success status'
+        value: ${{ jobs.build.outputs.success }}
+      dist-size:
+        description: 'Distribution package size'
+        value: ${{ jobs.build.outputs.dist-size }}
+    secrets:
+      NPM_TOKEN:
+        description: 'NPM token for private packages'
+        required: false
+
+jobs:
+  build:
+    name: Build & Package
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.package.outputs.artifact-name }}
+      version: ${{ steps.version.outputs.version }}
+      success: ${{ steps.build.outcome == 'success' }}
+      dist-size: ${{ steps.analyze.outputs.size }}
+    
+    steps:
+      - name: 🛒 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: 📦 Install Dependencies
+        run: |
+          npm ci --prefer-offline --no-audit
+          echo "✅ Dependencies installed"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 🏷️ Extract Version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Building version: $VERSION"
+
+      - name: 🔍 Pre-build Validation
+        run: |
+          npm run lint
+          npm run type-check
+          npm run dev -- validate
+          echo "✅ Pre-build validation passed"
+
+      - name: 🏗️ Build Project
+        id: build
+        run: |
+          if [ "${{ inputs.build-type }}" = "development" ]; then
+            npm run build:dev
+          elif [ "${{ inputs.build-type }}" = "docker" ]; then
+            npm run build:docker
+          else
+            npm run build
+          fi
+          echo "✅ Build completed successfully"
+
+      - name: 🧪 Post-build Tests
+        run: |
+          npm run test:build
+          echo "✅ Post-build tests passed"
+
+      - name: 📊 Analyze Build
+        id: analyze
+        run: |
+          # Calculate dist directory size
+          DIST_SIZE=$(du -sh dist/ | cut -f1)
+          echo "size=$DIST_SIZE" >> $GITHUB_OUTPUT
+          echo "📊 Distribution size: $DIST_SIZE"
+          
+          # Analyze bundle composition
+          if [ -f dist/bundle-analysis.json ]; then
+            echo "📋 Bundle analysis available"
+            cat dist/bundle-analysis.json
+          fi
+          
+          # Check for Anthropic integration
+          if [ "${{ inputs.include-anthropic }}" = "true" ]; then
+            if grep -r "@anthropic-ai" dist/ > /dev/null; then
+              echo "✅ Anthropic SDK included in build"
+            else
+              echo "⚠️ Anthropic SDK not found in build"
+            fi
+          fi
+
+      - name: 🗜️ Create Distribution Package
+        id: package
+        run: |
+          ARTIFACT_NAME="ces-v${{ steps.version.outputs.version }}-${{ inputs.target-platform }}-${{ inputs.build-type }}"
+          
+          # Create distribution archive
+          mkdir -p packages
+          tar -czf "packages/${ARTIFACT_NAME}.tar.gz" \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=coverage \
+            --exclude=.nyc_output \
+            dist/ package.json package-lock.json README.md CLAUDE.md
+            
+          # Create platform-specific packages if needed
+          if [ "${{ inputs.target-platform }}" = "all" ]; then
+            # Linux package
+            cp "packages/${ARTIFACT_NAME}.tar.gz" "packages/ces-v${{ steps.version.outputs.version }}-linux-${{ inputs.build-type }}.tar.gz"
+            
+            # Windows package (zip format)
+            cd packages && zip -r "ces-v${{ steps.version.outputs.version }}-windows-${{ inputs.build-type }}.zip" ../dist/ ../package.json ../README.md ../CLAUDE.md
+            cd ..
+            
+            # macOS package
+            cp "packages/${ARTIFACT_NAME}.tar.gz" "packages/ces-v${{ steps.version.outputs.version }}-macos-${{ inputs.build-type }}.tar.gz"
+          fi
+          
+          echo "artifact-name=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
+          echo "📦 Package created: $ARTIFACT_NAME"
+
+      - name: 🔐 Generate Checksums
+        run: |
+          cd packages
+          for file in *.tar.gz *.zip; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" > "$file.sha256"
+              echo "🔐 Checksum generated for $file"
+            fi
+          done
+
+      - name: 📋 Generate Build Manifest
+        run: |
+          cat > packages/build-manifest.json << EOF
+          {
+            "version": "${{ steps.version.outputs.version }}",
+            "buildType": "${{ inputs.build-type }}",
+            "targetPlatform": "${{ inputs.target-platform }}",
+            "nodeVersion": "${{ inputs.node-version }}",
+            "buildTime": "$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)",
+            "gitCommit": "${{ github.sha }}",
+            "gitRef": "${{ github.ref }}",
+            "includeAnthropic": ${{ inputs.include-anthropic }},
+            "distSize": "${{ steps.analyze.outputs.size }}",
+            "artifacts": [
+              $(ls packages/*.tar.gz packages/*.zip 2>/dev/null | sed 's/packages\///' | sed 's/^/"/' | sed 's/$/"/' | paste -sd ',' -)
+            ]
+          }
+          EOF
+          echo "📋 Build manifest generated"
+
+      - name: 📤 Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.package.outputs.artifact-name }}
+          path: |
+            packages/
+            dist/
+          retention-days: 30
+
+      - name: 📊 Upload Bundle Analysis
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-analysis-${{ steps.version.outputs.version }}
+          path: |
+            dist/bundle-analysis.json
+            packages/build-manifest.json
+          retention-days: 7
+
+      - name: 🎯 Build Summary
+        run: |
+          echo "## 🏗️ Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build Type:** ${{ inputs.build-type }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target Platform:** ${{ inputs.target-platform }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Node.js Version:** ${{ inputs.node-version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Distribution Size:** ${{ steps.analyze.outputs.size }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Anthropic SDK:** ${{ inputs.include-anthropic }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Artifact:** ${{ steps.package.outputs.artifact-name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Build completed successfully!"

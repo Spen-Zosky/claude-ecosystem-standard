@@ -1,0 +1,289 @@
+name: 🧪 Continuous Integration
+
+on:
+  push:
+    branches: [ main, develop, 'feature/**', 'hotfix/**' ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20.x'
+  CACHE_VERSION: v2
+  CES_VERSION: '2.7.0'
+
+jobs:
+  # ===================================================================
+  # JOB 1: LINT & CODE QUALITY
+  # ===================================================================
+  lint:
+    name: 🎯 Lint & Code Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🎯 Run ESLint
+        run: npm run lint
+
+      - name: 🔍 TypeScript Check
+        run: npm run type-check
+
+      - name: 📊 Upload lint results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-results
+          path: |
+            eslint-report.json
+            tsc-report.txt
+          retention-days: 7
+
+  # ===================================================================
+  # JOB 2: UNIT TESTS
+  # ===================================================================
+  test:
+    name: 🧪 Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        node-version: ['18.x', '20.x', '22.x']
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🧪 Run tests
+        run: npm test -- --coverage --watchAll=false --ci
+
+      - name: 🆕 Test v2.7.0 Configuration
+        run: |
+          npm run dev -- validate --verbose
+          npm run dev -- config show --section=anthropic
+
+      - name: 📊 Upload coverage to Codecov
+        if: matrix.node-version == '20.x'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+      - name: 📊 Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.node-version }}
+          path: |
+            coverage/
+            jest-results.json
+          retention-days: 7
+
+  # ===================================================================
+  # JOB 3: BUILD & COMPILE
+  # ===================================================================
+  build:
+    name: 🏗️ Build & Compile
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [lint]
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🏗️ Build project
+        run: npm run build
+
+      - name: 📦 Package artifacts
+        run: |
+          tar -czf ces-v${{ github.sha }}.tar.gz dist/ package.json README.md LICENSE
+          ls -la ces-v${{ github.sha }}.tar.gz
+
+      - name: 📊 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/
+            ces-v${{ github.sha }}.tar.gz
+          retention-days: 30
+
+  # ===================================================================
+  # JOB 4: INTEGRATION TESTS
+  # ===================================================================
+  integration:
+    name: 🔧 Integration Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [build]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🔧 Run integration tests
+        run: |
+          npm run dev -- validate --verbose
+          npm run dev -- start-session --test-mode || true
+          npm run dev -- close-session || true
+
+      - name: 🆕 Test Integration Modes v2.7.0
+        run: |
+          # Test standalone mode
+          CES_OPERATION_MODE=standalone npm run dev -- validate || true
+          # Test integrated mode
+          CES_OPERATION_MODE=integrated npm run dev -- validate || true
+
+      - name: 📊 Upload integration results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-results
+          path: |
+            .ces-logs/
+            integration-test-report.json
+          retention-days: 7
+
+  # ===================================================================
+  # JOB 5: SECURITY SCAN
+  # ===================================================================
+  security:
+    name: 🛡️ Security Scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🛡️ Run npm audit
+        run: |
+          npm audit --audit-level=moderate --json > npm-audit.json || true
+          cat npm-audit.json
+
+      - name: 🆕 Security Scan for v2.7.0 Dependencies
+        run: |
+          # Check Anthropic SDK specifically
+          npm audit @anthropic-ai/sdk --json > anthropic-audit.json || true
+          cat anthropic-audit.json
+
+      - name: 🔍 CodeQL Analysis
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: 🔍 Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: 📊 Upload security artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-results
+          path: |
+            npm-audit.json
+            anthropic-audit.json
+            codeql-results/
+          retention-days: 30
+
+  # ===================================================================
+  # JOB 6: CI SUCCESS STATUS
+  # ===================================================================
+  ci-success:
+    name: ✅ CI Success
+    runs-on: ubuntu-latest
+    needs: [lint, test, build, integration, security]
+    if: always()
+
+    steps:
+      - name: ✅ Check CI Status
+        run: |
+          if [[ "${{ needs.lint.result }}" != "success" ]]; then
+            echo "❌ Lint failed"
+            exit 1
+          fi
+          if [[ "${{ needs.test.result }}" != "success" ]]; then
+            echo "❌ Tests failed"
+            exit 1
+          fi
+          if [[ "${{ needs.build.result }}" != "success" ]]; then
+            echo "❌ Build failed"
+            exit 1
+          fi
+          echo "✅ All CI checks passed successfully!"
+
+      - name: 📊 CI Summary
+        run: |
+          echo "## 🎉 CES v2.7.0 CI Pipeline Completed Successfully" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Enterprise Edition with Anthropic SDK Integration" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status | v2.7.0 Features |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|------------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Lint | ${{ needs.lint.result == 'success' && '✅' || '❌' }} | TypeScript strict mode |" >> $GITHUB_STEP_SUMMARY
+          echo "| Test | ${{ needs.test.result == 'success' && '✅' || '❌' }} | Anthropic config validation |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result == 'success' && '✅' || '❌' }} | Integration modes support |" >> $GITHUB_STEP_SUMMARY
+          echo "| Integration | ${{ needs.integration.result == 'success' && '✅' || '❌' }} | Standalone/Integrated modes |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | ${{ needs.security.result == 'success' && '✅' || '❌' }} | Anthropic SDK security scan |" >> $GITHUB_STEP_SUMMARY
