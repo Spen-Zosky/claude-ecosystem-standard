@@ -222,23 +222,86 @@ echo "CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229" >> .env
 echo "CES_ANTHROPIC_MAX_TOKENS=4096" >> .env
 ```
 
+## 🔄 Dual Claude System - NEW v2.7.0
+
+**Revolutionary Dual Documentation System**: Seamlessly merge global CES instructions with project-specific Claude configurations.
+
+### 🌟 Key Features:
+- **🔄 Auto-Merge**: Automatically combines `~/.claude/CLAUDE.md` (global) + `./CLAUDE.md` (project) → `CLAUDE-MASTER.md`
+- **📝 CLI Commands**: Complete documentation management via `npm run claude:*` commands
+- **🧪 Test Suite**: Comprehensive testing with 40+ test cases across bash and TypeScript
+- **👁️ File Watching**: Real-time merge triggers when source files change
+- **🛠️ Enterprise Utilities**: Advanced TypeScript classes for documentation management
+- **📊 Event System**: EventEmitter-based architecture with real-time notifications
+
+### 📋 Available Commands:
+```bash
+# Documentation Management
+npm run claude:show              # View merged documentation
+npm run claude:regenerate        # Regenerate merged docs
+npm run claude:validate          # Validate system setup
+npm run claude:edit              # Edit project CLAUDE.md
+npm run claude:debug             # Debug system information
+
+# Direct Merge Operations
+npm run claude:merge             # Execute merge operation
+npm run claude:merge:dry         # Dry-run merge preview
+npm run claude:merge:verbose     # Verbose merge output
+npm run claude:merge:force       # Force merge (overwrite)
+
+# Testing Suite
+npm run test:dual-claude         # Full test suite
+npm run test:dual-claude:quick   # Essential tests (5 min)
+npm run test:dual-claude:full    # Complete suite (15 min)
+npm run test:dual-claude:performance  # Performance benchmarks
+npm run test:typescript          # TypeScript tests only
+
+# System Management
+npm run claude:system:status     # System status
+npm run claude:system:init       # Initialize system
+npm run claude:watch:start       # Start file watching
+npm run claude:watch:stop        # Stop file watching
+```
+
+### 🏗️ System Architecture:
+```
+Global CLAUDE.md          Project CLAUDE.md
+(~/.claude/CLAUDE.md)  +  (./CLAUDE.md)
+        ↓                       ↓
+        🔄 Merge Process (merge-claude-docs.sh)
+                    ↓
+            CLAUDE-MASTER.md (./.claude/CLAUDE-MASTER.md)
+                    ↓
+            Claude Code CLI (**start session)
+```
+
+### 📊 Components:
+- **merge-claude-docs.sh**: Comprehensive bash merge script with validation
+- **ClaudeDocManager.ts**: Enterprise document management utility
+- **DocumentationCommands.ts**: CLI interface for documentation operations
+- **ClaudeMergeSystem.ts**: EventEmitter-based merge system with advanced features
+- **test-dual-claude.sh**: 40+ test comprehensive test suite
+- **Enhanced startup-hook.cjs**: Auto-merge and system status integration
+
 ## 📦 Enterprise TypeScript Architecture
 
 **TypeScript Codebase**: Complete enterprise-grade implementation  
 **Build Target**: ES2022 with ESModule support  
 **Enterprise Grade**: Production-ready with comprehensive type safety
 **AI Integration**: Native Anthropic SDK with streaming support
+**🆕 Dual Claude System**: Revolutionary documentation management architecture
 
 ### 🏗️ Enterprise Components:
+- **🆕 Dual Claude System**: Complete documentation merge and management system
 - **Configuration Management**: EnvironmentConfig.ts with dynamic project root detection
 - **🆕 Anthropic Integration**: Complete SDK integration with AnthropicSDKManager.ts
 - **Logging Framework**: Structured Winston logging with performance metrics
 - **Session Management**: Advanced session lifecycle with profiles and analytics
 - **Auto-Recovery System**: Self-healing capabilities with intelligent monitoring
 - **Analytics Engine**: Usage analytics and performance insights with AI tracking
-- **CLI Managers**: 9+ specialized CLI managers for enterprise operations
+- **CLI Managers**: 12+ specialized CLI managers for enterprise operations
 - **Type Safety**: Comprehensive interfaces and custom error types
-- **Testing Suite**: 16+ comprehensive tests with 90%+ coverage
+- **Testing Suite**: 20+ comprehensive tests with 90%+ coverage
 
 ### 🛠️ Enterprise Tools & Dependencies:
 - **TypeScript**: v5.3.3 with strict enterprise configuration

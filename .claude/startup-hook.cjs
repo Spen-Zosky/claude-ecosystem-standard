@@ -432,34 +432,168 @@ function main() {
         }
         log('✨ Startup hook completed successfully');
         
+        // ⚡ DUAL CLAUDE SYSTEM: Enhanced logging and integration
+        log('🔄 Checking Dual Claude System integration...');
+        
+        // Check for dual Claude system components
+        const dualClaudeComponents = {
+            mergeScript: fs.existsSync(path.join(PROJECT_ROOT, 'scripts', 'merge-claude-docs.sh')),
+            claudeDocManager: fs.existsSync(path.join(PROJECT_ROOT, '.src', 'utils', 'ClaudeDocManager.ts')),
+            documentationCommands: fs.existsSync(path.join(PROJECT_ROOT, '.src', 'cli', 'DocumentationCommands.ts')),
+            projectTemplate: fs.existsSync(path.join(PROJECT_ROOT, 'templates', 'PROJECT-CLAUDE.md.template')),
+            testSuite: fs.existsSync(path.join(PROJECT_ROOT, 'scripts', 'test-dual-claude.sh')),
+            claudeMaster: fs.existsSync(path.join(PROJECT_ROOT, '.claude', 'CLAUDE-MASTER.md')),
+            projectClaude: fs.existsSync(path.join(PROJECT_ROOT, 'CLAUDE.md')),
+            globalClaude: fs.existsSync(path.join(process.env.HOME || '', '.claude', 'CLAUDE.md'))
+        };
+        
+        // Count active components
+        const activeComponents = Object.values(dualClaudeComponents).filter(Boolean).length;
+        const totalComponents = Object.keys(dualClaudeComponents).length;
+        
+        log(`📊 Dual Claude System: ${activeComponents}/${totalComponents} components active`);
+        
+        // Detailed component status
+        if (dualClaudeComponents.mergeScript) {
+            log('✅ 🔄 Merge script available (merge-claude-docs.sh)');
+        } else {
+            log('❌ 🔄 Merge script missing');
+        }
+        
+        if (dualClaudeComponents.claudeDocManager) {
+            log('✅ 🛠️ ClaudeDocManager utility available');
+        } else {
+            log('❌ 🛠️ ClaudeDocManager utility missing');
+        }
+        
+        if (dualClaudeComponents.documentationCommands) {
+            log('✅ 💻 Documentation CLI commands available');
+        } else {
+            log('❌ 💻 Documentation CLI commands missing');
+        }
+        
+        if (dualClaudeComponents.testSuite) {
+            log('✅ 🧪 Comprehensive test suite available');
+        } else {
+            log('❌ 🧪 Test suite missing');
+        }
+        
+        // Documentation status
+        if (dualClaudeComponents.claudeMaster) {
+            try {
+                const masterSize = fs.statSync(path.join(PROJECT_ROOT, '.claude', 'CLAUDE-MASTER.md')).size;
+                log(`✅ 📋 CLAUDE-MASTER.md active (${masterSize} bytes)`);
+            } catch (error) {
+                log('⚠️ 📋 CLAUDE-MASTER.md exists but cannot read size');
+            }
+        } else {
+            log('❌ 📋 CLAUDE-MASTER.md not generated');
+        }
+        
+        if (dualClaudeComponents.projectClaude) {
+            try {
+                const projectSize = fs.statSync(path.join(PROJECT_ROOT, 'CLAUDE.md')).size;
+                log(`✅ 📁 Project CLAUDE.md found (${projectSize} bytes)`);
+            } catch (error) {
+                log('⚠️ 📁 Project CLAUDE.md exists but cannot read size');
+            }
+        } else {
+            log('⚠️ 📁 Project CLAUDE.md not found - will use template if needed');
+        }
+        
+        if (dualClaudeComponents.globalClaude) {
+            log('✅ 🌍 Global CES CLAUDE.md found');
+        } else {
+            log('⚠️ 🌍 Global CES CLAUDE.md not found');
+        }
+        
+        // Auto-merge documentation if system is ready
+        if (dualClaudeComponents.mergeScript && (dualClaudeComponents.projectClaude || dualClaudeComponents.globalClaude)) {
+            try {
+                log('🔄 Auto-merging Claude documentation...');
+                execSync('bash scripts/merge-claude-docs.sh --merge', { 
+                    cwd: PROJECT_ROOT,
+                    timeout: 15000 
+                });
+                log('✅ Claude documentation merged successfully');
+                
+                // Verify merge result
+                if (fs.existsSync(path.join(PROJECT_ROOT, '.claude', 'CLAUDE-MASTER.md'))) {
+                    const masterSize = fs.statSync(path.join(PROJECT_ROOT, '.claude', 'CLAUDE-MASTER.md')).size;
+                    log(`✅ Generated CLAUDE-MASTER.md (${masterSize} bytes)`);
+                } else {
+                    log('⚠️ CLAUDE-MASTER.md not generated after merge');
+                }
+                
+            } catch (error) {
+                log(`⚠️ Auto-merge failed: ${error.message}`);
+                log('💡 You can merge manually with: npm run dev -- docs regenerate');
+            }
+        } else {
+            log('⚠️ Auto-merge skipped - missing components or source files');
+            if (!dualClaudeComponents.mergeScript) log('   Missing: merge script');
+            if (!dualClaudeComponents.projectClaude && !dualClaudeComponents.globalClaude) {
+                log('   Missing: both project and global CLAUDE.md files');
+            }
+        }
+        
+        // CLI commands availability check
+        if (dualClaudeComponents.documentationCommands) {
+            log('💻 Available documentation commands:');
+            log('   📖 npm run dev -- docs show       # View merged documentation');
+            log('   🔄 npm run dev -- docs regenerate # Regenerate merged docs');
+            log('   ✅ npm run dev -- docs validate   # Validate system');
+            log('   ✏️ npm run dev -- docs edit       # Edit project docs');
+            log('   🔧 npm run dev -- docs debug      # Debug information');
+        }
+        
+        // Test suite availability
+        if (dualClaudeComponents.testSuite) {
+            log('🧪 Test suite commands:');
+            log('   🚀 ./scripts/test-dual-claude.sh --full         # Complete test suite');
+            log('   ⚡ ./scripts/test-dual-claude.sh --quick        # Essential tests');
+            log('   📊 ./scripts/test-dual-claude.sh --performance  # Performance tests');
+        }
+        
+        // Overall system status
+        if (activeComponents >= 6) {
+            log('🎉 Dual Claude System: FULLY OPERATIONAL');
+        } else if (activeComponents >= 4) {
+            log('✅ Dual Claude System: MOSTLY FUNCTIONAL');
+        } else if (activeComponents >= 2) {
+            log('⚠️ Dual Claude System: PARTIALLY FUNCTIONAL');
+        } else {
+            log('❌ Dual Claude System: NOT CONFIGURED');
+        }
+        
         // ⚡ INTEGRAZIONE CES: Avvio automatico SessionManager
         if (fs.existsSync(path.join(PROJECT_ROOT, 'package.json')) && 
-            fs.existsSync(path.join(PROJECT_ROOT, 'src', 'session', 'SessionManager.ts'))) {
+            fs.existsSync(path.join(PROJECT_ROOT, '.src', 'session', 'SessionManager.ts'))) {
             try {
-                log('🔄 Avvio CES SessionManager...');
+                log('🔄 Starting CES SessionManager...');
                 execSync('npm run dev -- start-session', { 
                     stdio: 'inherit', 
                     cwd: PROJECT_ROOT,
                     timeout: 30000 
                 });
-                log('✅ CES SessionManager attivato automaticamente');
+                log('✅ CES SessionManager activated automatically');
                 
                 // Avvio automatico Session Monitor per coordinamento **register session
                 try {
-                    log('🔍 Avvio Session Monitor...');
+                    log('🔍 Starting Session Monitor...');
                     execSync('npm run dev -- monitor --start', { 
                         stdio: 'ignore', 
                         cwd: PROJECT_ROOT,
                         timeout: 10000 
                     });
-                    log('✅ Session Monitor attivato per coordinamento **register session');
+                    log('✅ Session Monitor activated for **register session coordination');
                 } catch (error) {
-                    log('⚠️ Session Monitor non disponibile (opzionale)');
+                    log('⚠️ Session Monitor not available (optional)');
                 }
                 
             } catch (error) {
-                log(`⚠️ CES SessionManager non disponibile: ${error.message}`);
-                log('💡 Puoi avviarlo manualmente con: npm run dev -- start-session');
+                log(`⚠️ CES SessionManager not available: ${error.message}`);
+                log('💡 You can start it manually with: npm run dev -- start-session');
             }
         }
         
