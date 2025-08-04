@@ -1,0 +1,210 @@
+./.src/__tests__/DualClaudeSystem.test.ts: * Comprehensive TypeScript test suite for Dual Claude System
+./.src/__tests__/DualClaudeSystem.test.ts:// Mock file system for testing
+./.src/__tests__/DualClaudeSystem.test.ts:describe('Dual Claude System - TypeScript Components', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:    let testWorkspace: string;
+./.src/__tests__/DualClaudeSystem.test.ts:        testWorkspace = '/tmp/ces-ts-test';
+./.src/__tests__/DualClaudeSystem.test.ts:        await claudeDocManager.cleanup();
+./.src/__tests__/DualClaudeSystem.test.ts:        await claudeDocManager.cleanup();
+./.src/__tests__/DualClaudeSystem.test.ts:    describe('ClaudeDocManager', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Singleton Pattern', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should return same instance', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should initialize only once', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                await instance.initialize();
+./.src/__tests__/DualClaudeSystem.test.ts:                // Second initialization should not throw
+./.src/__tests__/DualClaudeSystem.test.ts:                await expect(instance.initialize()).resolves.not.toThrow();
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('File Operations', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should get file metadata', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const testFile = '/test/path/CLAUDE.md';
+./.src/__tests__/DualClaudeSystem.test.ts:                const metadata = await claudeDocManager.getMetadata(testFile);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should return null for non-existent files', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const metadata = await claudeDocManager.getMetadata('/non/existent/file');
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should determine correct source type', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const testCases = [
+./.src/__tests__/DualClaudeSystem.test.ts:                for (const testCase of testCases) {
+./.src/__tests__/DualClaudeSystem.test.ts:                    const metadata = await claudeDocManager.getMetadata(testCase.path);
+./.src/__tests__/DualClaudeSystem.test.ts:                    expect(metadata?.source).toBe(testCase.expected);
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Search Functionality', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should search content in files', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const testContent = `
+./.src/__tests__/DualClaudeSystem.test.ts:This is test content with keywords.
+./.src/__tests__/DualClaudeSystem.test.ts:Another line with different content.
+./.src/__tests__/DualClaudeSystem.test.ts:                mockFs.readFile.mockResolvedValue(testContent);
+./.src/__tests__/DualClaudeSystem.test.ts:                    size: testContent.length,
+./.src/__tests__/DualClaudeSystem.test.ts:                const results = await claudeDocManager.searchContent('test', ['/test/file.md']);
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(results[0].matches).toHaveLength(2); // "Test Document" and "test content"
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle search with no matches', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const results = await claudeDocManager.searchContent('nonexistent', ['/test/file.md']);
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Backup Operations', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should create backup successfully', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const testFile = '/test/CLAUDE.md';
+./.src/__tests__/DualClaudeSystem.test.ts:                const backup = await claudeDocManager.createBackup(testFile, 'Test backup');
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(backup?.originalPath).toContain(testFile);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle backup of non-existent file', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const backup = await claudeDocManager.createBackup('/non/existent/file');
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should restore from backup', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                    originalPath: '/test/original.md',
+./.src/__tests__/DualClaudeSystem.test.ts:                    backupPath: '/test/.backups/original.md.backup.123',
+./.src/__tests__/DualClaudeSystem.test.ts:                const success = await claudeDocManager.restoreFromBackup(backupInfo);
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(mockFs.copyFile).toHaveBeenCalledWith(
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('File Watching', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should start watching files', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                await claudeDocManager.startWatching(['/test/file1.md', '/test/file2.md'], callback);
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(mockWatch).toHaveBeenCalledWith(
+./.src/__tests__/DualClaudeSystem.test.ts:                    ['/test/file1.md', '/test/file2.md'],
+./.src/__tests__/DualClaudeSystem.test.ts:                        ignoreInitial: true,
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should stop watching files', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                await claudeDocManager.startWatching(['/test/file.md'], callback);
+./.src/__tests__/DualClaudeSystem.test.ts:                await claudeDocManager.stopWatching(['/test/file.md']);
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Validation', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should validate complete setup', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                mockFs.readFile.mockResolvedValue('Valid content with reasonable length');
+./.src/__tests__/DualClaudeSystem.test.ts:                const validation = await claudeDocManager.validateSetup();
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should detect missing files', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const validation = await claudeDocManager.validateSetup();
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should detect corrupted master file', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const validation = await claudeDocManager.validateSetup();
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Merge Operations', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should execute merge script successfully', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                            callback(0); // Success exit code
+./.src/__tests__/DualClaudeSystem.test.ts:                const success = await claudeDocManager.executeMerge({ verbose: true });
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(mockSpawn).toHaveBeenCalledWith(
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle merge script failure', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                            callback(1); // Error exit code
+./.src/__tests__/DualClaudeSystem.test.ts:                const success = await claudeDocManager.executeMerge();
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle missing merge script', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const success = await claudeDocManager.executeMerge();
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Performance Metrics', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should return performance metrics', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(metrics).toHaveProperty('initialized');
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Cache Management', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should cache file metadata', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const testFile = '/test/CLAUDE.md';
+./.src/__tests__/DualClaudeSystem.test.ts:                const metadata1 = await claudeDocManager.getMetadata(testFile);
+./.src/__tests__/DualClaudeSystem.test.ts:                const metadata2 = await claudeDocManager.getMetadata(testFile);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should invalidate cache when file changes', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const testFile = '/test/CLAUDE.md';
+./.src/__tests__/DualClaudeSystem.test.ts:                // First call with old date
+./.src/__tests__/DualClaudeSystem.test.ts:                await claudeDocManager.getMetadata(testFile);
+./.src/__tests__/DualClaudeSystem.test.ts:                // Second call with new date (file changed)
+./.src/__tests__/DualClaudeSystem.test.ts:                await claudeDocManager.getMetadata(testFile);
+./.src/__tests__/DualClaudeSystem.test.ts:    describe('DocumentationCommands', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Command Handling', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle show command', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['show']);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle missing master file in show command', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['show']);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle validate command', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['validate']);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle regenerate command with script', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['regenerate']);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle unknown command', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['unknown']);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle empty command array', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand([]);
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Editor Integration', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should handle edit command with existing file', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                // Mock regenerate call after edit
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['edit']);
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should create template for missing project file', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                mockFs.writeFile.mockResolvedValue(undefined);
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['edit']);
+./.src/__tests__/DualClaudeSystem.test.ts:                expect(mockFs.writeFile).toHaveBeenCalled();
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Debug Information', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should gather debug information', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const result = await documentationCommands.handleDocsCommand(['debug']);
+./.src/__tests__/DualClaudeSystem.test.ts:        describe('Validation Logic', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should validate complete setup', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                // Access private method for testing
+./.src/__tests__/DualClaudeSystem.test.ts:                const validation = await (documentationCommands as any).performValidation();
+./.src/__tests__/DualClaudeSystem.test.ts:            test('should detect invalid setup', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:                const validation = await (documentationCommands as any).performValidation();
+./.src/__tests__/DualClaudeSystem.test.ts:    describe('Integration Tests', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should work together - manager and commands', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            await claudeDocManager.initialize();
+./.src/__tests__/DualClaudeSystem.test.ts:            const validation = await claudeDocManager.validateSetup();
+./.src/__tests__/DualClaudeSystem.test.ts:            const commandResult = await documentationCommands.handleDocsCommand(['validate']);
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should handle error conditions gracefully', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            // Setup mocks for error conditions
+./.src/__tests__/DualClaudeSystem.test.ts:            const validation = await claudeDocManager.validateSetup();
+./.src/__tests__/DualClaudeSystem.test.ts:            const commandResult = await documentationCommands.handleDocsCommand(['show']);
+./.src/__tests__/DualClaudeSystem.test.ts:    describe('Error Handling', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should handle file system errors gracefully', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            const metadata = await claudeDocManager.getMetadata('/test/file.md');
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should handle process spawn errors', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            const success = await claudeDocManager.executeMerge();
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should handle validation errors', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            const validation = await claudeDocManager.validateSetup();
+./.src/__tests__/DualClaudeSystem.test.ts:    describe('Performance Tests', () => {
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should handle large file operations efficiently', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            const results = await claudeDocManager.searchContent('x', ['/test/large-file.md']);
+./.src/__tests__/DualClaudeSystem.test.ts:        test('should cache repeated operations', async () => {
+./.src/__tests__/DualClaudeSystem.test.ts:            const testFile = '/test/CLAUDE.md';
+./.src/__tests__/DualClaudeSystem.test.ts:            await Promise.all([
+./.src/__tests__/DualClaudeSystem.test.ts:                claudeDocManager.getMetadata(testFile),
+./.src/__tests__/DualClaudeSystem.test.ts:                claudeDocManager.getMetadata(testFile),
+./.src/__tests__/DualClaudeSystem.test.ts:                claudeDocManager.getMetadata(testFile)
+./.src/__tests__/DualClaudeSystem.test.ts:// Helper functions for test setup
+./.src/__tests__/DualClaudeSystem.test.ts:    process.env.NODE_ENV = 'test';
+./.src/__tests__/DualClaudeSystem.test.ts:    // Clean up test environment
+./.src/__tests__/DualClaudeSystem.test.ts:// Test utilities
+./.src/__tests__/DualClaudeSystem.test.ts:export const createMockProcess = (exitCode: number = 0, stdout: string = '', stderr: string = '') => {
+./.src/__tests__/DualClaudeSystem.test.ts:                callback(exitCode);
+./.src/__tests__/PathResolver.test.ts: * Tests for the portable path resolution utility
+./.src/__tests__/PathResolver.test.ts:describe('PathResolver', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('Singleton Pattern', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should return the same instance', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('Path Detection', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should detect CES root directory', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should detect project root directory', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should provide detection information', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('Path Resolution', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should resolve CES-relative paths', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should resolve project-relative paths', () => {
+./.src/__tests__/PathResolver.test.ts:      const projectPath = resolver.getProjectPath('test');
+./.src/__tests__/PathResolver.test.ts:      expect(projectPath).toBe(path.join(projectRoot, 'test'));
+./.src/__tests__/PathResolver.test.ts:    it('should handle multiple path segments', () => {
+./.src/__tests__/PathResolver.test.ts:      const deepPath = resolver.getCesPath('src', 'utils', 'test.ts');
+./.src/__tests__/PathResolver.test.ts:      expect(deepPath).toBe(path.join(cesRoot, 'src', 'utils', 'test.ts'));
+./.src/__tests__/PathResolver.test.ts:    it('should calculate relative paths correctly', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('Installation Type Detection', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should detect installation type', () => {
+./.src/__tests__/PathResolver.test.ts:      // Should be either subdirectory or standalone, but not both
+./.src/__tests__/PathResolver.test.ts:    it('should provide CES relative path', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('Path Utilities', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should normalize paths for cross-platform compatibility', () => {
+./.src/__tests__/PathResolver.test.ts:      const windowsPath = 'C:\\Users\\test\\project';
+./.src/__tests__/PathResolver.test.ts:    it('should resolve paths with prefixes', () => {
+./.src/__tests__/PathResolver.test.ts:      const projectPath = resolver.resolvePath('project/test');
+./.src/__tests__/PathResolver.test.ts:      expect(projectPath).toContain('test');
+./.src/__tests__/PathResolver.test.ts:  describe('Path Information', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should provide comprehensive path information', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('File System Validation', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should validate that detected paths exist', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should detect essential project files', () => {
+./.src/__tests__/PathResolver.test.ts:  describe('Edge Cases', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should handle empty path segments gracefully', () => {
+./.src/__tests__/PathResolver.test.ts:    it('should handle paths with special characters', () => {
+./.src/__tests__/PathResolver.test.ts:      const specialPath = resolver.getCesPath('test@folder#2024!');
+./.src/__tests__/PathResolver.test.ts:      expect(specialPath).toContain('test@folder#2024!');
+./.src/__tests__/ConfigManager.test.ts:describe('ConfigManager', () => {
+./.src/__tests__/ConfigManager.test.ts:    describe('initialization', () => {
+./.src/__tests__/ConfigManager.test.ts:        it('should initialize successfully', async () => {
+./.src/__tests__/ConfigManager.test.ts:            const config = await configManager.initialize();
+./.src/__tests__/ConfigManager.test.ts:            expect(typeof config.hasGit).toBe('boolean');
+./.src/__tests__/ConfigManager.test.ts:        it('should detect TypeScript in current project', async () => {
+./.src/__tests__/ConfigManager.test.ts:            const config = await configManager.initialize();
+./.src/__tests__/ConfigManager.test.ts:    describe('configuration management', () => {
+./.src/__tests__/ConfigManager.test.ts:        it('should get configuration after initialization', async () => {
+./.src/__tests__/ConfigManager.test.ts:            await configManager.initialize();
+./.src/__tests__/ConfigManager.test.ts:        it('should throw error when getting config before initialization', () => {
+./.src/__tests__/ConfigManager.test.ts:            }).toThrow('Configuration not initialized');
+./.src/__tests__/ConfigManager.test.ts:    describe('health check', () => {
+./.src/__tests__/ConfigManager.test.ts:        it('should perform health check', async () => {
+./.src/__tests__/ConfigManager.test.ts:            const health = await configManager.performHealthCheck();
+./.src/__tests__/ConfigManager.test.ts:            expect(health.git).toBeDefined();
+./.src/__tests__/ConfigManager.test.ts:    describe('MCP servers', () => {
+./.src/__tests__/ConfigManager.test.ts:        it('should load MCP servers when config exists', async () => {
+./.src/__tests__/ConfigManager.test.ts:                const servers = await configManager.loadMCPServers();
+./.src/__tests__/ConfigManager.test.ts:    describe('agents', () => {
+./.src/__tests__/ConfigManager.test.ts:        it('should load agents', async () => {
+./.src/__tests__/ConfigManager.test.ts:            const agents = await configManager.loadAgents();

@@ -1,32 +1,6 @@
-# 🏢 Claude Ecosystem Standard (CES) v2.7.0 - Enterprise Edition with Dual Claude System
+# 🏢 Claude Ecosystem Standard (CES) v2.6.0 - Enterprise Edition with Anthropic SDK
 
-🚀 **Enterprise-grade TypeScript Claude development framework** with **revolutionary Dual Claude System**, native Anthropic SDK integration, complete portability, dynamic configuration, structured logging, auto-recovery systems, AI-powered capabilities, and production-ready architecture that **works as drop-in subdirectory in any project**.
-
-## 📚 Documentation
-
-The complete CES v2.7.0 documentation is organized in numbered thematic series:
-
-- **[Complete Index](.docs/library/000-overview/001-INDEX-DOCUMENTATION.md)** - Full documentation navigation
-- **[Quick Start](.docs/library/200-installation/203-QUICK-SETUP.md)** - Get started with CES immediately
-- **[CLI Reference](.docs/library/400-operations/400-CLI-REFERENCE-COMPLETE.md)** - All available commands
-
-### 📖 Documentation Series
-
-- **000**: Overview and general indices
-- **100**: Introduction and core concepts  
-- **200**: Installation and setup
-- **300**: System configuration
-- **400**: Operations and usage
-- **500**: Monitoring and debugging
-- **600**: Integrations and extensions
-- **700**: Deployment and production
-- **800**: Testing and quality
-- **900**: Maintenance and troubleshooting
-- **1000**: Technical references
-- **1100**: Tutorials and examples
-- **1200**: Special documentation
-
-For complete details, see the [Complete Documentation Index](.docs/library/000-overview/001-INDEX-DOCUMENTATION.md).
+🚀 **Enterprise-grade TypeScript Claude development framework** with **native Anthropic SDK integration**, complete portability, dynamic configuration, structured logging, auto-recovery systems, AI-powered capabilities, and production-ready architecture that **works as drop-in subdirectory in any project**.
 
 [![Enterprise Grade](https://img.shields.io/badge/Enterprise-Production%20Ready-green.svg)](https://github.com/anthropics/claude-ecosystem-standard)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue.svg)](https://www.typescriptlang.org/)
@@ -605,7 +579,7 @@ ces_logs_view [type]                   # View system/session logs
 4. ✅ SessionManager TypeScript personalizzato
 5. ✅ **NUOVO**: Anthropic SDK integration ready
 
-### **📋 Comandi Disponibili:**
+### **📋 Available Commands:**
 ```bash
 # 🔥 WORKFLOW COMPLETO COORDINATO (Claude CLI + CES automatico)
 **start session                           # Avvia tutto automaticamente
@@ -621,7 +595,7 @@ npm run dev -- ai generate --language typescript # AI code generation
 npm run dev -- ai chat                    # Interactive AI chat
 npm run dev -- ai stats                   # AI usage statistics
 
-# Gestione sessioni manuale
+# Manual session management
 npm run dev -- start-session             # Solo SessionManager CES
 npm run dev -- checkpoint-session        # Solo checkpoint CES
 npm run dev -- close-session             # Solo chiusura CES
@@ -634,7 +608,7 @@ npm run dev -- monitor --trigger-close         # Trigger close
 npm run dev -- monitor --trigger-clean-reset   # Trigger clean-reset
 npm run dev -- monitor --trigger-clean-reset-dry # Trigger clean-reset dry-run
 
-# Gestione sistema diretta
+# Direct system management
 npm run dev -- clean-reset --dry-run     # Anteprima pulizia diretta
 npm run dev -- clean-reset               # Reset completo diretto
 npm run dev -- validate                  # Verifica setup CES

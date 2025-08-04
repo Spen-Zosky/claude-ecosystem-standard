@@ -1,3 +1,4 @@
+=== ./README.md ===
 # 🏢 Claude Ecosystem Standard (CES) v2.7.0 - Enterprise Edition with Dual Claude System
 
 🚀 **Enterprise-grade TypeScript Claude development framework** with **revolutionary Dual Claude System**, native Anthropic SDK integration, complete portability, dynamic configuration, structured logging, auto-recovery systems, AI-powered capabilities, and production-ready architecture that **works as drop-in subdirectory in any project**.
@@ -979,3 +980,553 @@ CES v2.6.0 brings the power of Claude directly to your development workflow:
 - **Enterprise Grade**: Production-ready with comprehensive error handling
 
 Transform your development workflow with AI-powered capabilities while maintaining the enterprise-grade architecture and reliability that CES is known for.
+=== ./.claude/README.md ===
+# Claude Code CLI Configuration
+
+This directory contains project-specific Claude Code CLI configuration.
+
+## Structure
+- `claude_desktop_config.json` - MCP servers configuration (14 servers)
+- `templates/` - Language-specific startup hook templates
+- `agents/` - Reserved for custom project agents (12 native agents available via Task tool)
+
+## MCP Servers Configured
+- **context7** - Library documentation
+- **serena** - Code analysis (project: current directory)
+- **arxiv** - Scientific research
+- **mongodb** - Database operations (uses environment variables)
+- **postgresql** - Advanced database (uses environment variables)
+- **git** - Repository management (current directory)
+- **filesystem** - File operations and project management
+- **sqlite** - Local development database
+- **kubernetes** - Container orchestration and deployment
+- **puppeteer** - Web automation
+- **brave** - Web search (requires BRAVE_API_KEY)
+- **youtube** - Video content
+- **google-drive** - Cloud storage
+- **bigquery** - Data analysis
+
+## Multi-Language Support
+
+This Claude ecosystem supports multiple programming languages with adaptive startup hooks:
+
+### Available Templates
+- `templates/startup-hook-typescript.cjs` - TypeScript projects
+- `templates/startup-hook-javascript.cjs` - JavaScript/Node.js projects  
+- `templates/startup-hook-python.cjs` - Python projects
+- `templates/startup-hook-java.cjs` - Java projects
+- `templates/startup-hook-rust.cjs` - Rust projects
+- `templates/startup-hook-go.cjs` - Go projects
+- `templates/startup-hook-csharp.cjs` - C#/.NET projects
+- `templates/startup-hook-universal.cjs` - Detects any language automatically
+
+### Language-Specific Features
+
+#### 🟦 TypeScript
+- TSConfig analysis and validation
+- Framework detection (React, Vue, Next.js, Angular)
+- Build tool recognition (Webpack, Vite, Rollup)
+- Testing framework detection (Jest, Vitest, Cypress)
+
+#### 🟨 JavaScript/Node.js
+- Package.json analysis
+- Framework detection (Express, Fastify, NestJS)
+- Package manager detection (npm, yarn, pnpm, bun)
+- Module system detection (ES modules, CommonJS)
+
+#### 🐍 Python
+- Virtual environment detection
+- Package manager support (pip, poetry, pipenv, conda)
+- Framework detection (Django, Flask, FastAPI)
+- Data science libraries recognition
+
+#### ☕ Java
+- Build tool support (Maven, Gradle)
+- Framework detection (Spring Boot, Jakarta EE)
+- Project structure validation
+- Dependency analysis
+
+#### 🦀 Rust
+- Cargo project analysis
+- Workspace detection
+- Dependency and feature analysis
+- Toolchain validation
+
+#### 🐹 Go
+- Module system support (go.mod, go.work)
+- Framework detection (Gin, Echo, Fiber)
+- Workspace analysis
+- Build configuration
+
+#### 🔵 C#/.NET
+- Project file analysis (.csproj, .sln)
+- Framework detection (ASP.NET Core, Blazor, WPF)
+- NuGet package analysis
+- Multi-targeting support
+
+### Usage Options
+
+#### Option 1: Automatic Detection (Recommended)
+The current `startup-hook.cjs` uses universal detection and works with any language:
+```bash
+# Already configured - detects your project automatically
+```
+
+#### Option 2: Language-Specific Hook
+Copy a specific template for optimized language support:
+```bash
+# For TypeScript projects
+cp .claude/templates/startup-hook-typescript.cjs .claude/startup-hook.cjs
+
+# For Python projects  
+cp .claude/templates/startup-hook-python.cjs .claude/startup-hook.cjs
+
+# For Java projects
+cp .claude/templates/startup-hook-java.cjs .claude/startup-hook.cjs
+```
+
+#### Option 3: Custom Hybrid
+Combine multiple templates for polyglot projects by merging detection logic from different templates.
+
+## Portability Features
+- **Dynamic paths** - All configurations use relative paths or environment variables
+- **Auto-detection** - Hook system automatically finds Claude ecosystem in any project
+- **Environment variables** - Database connections and API keys configurable via .env
+- **Language agnostic** - Adapts to any programming language
+
+## Native Claude Code CLI Agents
+
+The following 12 agents are **native to Claude Code CLI** and activated via the Task tool:
+
+### Core Development Agents (6)
+1. **solution-architect** - High-level system design and strategic decisions
+2. **fullstack-developer** - Complete full-stack development assistance  
+3. **backend-developer-specialist** - Server-side development and API design
+4. **frontend-developer-specialist** - Modern UI development and frameworks
+5. **data-architect-specialist** - Data architecture and database design
+6. **devops-engineer** - CI/CD, infrastructure automation, and deployment
+
+### Specialized Support Agents (6)  
+7. **general-purpose** - General research and multi-step tasks
+8. **compliance-manager** - Privacy regulations and data governance
+9. **data-mining-specialist** - Data extraction and multi-source research
+10. **ux-ix-designer** - UX/IX design guidance and interface optimization
+11. **debugger-tester** - Comprehensive testing and quality assurance
+12. **technical-writer** - Documentation and knowledge management
+
+### Agent Usage
+Agents are activated automatically via the Task tool:
+```bash
+# Example: Use solution architect for system design
+"Use the solution-architect agent to design a microservices architecture"
+
+# Example: Use fullstack developer for complete feature
+"Have the fullstack-developer create an authentication system"
+```
+
+**Note:** Agents are not physical files - they are native Claude Code CLI functionality.
+
+## Agent Selection Guide
+
+To avoid overlaps and maximize efficiency, use this guide to choose the right agent for each task:
+
+### 🏗️ **Architecture & System Design**
+
+#### **System Architecture & High-Level Design**
+- **Primary**: `solution-architect` - Overall system design, technology selection, scalability planning
+- **When**: Designing new systems, major refactoring, technology stack decisions
+
+#### **Infrastructure & Deployment**
+- **Primary**: `devops-engineer` - CI/CD, containerization, cloud infrastructure
+- **When**: Deployment automation, monitoring setup, infrastructure scaling
+
+### 🗄️ **Database & Data**
+
+#### **Database Schema Design**
+- **Primary**: `data-architect-specialist` - Database modeling, optimization, data lakes
+- **Secondary**: `backend-developer-specialist` - API integration with database
+- **When**: Designing new databases, optimizing queries, data migration
+
+#### **Data Analysis & Mining**
+- **Primary**: `data-mining-specialist` - Data extraction, web scraping, research
+- **Secondary**: `data-architect-specialist` - Data processing pipelines
+- **When**: Competitive analysis, research data collection, ETL processes
+
+### 💻 **Development Tasks**
+
+#### **Full-Stack Features**
+- **Primary**: `fullstack-developer` - Complete features spanning frontend + backend
+- **When**: User authentication, complete CRUD flows, feature integration
+
+#### **Backend-Only Development**
+- **Primary**: `backend-developer-specialist` - APIs, business logic, microservices
+- **When**: REST/GraphQL APIs, database integration, server-side logic
+
+#### **Frontend-Only Development**
+- **Primary**: `frontend-developer-specialist` - React/Vue components, state management
+- **When**: UI components, responsive design, frontend optimization
+
+### 🎨 **Design & User Experience**
+
+#### **UX/UI Design**
+- **Primary**: `ux-ix-designer` - User experience, interface design, usability
+- **When**: User journey design, interface optimization, accessibility improvements
+
+### 🧪 **Testing & Quality Assurance**
+
+#### **Test Strategy & Framework**
+- **Primary**: `debugger-tester` - Test planning, framework setup, quality assurance
+- **When**: Setting up testing infrastructure, defining test strategy
+
+#### **Implementation Testing**
+- **Domain Specialist**: Use the relevant specialist (backend, frontend, fullstack)
+- **When**: Writing tests for specific features you're implementing
+
+#### **Bug Investigation**
+- **Primary**: `debugger-tester` - Root cause analysis, performance optimization
+- **Secondary**: Domain specialist for context
+- **When**: Production bugs, performance issues, mysterious failures
+
+### 📚 **Documentation & Communication**
+
+#### **Technical Documentation**
+- **Primary**: `technical-writer` - API docs, user manuals, technical content
+- **When**: Creating documentation, API references, user guides
+
+### 🛡️ **Compliance & Security**
+
+#### **Privacy & Regulatory Compliance**
+- **Primary**: `compliance-manager` - GDPR, privacy audits, regulatory requirements
+- **When**: Privacy compliance, data governance, security audits
+
+### 🔍 **Research & Analysis**
+
+#### **Multi-Source Research**
+- **Primary**: `data-mining-specialist` - Comprehensive data gathering across sources
+- **When**: Market research, competitive analysis, academic research
+
+#### **General Research Tasks**
+- **Primary**: `general-purpose` - Broad research, multi-step analysis
+- **When**: General investigation, multi-domain analysis, exploratory tasks
+
+## Decision Matrix for Complex Tasks
+
+### **Task: Implement User Authentication System**
+1. **Start**: `solution-architect` - Design authentication architecture
+2. **Backend**: `backend-developer-specialist` - JWT implementation, API endpoints
+3. **Frontend**: `frontend-developer-specialist` - Login forms, state management
+4. **Integration**: `fullstack-developer` - Connect frontend + backend
+5. **Testing**: `debugger-tester` - Security testing, integration tests
+6. **Documentation**: `technical-writer` - API documentation, user guides
+
+### **Task: Performance Optimization**
+1. **Analysis**: `debugger-tester` - Identify performance bottlenecks
+2. **Database**: `data-architect-specialist` - Query optimization
+3. **Backend**: `backend-developer-specialist` - API optimization
+4. **Frontend**: `frontend-developer-specialist` - Bundle optimization
+5. **Infrastructure**: `devops-engineer` - Scaling and monitoring
+
+### **Task: New Feature Development**
+1. **Planning**: `solution-architect` - Feature architecture
+2. **Design**: `ux-ix-designer` - User experience design
+3. **Implementation**: Choose based on scope:
+   - **Full-stack**: `fullstack-developer`
+   - **Backend-heavy**: `backend-developer-specialist`
+   - **Frontend-heavy**: `frontend-developer-specialist`
+4. **Testing**: `debugger-tester` - Test strategy + domain specialist for implementation
+5. **Documentation**: `technical-writer` - Feature documentation
+
+## Best Practices
+
+### **🎯 Single Responsibility**
+- Each agent should handle their core expertise
+- Avoid asking backend specialists for frontend advice
+
+### **🔄 Sequential Workflow**
+- Architecture first, then implementation
+- Design before development
+- Testing throughout the process
+
+### **🤝 Collaboration Points**
+- Use `solution-architect` to coordinate complex multi-domain tasks
+- Have `technical-writer` document decisions from all specialists
+- Use `compliance-manager` to review any data-handling features
+
+### **⚡ Quick Reference**
+
+| Task Type | Primary Agent | Secondary Agent |
+|-----------|---------------|-----------------|
+| System Design | solution-architect | devops-engineer |
+| API Development | backend-developer-specialist | fullstack-developer |
+| UI Components | frontend-developer-specialist | ux-ix-designer |
+| Database Design | data-architect-specialist | backend-developer-specialist |
+| Testing Strategy | debugger-tester | domain-specialist |
+| Documentation | technical-writer | domain-specialist |
+| Performance Issues | debugger-tester | domain-specialist |
+| Data Analysis | data-mining-specialist | data-architect-specialist |
+| User Experience | ux-ix-designer | frontend-developer-specialist |
+| Compliance | compliance-manager | solution-architect |
+| Research | general-purpose | data-mining-specialist |
+| DevOps/Infrastructure | devops-engineer | solution-architect |
+
+## AutoTask Integration
+
+The CES AutoTask system can automatically generate optimized prompts based on the guidelines above. Examples:
+
+### **AutoTask Usage Examples:**
+```bash
+# Instead of manual agent selection:
+npm run dev -- auto-task "Build user authentication"
+# → Automatically generates: solution-architect + backend-developer-specialist + frontend-developer-specialist workflow
+
+npm run dev -- auto "Fix slow database queries"  
+# → Automatically generates: debugger-tester + data-architect-specialist parallel analysis
+
+npm run dev -- auto-task "Create API documentation"
+# → Automatically generates: technical-writer + backend-developer-specialist coordination
+```
+
+### **Integration with Agent Guide:**
+- AutoTask uses this guide's rules for agent selection
+- Manual override always available for complex cases
+- Fallback to manual selection when automation confidence is low
+
+This directory is essential for Claude Code CLI functionality.
+=== ./.github/README.md ===
+# 🚀 Claude Ecosystem Standard - CI/CD Pipeline
+
+## 📋 Overview
+
+This directory contains the complete CI/CD pipeline for Claude Ecosystem Standard (CES) v2.6.0, built with GitHub Actions and designed for enterprise-grade automation.
+
+## 🏗️ Pipeline Architecture
+
+### Core Workflows
+
+| Workflow | Purpose | Triggers | Duration |
+|----------|---------|----------|----------|
+| **ci.yml** | 🧪 Continuous Integration | Push, PR | ~15 min |
+| **cd.yml** | 🚀 Continuous Deployment | Push to main, Tags | ~25 min |
+| **security.yml** | 🛡️ Security & Quality | Push, PR, Schedule | ~20 min |
+| **release.yml** | 🎉 Release Automation | Tags, Manual | ~30 min |
+| **dependencies.yml** | 📦 Dependency Management | Schedule, Manual | ~15 min |
+| **environments.yml** | 🌍 Environment Deployments | Manual | ~20 min |
+| **monitoring.yml** | 📊 Health & Monitoring | Schedule, Manual | ~15 min |
+
+### Pipeline Flow
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Development   │───▶│     Staging     │───▶│   Production    │
+│                 │    │                 │    │                 │
+│ • Lint & Test   │    │ • Integration   │    │ • Canary        │
+│ • Build         │    │ • Smoke Tests   │    │ • Blue/Green    │
+│ • Security      │    │ • Performance   │    │ • Monitoring    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+## 🧪 Continuous Integration (ci.yml)
+
+**Purpose**: Validate code quality, run tests, and build artifacts
+
+**Jobs**:
+1. **🎯 Lint & Code Quality** - ESLint, TypeScript checks
+2. **🧪 Unit Tests** - Multi-Node.js version testing
+3. **🏗️ Build & Compile** - Production build validation
+4. **🔧 Integration Tests** - CES system integration
+5. **🛡️ Security Scan** - CodeQL, npm audit
+6. **✅ CI Success** - Pipeline status aggregation
+
+**Matrix Testing**:
+- Node.js: 18.x, 20.x, 22.x
+- Platforms: ubuntu-latest
+- Coverage: Comprehensive with Codecov integration
+
+## 🚀 Continuous Deployment (cd.yml)
+
+**Purpose**: Deploy validated code to staging and production
+
+**Environments**:
+- **Staging**: Automatic deployment from `main` branch
+- **Production**: Manual deployment from tags
+
+**Jobs**:
+1. **🎯 Determine Environment** - Smart environment detection
+2. **✅ Pre-deployment Validation** - Comprehensive checks
+3. **🐳 Build Container Image** - Multi-arch Docker builds
+4. **🚀 Deploy to Staging** - Automated staging deployment
+5. **🏭 Deploy to Production** - Controlled production deployment
+6. **📊 Post-deployment Monitoring** - Health checks and alerts
+
+## 🛡️ Security & Quality (security.yml)
+
+**Purpose**: Comprehensive security scanning and code quality analysis
+
+**Security Checks**:
+- **🔍 Dependency Audit** - npm audit with severity filtering
+- **🔬 CodeQL Analysis** - GitHub's semantic code analysis
+- **🐳 Container Security** - Trivy vulnerability scanning
+- **🔐 Secret Scanning** - TruffleHog secret detection
+- **📄 License Compliance** - License compatibility validation
+- **📊 Code Quality** - SonarCloud integration
+
+## 🎉 Release Automation (release.yml)
+
+**Purpose**: Automated release creation and artifact management
+
+**Release Types**:
+- **🔧 Patch** - Bug fixes and minor updates
+- **🚀 Minor** - New features and enhancements
+- **💥 Major** - Breaking changes and major updates
+- **🚧 Pre-release** - Alpha, beta, RC versions
+
+**Artifacts**:
+- **📦 Distribution Package** - Compiled application
+- **📄 Source Archive** - Complete source code
+- **🐳 Container Images** - Multi-arch Docker images
+- **📊 Checksums** - SHA256 verification files
+
+## 📦 Dependency Management (dependencies.yml)
+
+**Purpose**: Automated dependency updates and vulnerability fixes
+
+**Update Types**:
+- **🔧 Patch Updates** - Daily automated patch updates
+- **🚀 Minor Updates** - Weekly minor version updates
+- **🛡️ Security Fixes** - Immediate vulnerability fixes
+- **📊 Dependency Reports** - Health and compliance reporting
+
+**Automation**:
+- Creates pull requests for updates
+- Runs comprehensive testing
+- Provides detailed change summaries
+
+## 🌍 Environment Deployments (environments.yml)
+
+**Purpose**: Manual deployment control for specific environments
+
+**Environments**:
+- **🔧 Development** - Latest development builds
+- **🚀 Staging** - Pre-production testing
+- **🏭 Production** - Live production deployments
+
+**Safety Features**:
+- Version validation
+- Health check monitoring
+- Rollback capabilities
+- Approval workflows
+
+## 📊 Monitoring & Health (monitoring.yml)
+
+**Purpose**: Continuous health monitoring and maintenance
+
+**Monitoring Scope**:
+- **🔍 Repository Health** - Code quality metrics
+- **🔄 Pipeline Health** - Workflow status validation
+- **🚀 Performance** - Build and test performance
+- **📦 Dependencies** - Security and update status
+- **🌍 Environment Status** - Live environment health
+
+**Alerts**:
+- Health score below 80%
+- Security vulnerabilities detected
+- Performance degradation
+- Environment failures
+
+## 🎯 Getting Started
+
+### 1. Required Secrets
+
+```bash
+# GitHub Repository Secrets
+GITHUB_TOKEN          # Automatic (provided by GitHub)
+SONAR_TOKEN           # SonarCloud integration
+ANTHROPIC_API_KEY     # AI integration (optional)
+```
+
+### 2. Environment Configuration
+
+```bash
+# Production Environment
+PRODUCTION_URL=https://claude-ecosystem-standard.com
+STAGING_URL=https://staging.claude-ecosystem-standard.com
+DEV_URL=https://dev.claude-ecosystem-standard.com
+```
+
+### 3. Workflow Triggers
+
+```bash
+# Manual Deployment
+gh workflow run environments.yml -f environment=staging -f version=v2.6.0
+
+# Manual Release
+gh workflow run release.yml -f version=2.6.1 -f release_type=patch
+
+# Force Security Scan
+gh workflow run security.yml
+```
+
+## 🔧 Customization
+
+### Adding New Environments
+
+1. Update `environments.yml` matrix
+2. Add environment secrets
+3. Configure deployment targets
+4. Update monitoring checks
+
+### Modifying Security Rules
+
+1. Edit security thresholds in `security.yml`
+2. Update dependency policies in `dependencies.yml`
+3. Configure custom SonarCloud rules
+4. Add additional security tools
+
+### Performance Tuning
+
+1. Adjust timeout values
+2. Optimize build caching
+3. Configure parallel execution
+4. Update resource allocation
+
+## 📚 Documentation
+
+- **[Workflow Reference](./workflows/)** - Detailed workflow documentation
+- **[Issue Templates](./ISSUE_TEMPLATE/)** - Bug reports and feature requests
+- **[PR Templates](./PULL_REQUEST_TEMPLATE/)** - Pull request guidelines
+- **[Security Policy](../SECURITY.md)** - Security reporting procedures
+
+## 🎯 Best Practices
+
+### Commit Messages
+```bash
+feat: add new session management feature
+fix: resolve authentication timeout issue
+docs: update API documentation
+chore: bump dependencies to latest versions
+```
+
+### Branch Strategy
+- `main` - Production-ready code
+- `develop` - Development integration
+- `feature/*` - New features
+- `hotfix/*` - Critical fixes
+
+### Release Versioning
+- `v2.6.0` - Major release
+- `v2.6.1` - Patch release
+- `v2.7.0-beta.1` - Pre-release
+
+## 🚀 Enterprise Features
+
+- **🔒 Multi-environment support** with approval workflows
+- **🛡️ Comprehensive security scanning** and compliance
+- **📊 Advanced monitoring** and alerting
+- **🐳 Container-native** deployment pipeline
+- **📦 Automated dependency management** with security fixes
+- **🎯 Performance monitoring** and optimization
+- **📋 Detailed reporting** and audit trails
+
+---
+
+**🤖 Generated with Claude Code CLI** - This CI/CD pipeline was designed and implemented using Claude Code with enterprise best practices and modern DevOps patterns.
