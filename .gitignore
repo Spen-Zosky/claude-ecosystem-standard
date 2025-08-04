@@ -1,14 +1,15 @@
-# Dependencies - mantieni directory vuota ma escludi contenuti
+# Dependencies
 node_modules/
-.node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json.bak
 
-# Build outputs rigenerati da installazione/build  
-.dist/
+# Build outputs
 dist/
+.dist/
 build/
+.build/
 *.tsbuildinfo
 
 # Environment files
@@ -62,7 +63,6 @@ coverage/
 
 # Jest
 jest-results.json
-coverage/
 
 # Temporary folders
 tmp/
@@ -82,13 +82,17 @@ temp/
 
 # Session files
 session-logs/
-.engagement/
 backups/
 
 # Cache directories
 .cache/
 .ces.cache/
 .ces.tmp/
+
+# Legacy dot directories (from NPM standardization)
+.src/
+.scripts/
+.docs/
 
 # Claude Code CLI - keep configuration and structure
 .claude/*
