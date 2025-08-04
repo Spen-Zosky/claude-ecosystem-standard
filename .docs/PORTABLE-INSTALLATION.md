@@ -1,12 +1,12 @@
 # 🚀 CES Portable Installation Guide
 
-**Claude Ecosystem Standard v2.6.0 - Portable Edition**
+**Claude Ecosystem Standard v2.7.0 - Portable Edition**
 
 This guide covers how to install and use CES as a completely portable system that works as a drop-in subdirectory in any project.
 
 ## 📋 Overview
 
-CES v2.6.0 introduces **complete portability**, allowing you to:
+CES v2.7.0 introduces **complete portability**, allowing you to:
 - Install CES as a subdirectory in any existing project
 - Use CES without modifying your host project files
 - Auto-detect installation context and configure paths dynamically
@@ -267,7 +267,7 @@ chmod +x scripts/*.sh
 
 ## 🔄 Migration
 
-### From v2.5.0 to v2.6.0 (Portable)
+### From v2.7.0 to v2.7.0 (Portable)
 
 Existing installations automatically become portable:
 
@@ -277,7 +277,7 @@ git pull origin main
 ./init.sh  # or ./ces-init-private.sh (backward compatible)
 ```
 
-### Rollback to v2.5.0
+### Rollback to v2.7.0
 
 If you need to revert portability features:
 
@@ -415,4 +415,4 @@ CES validates all detected paths:
 
 ---
 
-**🚀 CES v2.6.0 Portable Edition - Ready for Enterprise Drop-in Deployment!**
+**🚀 CES v2.7.0 Portable Edition - Ready for Enterprise Drop-in Deployment!**

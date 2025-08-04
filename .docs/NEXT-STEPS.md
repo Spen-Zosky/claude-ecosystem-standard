@@ -1,4 +1,4 @@
-# 🚀 PROSSIMI PASSI - CES v2.6.0 
+# 🚀 PROSSIMI PASSI - CES v2.7.0 
 
 ## ✅ STATO ATTUALE
 
@@ -22,13 +22,13 @@
 cd /home/ubuntu/claude-ecosystem-standard
 
 # Test singole funzionalità
-node demo-ces-v2.6.0.js ai        # AI Session Management
-node demo-ces-v2.6.0.js analytics # Analytics System
-node demo-ces-v2.6.0.js cloud     # Cloud Integration  
-node demo-ces-v2.6.0.js quick     # Quick Commands
+node demo-ces-v2.7.0.js ai        # AI Session Management
+node demo-ces-v2.7.0.js analytics # Analytics System
+node demo-ces-v2.7.0.js cloud     # Cloud Integration  
+node demo-ces-v2.7.0.js quick     # Quick Commands
 
 # Test completo
-node demo-ces-v2.6.0.js all       # Tutte le funzionalità insieme
+node demo-ces-v2.7.0.js all       # Tutte le funzionalità insieme
 ```
 
 ### **Opzione 2: Test Sistema Reale**
@@ -99,11 +99,11 @@ node dist/index.js quick --stats             # Statistiche uso
 ## 📋 RACCOMANDAZIONE
 
 **Inizia con:**
-1. **Demo completo**: `node demo-ces-v2.6.0.js all`
+1. **Demo completo**: `node demo-ces-v2.7.0.js all`
 2. **Test sistema**: `node test-real-ces.js`
-3. **Se tutto OK**: Usa il sistema reale v2.6.0
+3. **Se tutto OK**: Usa il sistema reale v2.7.0
 
-**Le 4 implementazioni v2.6.0 sono complete e pronte per l'uso!**
+**Le 4 implementazioni v2.7.0 sono complete e pronte per l'uso!**
 
 ## 🛠️ TROUBLESHOOTING
 
@@ -111,4 +111,4 @@ Se problemi:
 - **npm/tsx issues**: Consulta `FINAL-SOLUTION.md`
 - **Compilazione**: Consulta `IMMEDIATE-FIX.md`  
 - **Setup completo**: Consulta `NODEJS-SETUP-GUIDE.md`
-- **Demo sempre disponibile**: `demo-ces-v2.6.0.js`
+- **Demo sempre disponibile**: `demo-ces-v2.7.0.js`

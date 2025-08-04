@@ -1,12 +1,12 @@
 # 004 - CLI REFERENCE COMPLETO
 
-## 🛠️ Riferimento Comandi CLI CES v2.6.0 Enterprise
+## 🛠️ Riferimento Comandi CLI CES v2.7.0 Enterprise
 
 **Leggi dopo il setup e installazione** - Guida completa a tutti i comandi disponibili nel sistema.
 
 ### 📋 Panoramica Comandi
 
-Il sistema CES v2.6.0 fornisce oltre **40 comandi CLI enterprise** organizzati in categorie funzionali:
+Il sistema CES v2.7.0 fornisce oltre **40 comandi CLI enterprise** organizzati in categorie funzionali:
 
 ```bash
 # Aiuto generale
@@ -534,4 +534,4 @@ npm run dev -- help --interactive
 
 ---
 
-**📌 Il sistema CLI CES v2.6.0 fornisce un'interfaccia enterprise completa con oltre 200 opzioni e combinazioni per gestire ogni aspetto del workflow di sviluppo.**
+**📌 Il sistema CLI CES v2.7.0 fornisce un'interfaccia enterprise completa con oltre 200 opzioni e combinazioni per gestire ogni aspetto del workflow di sviluppo.**

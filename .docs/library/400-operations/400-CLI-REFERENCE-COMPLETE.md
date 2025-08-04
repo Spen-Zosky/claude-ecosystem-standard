@@ -1,12 +1,12 @@
 # 004 - COMPLETE CLI REFERENCE
 
-## 🛠️ CES v2.6.0 Enterprise CLI Commands Reference
+## 🛠️ CES v2.7.0 Enterprise CLI Commands Reference
 
 **Read after setup and installation** - Complete guide to all available commands in the system.
 
 ### 📋 Commands Overview
 
-The CES v2.6.0 system provides over **40 enterprise CLI commands** organized in functional categories:
+The CES v2.7.0 system provides over **40 enterprise CLI commands** organized in functional categories:
 
 ```bash
 # General help
@@ -56,15 +56,15 @@ npm run dev -- checkpoint-session --description "Before refactoring"
 
 **Close Session**
 ```bash
-npm run dev -- close-session [opzioni]
+npm run dev -- close-session [options]
 
-Opzioni:
-  --force, -f           Chiusura forzata senza conferma
-  --backup              Crea backup prima della chiusura
-  --analytics           Salva dati analytics
-  --cleanup             Cleanup automatico risorse
+Options:
+  --force, -f           Force close without confirmation
+  --backup              Create backup before closing
+  --analytics           Save analytics data
+  --cleanup             Automatic resource cleanup
 
-Esempi:
+Examples:
 npm run dev -- close-session --backup --analytics
 npm run dev -- close-session --force --cleanup
 ```
@@ -100,27 +100,27 @@ npm run dev -- config generate --enterprise
 
 #### 3. 📊 Analytics & Monitoring
 
-**Sistema Analytics**
+**Complete Analytics System**
 ```bash
-npm run dev -- analytics [azione] [opzioni]
+npm run dev -- analytics [action] [options]
 
-Azioni:
-  dashboard             Dashboard analytics completo
-  report                Genera report analytics
+Actions:
+  dashboard             Complete analytics dashboard
+  report                Generate analytics report
   realtime              Real-time monitoring
-  export                Esporta dati analytics
-  start                 Avvia raccolta dati
-  stop                  Ferma raccolta dati
-  clear                 Pulisci dati analytics
+  export                Export analytics data
+  start                 Start data collection
+  stop                  Stop data collection
+  clear                 Clear analytics data
 
-Opzioni:
-  --period <periodo>    Periodo tempo (hour/day/week/month)
-  --format <formato>    Formato export (json/csv/html)
-  --include-events      Includi eventi raw
-  --live                Aggiornamento live
-  --summary             Solo riepilogo
+Options:
+  --period <period>     Time period (hour/day/week/month)
+  --format <format>     Export format (json/csv/html)
+  --include-events      Include raw events
+  --live                Live updates
+  --summary             Summary only
 
-Esempi:
+Examples:
 npm run dev -- analytics dashboard --live
 npm run dev -- analytics report --period week
 npm run dev -- analytics export --format csv
@@ -129,22 +129,22 @@ npm run dev -- analytics realtime --summary
 
 **Dashboard Monitoring**
 ```bash
-npm run dev -- dashboard [azione] [opzioni]
+npm run dev -- dashboard [action] [options]
 
-Azioni:
-  live                  Dashboard monitoring live
-  snapshot              Snapshot dashboard statico
-  compact               Vista compatta monitoring
-  export                Esporta dati dashboard
-  configure             Configura dashboard
+Actions:
+  live                  Live dashboard monitoring
+  snapshot              Static dashboard snapshot
+  compact               Compact monitoring view
+  export                Export dashboard data
+  configure             Configure dashboard
 
-Opzioni:
-  --refresh <ms>        Intervallo refresh millisecondi
-  --theme <tema>        Tema dashboard (dark/light)
-  --port <porta>        Porta server dashboard
-  --auto-open           Apri browser automaticamente
+Options:
+  --refresh <ms>        Refresh interval milliseconds
+  --theme <theme>       Dashboard theme (dark/light)
+  --port <port>         Dashboard server port
+  --auto-open           Open browser automatically
 
-Esempi:
+Examples:
 npm run dev -- dashboard live --refresh 1000
 npm run dev -- dashboard configure --theme dark --port 3000
 npm run dev -- dashboard snapshot --export json
@@ -152,25 +152,25 @@ npm run dev -- dashboard snapshot --export json
 
 #### 4. 🔄 Auto-Recovery System
 
-**Sistema Auto-Recovery**
+**Auto-Recovery System**
 ```bash
-npm run dev -- recovery [azione] [opzioni]
+npm run dev -- recovery [action] [options]
 
-Azioni:
+Actions:
   start                 Start auto-recovery monitoring
   stop                  Stop auto-recovery monitoring
-  status                Stato sistema recovery
-  trigger <servizio>    Trigger recovery manuale
-  configure             Configura sistema recovery
-  export                Esporta dati recovery
+  status                Recovery system status
+  trigger <service>     Manual recovery trigger
+  configure             Configure recovery system
+  export                Export recovery data
 
-Opzioni:
-  --service <nome>      Nome servizio target
-  --action <azione>     Azione recovery (restart/cleanup/repair)
-  --threshold <valore>  Soglia trigger recovery
+Options:
+  --service <name>      Target service name
+  --action <action>     Recovery action (restart/cleanup/repair)
+  --threshold <value>   Recovery trigger threshold
   --interval <ms>       Monitoring interval
 
-Esempi:
+Examples:
 npm run dev -- recovery start --interval 10000
 npm run dev -- recovery trigger claude-code-cli --action restart
 npm run dev -- recovery configure --threshold 80
@@ -181,25 +181,25 @@ npm run dev -- recovery status --detailed
 
 **Profile Management**
 ```bash
-npm run dev -- profiles [azione] [opzioni]
+npm run dev -- profiles [action] [options]
 
-Azioni:
-  list                  Lista profili disponibili
-  create <nome>         Crea nuovo profilo
+Actions:
+  list                  List available profiles
+  create <name>         Create new profile
   apply <name>          Apply profile configuration
-  delete <nome>         Elimina profilo
-  edit <nome>           Modifica profilo esistente
+  delete <name>         Delete profile
+  edit <name>           Edit existing profile
   export <name>         Export profile configuration
-  import <file>         Importa profilo da file
-  stats                 Statistiche utilizzo profili
+  import <file>         Import profile from file
+  stats                 Profile usage statistics
 
-Opzioni:
-  --description <desc>  Descrizione profilo
-  --template <nome>     Template base nuovo profilo
-  --force, -f           Forza operazione senza conferma
-  --enterprise          Profilo enterprise
+Options:
+  --description <desc>  Profile description
+  --template <name>     Base template for new profile
+  --force, -f           Force operation without confirmation
+  --enterprise          Enterprise profile
 
-Esempi:
+Examples:
 npm run dev -- profiles create "frontend-vue" --template react
 npm run dev -- profiles apply frontend-react --analytics
 npm run dev -- profiles export "my-profile" --format yaml
@@ -210,30 +210,30 @@ npm run dev -- profiles stats --detailed
 
 **Quick Commands**
 ```bash
-npm run dev -- quick [azione] [alias] [args...]
+npm run dev -- quick [action] [alias] [args...]
 
-Azioni:
+Actions:
   list                  List quick commands
-  add <alias> <comando> Aggiungi comando rapido
-  remove <alias>        Rimuovi comando rapido
-  edit <alias>          Modifica comando rapido
-  run <alias>           Esegui comando rapido
-  stats                 Statistiche utilizzo
-  cheat                 Cheat sheet completo
+  add <alias> <command> Add quick command
+  remove <alias>        Remove quick command
+  edit <alias>          Edit quick command
+  run <alias>           Execute quick command
+  stats                 Usage statistics
+  cheat                 Complete cheat sheet
   export                Export quick commands
 
-Quick Commands Predefiniti:
-  start                 Avvio sessione rapido
+Predefined Quick Commands:
+  start                 Quick session startup
   dash                  Dashboard monitoring
   clean                 Cleanup preview
-  status               Status check completo
-  build                Build progetto
-  test                 Test suite completa
+  status               Complete status check
+  build                Build project
+  test                 Complete test suite
   react                Setup React environment
   vue                  Setup Vue environment
   api                  Setup API development
 
-Esempi:
+Examples:
 npm run dev -- quick list --category development
 npm run dev -- quick add mybuild "npm run build && npm test"
 npm run dev -- quick start --profile frontend
@@ -242,28 +242,28 @@ npm run dev -- quick stats --period week
 
 #### 7. 🤖 AI Session Optimization
 
-**Ottimizzazione AI**
+**AI Session Optimization**
 ```bash
-npm run dev -- ai-session [azione] [opzioni]
+npm run dev -- ai-session [action] [options]
 
-Azioni:
+Actions:
   start                 Start AI monitoring
   stop                  Stop AI monitoring
-  insights              Analisi insights sessione
-  recommendations       Raccomandazioni ottimizzazione
-  optimize              Ottimizzazione automatica
-  configure             Configura comportamento AI
-  analyze               Analisi pattern sessione
-  export                Esporta dati AI
+  insights              Session insights analysis
+  recommendations       Optimization recommendations
+  optimize              Automatic optimization
+  configure             Configure AI behavior
+  analyze               Session pattern analysis
+  export                Export AI data
 
-Opzioni:
-  --learning-mode <mode>    Modalità learning (passive/active/aggressive)
-  --accuracy <numero>       Soglia accuratezza predizione
-  --adaptation-level <lvl>  Livello adattamento (minimal/standard/maximum)
-  --enable-predictions      Abilita predizioni
-  --context-awareness       Abilita context awareness
+Options:
+  --learning-mode <mode>    Learning mode (passive/active/aggressive)
+  --accuracy <number>       Prediction accuracy threshold
+  --adaptation-level <lvl>  Adaptation level (minimal/standard/maximum)
+  --enable-predictions      Enable predictions
+  --context-awareness       Enable context awareness
 
-Esempi:
+Examples:
 npm run dev -- ai-session insights --detailed
 npm run dev -- ai-session recommendations --learning-mode active
 npm run dev -- ai-session optimize --accuracy 85
@@ -272,28 +272,28 @@ npm run dev -- ai-session configure --adaptation-level maximum
 
 #### 8. ☁️ Cloud Integration
 
-**Integrazione Cloud**
+**Cloud Integration**
 ```bash
-npm run dev -- cloud [azione] [opzioni]
+npm run dev -- cloud [action] [options]
 
-Azioni:
-  status                Stato integrazione cloud
-  configure             Configura provider cloud
-  connect               Connetti a provider cloud
-  sync                  Sincronizza dati sessione
-  backup                Crea backup cloud
-  restore               Ripristina da backup cloud
-  list-backups          Lista backup disponibili
-  start-sync            Avvia sincronizzazione automatica
-  stop-sync             Ferma sincronizzazione automatica
+Actions:
+  status                Cloud integration status
+  configure             Configure cloud provider
+  connect               Connect to cloud provider
+  sync                  Synchronize session data
+  backup                Create cloud backup
+  restore               Restore from cloud backup
+  list-backups          List available backups
+  start-sync            Start automatic synchronization
+  stop-sync             Stop automatic synchronization
 
-Opzioni:
-  --provider <nome>     Provider cloud (github/aws/azure/gcp)
-  --encryption          Abilita crittografia
-  --compression         Abilita compressione
-  --retention <days>    Giorni retention backup
+Options:
+  --provider <name>     Cloud provider (github/aws/azure/gcp)
+  --encryption          Enable encryption
+  --compression         Enable compression
+  --retention <days>    Backup retention days
 
-Esempi:
+Examples:
 npm run dev -- cloud configure --provider github --encryption
 npm run dev -- cloud backup --compression --retention 30
 npm run dev -- cloud sync --incremental
@@ -304,24 +304,24 @@ npm run dev -- cloud restore --backup-id "2024-01-15-backup"
 
 #### 9. 🧹 System Cleanup
 
-**Clean Reset Sistema**
+**System Clean Reset**
 ```bash
-npm run dev -- clean-reset [opzioni]
-npm run dev -- reset [opzioni]                    # Alias
+npm run dev -- clean-reset [options]
+npm run dev -- reset [options]                    # Alias
 
-Opzioni:
-  --dry-run             Preview cleanup senza modifiche
-  --preserve-sessions   Mantieni dati sessione Claude
-  --preserve-logs       Mantieni file log
-  --preserve-analytics  Mantieni dati analytics
-  --no-docker           Salta reset container Docker
-  --no-node             Salta cleanup processi Node.js
-  --no-cache            Salta pulizia cache
-  --gentle              Usa SIGTERM invece di SIGKILL
-  --force, -f           Cleanup forzato senza conferma
-  --deep                Cleanup profondo sistema
+Options:
+  --dry-run             Preview cleanup without changes
+  --preserve-sessions   Preserve Claude session data
+  --preserve-logs       Preserve log files
+  --preserve-analytics  Preserve analytics data
+  --no-docker           Skip Docker container reset
+  --no-node             Skip Node.js process cleanup
+  --no-cache            Skip cache cleanup
+  --gentle              Use SIGTERM instead of SIGKILL
+  --force, -f           Force cleanup without confirmation
+  --deep                Deep system cleanup
 
-Esempi:
+Examples:
 npm run dev -- clean-reset --dry-run --preserve-logs
 npm run dev -- reset --preserve-sessions --gentle
 npm run dev -- clean-reset --deep --force
@@ -331,24 +331,24 @@ npm run dev -- clean-reset --deep --force
 
 **System Monitoring**
 ```bash
-npm run dev -- monitor [azione] [opzioni]
+npm run dev -- monitor [action] [options]
 
-Azioni:
+Actions:
   start                 Start session monitoring
   stop                  Stop session monitoring
   status                Monitoring status
-  trigger-checkpoint    Trigger checkpoint manuale
-  trigger-close         Trigger chiusura sessione
-  trigger-clean-reset   Trigger clean reset
+  trigger-checkpoint    Manual checkpoint trigger
+  trigger-close         Session close trigger
+  trigger-clean-reset   Clean reset trigger
   configure             Configure monitoring
 
-Opzioni:
+Options:
   --interval <ms>       Monitoring interval
-  --auto-checkpoint     Checkpoint automatico
-  --auto-recovery       Recovery automatico
-  --notifications       Notifiche eventi
+  --auto-checkpoint     Automatic checkpoint
+  --auto-recovery       Automatic recovery
+  --notifications       Event notifications
 
-Esempi:
+Examples:
 npm run dev -- monitor start --interval 30000 --auto-checkpoint
 npm run dev -- monitor configure --auto-recovery --notifications
 npm run dev -- monitor trigger-checkpoint --name "milestone"
@@ -356,19 +356,19 @@ npm run dev -- monitor trigger-checkpoint --name "milestone"
 
 #### 11. ✅ System Status
 
-**Status Sistema**
+**System Status**
 ```bash
-npm run dev -- status [opzioni]
+npm run dev -- status [options]
 
-Opzioni:
-  --detailed, -d        Informazioni status dettagliate
-  --format <formato>    Formato output (table/json/yaml)
-  --services            Includi status servizi
-  --resources           Includi utilizzo risorse
-  --health              Health check completo
-  --performance         Metriche performance
+Options:
+  --detailed, -d        Detailed status information
+  --format <format>     Output format (table/json/yaml)
+  --services            Include service status
+  --resources           Include resource usage
+  --health              Complete health check
+  --performance         Performance metrics
 
-Esempi:
+Examples:
 npm run dev -- status --detailed --health
 npm run dev -- status --services --resources --format json
 npm run dev -- status --performance --detailed
@@ -376,19 +376,19 @@ npm run dev -- status --performance --detailed
 
 #### 12. 🔍 Validation
 
-**Validazione Sistema**
+**System Validation**
 ```bash
-npm run dev -- validate [opzioni]
+npm run dev -- validate [options]
 
-Opzioni:
-  --verbose, -v         Output validazione dettagliato
-  --quick, -q           Validazione rapida
-  --comprehensive       Validazione completa enterprise
-  --fix                 Tentativo riparazione automatica
-  --report              Genera report validazione
-  --score               Mostra punteggio validazione
+Options:
+  --verbose, -v         Detailed validation output
+  --quick, -q           Quick validation
+  --comprehensive       Comprehensive enterprise validation
+  --fix                 Attempt automatic repair
+  --report              Generate validation report
+  --score               Show validation score
 
-Esempi:
+Examples:
 npm run dev -- validate --comprehensive --fix
 npm run dev -- validate --report --score
 npm run dev -- validate --quick --verbose
@@ -398,19 +398,19 @@ npm run dev -- validate --quick --verbose
 
 #### 13. 🔄 Auto Task Dispatcher
 
-**Dispatcher Task Automatico**
+**Automatic Task Dispatcher**
 ```bash
 npm run dev -- auto-task <prompt>
 npm run dev -- auto <prompt>                      # Alias
 
-Opzioni:
-  --mode <modo>         Modalità esecuzione (parallel/sequential/hybrid)
-  --agents <lista>      Agenti specifici da utilizzare
-  --priority <livello>  Priorità task (low/medium/high/critical)
-  --timeout <ms>        Timeout esecuzione task
-  --dry-run             Simulazione esecuzione
+Options:
+  --mode <mode>         Execution mode (parallel/sequential/hybrid)
+  --agents <list>       Specific agents to use
+  --priority <level>    Task priority (low/medium/high/critical)
+  --timeout <ms>        Task execution timeout
+  --dry-run             Execution simulation
 
-Esempi:
+Examples:
 npm run dev -- auto-task "Implement user authentication system"
 npm run dev -- auto "Optimize database performance" --mode parallel
 npm run dev -- auto-task "Create REST API endpoints" --priority high
@@ -418,18 +418,18 @@ npm run dev -- auto-task "Create REST API endpoints" --priority high
 
 #### 14. 💬 Interactive Mode
 
-**Modalità Interattiva**
+**Interactive Mode**
 ```bash
 npm run dev -- interactive
 npm run dev -- i                                  # Alias
 
-Opzioni:
-  --profile <nome>      Avvia con profilo specifico
-  --analytics           Abilita analytics in modalità interattiva
-  --ai-assistance       Abilita assistenza AI
-  --enterprise          Modalità enterprise
+Options:
+  --profile <name>      Start with specific profile
+  --analytics           Enable analytics in interactive mode
+  --ai-assistance       Enable AI assistance
+  --enterprise          Enterprise mode
 
-Esempi:
+Examples:
 npm run dev -- interactive --profile frontend-react --analytics
 npm run dev -- i --ai-assistance --enterprise
 ```
@@ -438,23 +438,23 @@ npm run dev -- i --ai-assistance --enterprise
 
 #### 15. 📈 Performance & Optimization
 
-**Ottimizzazione Performance**
+**Performance Optimization**
 ```bash
-npm run dev -- optimize [target] [opzioni]
+npm run dev -- optimize [target] [options]
 
 Target:
-  system                Ottimizzazione sistema completo
-  memory                Ottimizzazione memoria
-  cpu                   Ottimizzazione CPU
-  network               Ottimizzazione rete
-  storage               Ottimizzazione storage
+  system                Complete system optimization
+  memory                Memory optimization
+  cpu                   CPU optimization
+  network               Network optimization
+  storage               Storage optimization
 
-Opzioni:
-  --aggressive          Ottimizzazione aggressiva
-  --safe                Ottimizzazione sicura
-  --benchmark           Include benchmark performance
+Options:
+  --aggressive          Aggressive optimization
+  --safe                Safe optimization
+  --benchmark           Include performance benchmark
 
-Esempi:
+Examples:
 npm run dev -- optimize system --benchmark
 npm run dev -- optimize memory --aggressive
 npm run dev -- optimize network --safe
@@ -471,39 +471,39 @@ npm run dev -- analytics start && \
 npm run dev -- recovery start && \
 npm run dev -- dashboard live
 
-# Setup ambiente enterprise
+# Setup enterprise environment
 npm run dev -- config generate --enterprise && \
 npm run dev -- validate --comprehensive --fix && \
 npm run dev -- profiles apply enterprise-default
 ```
 
-### 🌍 Variabili Ambiente
+### 🌍 Environment Variables
 
 **Configuration Override**
 
 ```bash
-# Development con debug
+# Development with debug
 DEBUG=ces:* CES_VERBOSE_LOGGING=true npm run dev -- start-session
 
-# Production sicuro
+# Safe production
 NODE_ENV=production CES_ANALYTICS_ENABLED=false npm run dev -- validate
 
-# Testing con override
+# Testing with override
 CES_TEST_MODE=true CES_MOCK_SERVICES=true npm run dev -- auto-task "test"
 ```
 
-### 📊 Formati Output
+### 📊 Output Formats
 
-**Formati Supportati:**
+**Supported Formats:**
 
-- **table** - Formato tabella leggibile (default)
-- **json** - Formato JSON per automazione
+- **table** - Readable table format (default)
+- **json** - JSON format for automation
 - **yaml** - YAML format for configuration
-- **csv** - Formato CSV per analisi dati
-- **html** - Formato HTML per report
+- **csv** - CSV format for data analysis
+- **html** - HTML format for reports
 - **markdown** - Markdown format for documentation
 
-### 🔐 Modalità Sicura
+### 🔐 Safe Mode
 
 **Safe Commands with Dry-Run:**
 
@@ -514,18 +514,18 @@ npm run dev -- profiles delete sensitive-profile --dry-run
 npm run dev -- recovery trigger critical-service --dry-run
 ```
 
-### 📚 Sistema Aiuto
+### 📚 Help System
 
-**Ottenere Aiuto:**
+**Getting Help:**
 
 ```bash
-# Aiuto generale
+# General help
 npm run dev -- --help
 
-# Aiuto comando specifico  
+# Specific command help  
 npm run dev -- analytics --help
 
-# Esempi comando
+# Command examples
 npm run dev -- profiles --examples
 
 # Interactive guide
@@ -534,4 +534,4 @@ npm run dev -- help --interactive
 
 ---
 
-**📌 The CES v2.6.0 CLI system provides a complete enterprise interface with over 200 options and combinations to manage every aspect of the development workflow.**
+**📌 The CES v2.7.0 CLI system provides a complete enterprise interface with over 200 options and combinations to manage every aspect of the development workflow.**

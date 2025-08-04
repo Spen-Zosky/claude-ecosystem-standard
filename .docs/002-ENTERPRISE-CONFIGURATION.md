@@ -1,364 +1,253 @@
-# 002 - ENTERPRISE CONFIGURATION
+# 002 - CONFIGURAZIONE ENTERPRISE
 
-## 🔧 CES v2.7.0 Enterprise Configuration System
+## 🔧 Sistema di Configurazione Enterprise CES v2.7.0
 
-**Read after general introduction** - Essential technical document for understanding the configuration system.
+**Leggi dopo l'introduzione generale** - Documento tecnico fondamentale per comprendere il sistema di configurazione.
 
-### 🏗️ Configuration Architecture
+### 🏗️ Architettura Configurazione
 
-The enterprise configuration system is designed for production environments with:
+Il sistema di configurazione enterprise è progettato per ambienti production con:
 
-1. **EnvironmentConfig.ts** - Type-safe configuration manager
-2. **.env / .env.template** - Environment variable management  
-3. **Dynamic Project Root Detection** - Portable installation system
-4. **Configuration Validation** - Automatic validation and error reporting
-5. **Hot-Reloading** - Runtime configuration updates
-6. **🆕 Integration Mode Detection** - Standalone vs integrated operation
+1. **EnvironmentConfig.ts** - Manager configurazione type-safe
+2. **.env / .env.template** - Gestione variabili ambiente  
+3. **Dynamic Project Root Detection** - Sistema installazione portabile
+4. **Configuration Validation** - Validazione automatica e error reporting
+5. **Hot-Reloading** - Aggiornamenti configurazione runtime
 
-### 📊 75+ Configuration Variables
+### 📊 69+ Variabili di Configurazione
 
-#### 1. Core System (System Identity)
-
-```bash
-NODE_ENV=development                     # Environment: development/staging/production
-CES_VERSION=2.7.0                       # CES version identifier
-CES_PROJECT_NAME=claude-ecosystem-standard  # Project identifier
-CES_INSTANCE_ID=ces-dev-001             # Unique instance identifier
-CES_OPERATION_MODE=standalone           # 🆕 Operation mode: standalone/integrated
-```
-
-#### 2. Session Management
+#### 1. Core System (Identità Sistema)
 
 ```bash
-CES_SESSION_TIMEOUT=3600000             # Session timeout (1 hour)
-CES_MAX_SESSIONS=10                     # Maximum concurrent sessions
-CES_SESSION_CLEANUP_INTERVAL=300000     # Cleanup interval (5 minutes)
+NODE_ENV=development                    # Ambiente: development/staging/production
+CES_VERSION=2.7.0                      # Identificatore versione CES
+CES_PROJECT_NAME=claude-ecosystem-standard  # Identificatore progetto
+CES_INSTANCE_ID=ces-dev-001            # Identificatore univoco istanza
 ```
 
-#### 3. Timer and Monitoring
+#### 2. Session Management (Gestione Sessioni)
 
 ```bash
-CES_CONTEXT_ANALYSIS_INTERVAL=30000     # Context analysis (30 seconds)
-CES_RECOMMENDATIONS_INTERVAL=300000     # Recommendations (5 minutes)  
-CES_HEALTH_CHECK_INTERVAL=60000         # Health check (1 minute)
-CES_METRICS_COLLECTION_INTERVAL=60000   # Metrics collection (1 minute)
+CES_SESSION_TIMEOUT=3600000            # Timeout sessione (1 ora)
+CES_MAX_SESSIONS=10                    # Sessioni concorrenti max
+CES_SESSION_CLEANUP_INTERVAL=300000    # Intervallo cleanup (5 minuti)
 ```
 
-#### 4. Analytics System
+#### 3. Timer and Monitoring (Timer e Monitoraggio)
 
 ```bash
-CES_ANALYTICS_ENABLED=true              # Enable analytics collection
-CES_ANALYTICS_BATCH_SIZE=50             # Batch processing size
-CES_ANALYTICS_MAX_BUFFER_SIZE=1000      # Maximum buffer size
-CES_ANALYTICS_RETENTION_DAYS=30         # Data retention period
-CES_ANALYTICS_EXPORT_FORMAT=json        # Export format (json/csv/html)
+CES_CONTEXT_ANALYSIS_INTERVAL=30000    # Analisi contesto (30 secondi)
+CES_RECOMMENDATIONS_INTERVAL=300000    # Raccomandazioni (5 minuti)  
+CES_HEALTH_CHECK_INTERVAL=60000        # Health check (1 minuto)
+CES_METRICS_COLLECTION_INTERVAL=60000  # Raccolta metriche (1 minuto)
 ```
 
-#### 5. AI Session Management
+#### 4. Analytics (Sistema Analytics)
 
 ```bash
-CES_AI_SESSION_ENABLED=true             # Enable AI session features
-CES_AI_LEARNING_MODE=standard           # Learning mode (passive/active/aggressive)
-CES_AI_ADAPTATION_LEVEL=standard        # Adaptation level (minimal/standard/maximum)
-CES_AI_PREDICTION_ACCURACY=80           # Prediction accuracy threshold
-CES_AI_AUTO_OPTIMIZATION=true           # Auto-optimization enabled
-CES_AI_SMART_RECOMMENDATIONS=true       # Smart recommendations enabled
-CES_AI_CONTEXT_AWARENESS=true           # Context awareness enabled
+CES_ANALYTICS_ENABLED=true             # Abilita raccolta analytics
+CES_ANALYTICS_BATCH_SIZE=50            # Dimensione batch processing
+CES_ANALYTICS_MAX_BUFFER_SIZE=1000     # Dimensione massima buffer
+CES_ANALYTICS_RETENTION_DAYS=30        # Periodo retention dati
+CES_ANALYTICS_EXPORT_FORMAT=json       # Formato export (json/csv/html)
 ```
 
-#### 6. 🆕 Anthropic SDK Configuration ✨ NEW in v2.7.0
+#### 5. AI Session (Sessioni AI)
 
 ```bash
-ANTHROPIC_API_KEY=your-api-key-here     # Anthropic API key (required for AI features)
-CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229  # Default Claude model
-CES_ANTHROPIC_MAX_TOKENS=4096           # Maximum tokens per request
-CES_ANTHROPIC_TEMPERATURE=0.7           # Response creativity (0.0-1.0)
-CES_ANTHROPIC_TIMEOUT=30000             # Request timeout (30 seconds)
-CES_ANTHROPIC_MAX_RETRIES=2             # Maximum retry attempts
+CES_AI_SESSION_ENABLED=true            # Abilita funzionalità AI session
+CES_AI_LEARNING_MODE=standard          # Modalità learning (passive/active/aggressive)
+CES_AI_ADAPTATION_LEVEL=standard       # Livello adattamento (minimal/standard/maximum)
+CES_AI_PREDICTION_ACCURACY=80          # Soglia accuratezza predizione
+CES_AI_AUTO_OPTIMIZATION=true          # Auto-ottimizzazione abilitata
+CES_AI_SMART_RECOMMENDATIONS=true      # Raccomandazioni smart abilitate
+CES_AI_CONTEXT_AWARENESS=true          # Context awareness abilitata
 ```
 
-#### 7. Enterprise Logging
+#### 6. Logging Enterprise (Sistema Logging)
 
 ```bash
-CES_LOG_LEVEL=info                      # Log level (error/warn/info/debug)
-CES_LOG_FORMAT=json                     # Log format (json/simple)
-CES_LOG_MAX_FILES=5                     # Maximum log files
-CES_LOG_MAX_SIZE=10MB                   # Maximum log file size
-CES_LOG_DATE_PATTERN=YYYY-MM-DD         # Log rotation date pattern
+CES_LOG_LEVEL=info                     # Livello log (error/warn/info/debug)
+CES_LOG_FORMAT=json                    # Formato log (json/simple)
+CES_LOG_MAX_FILES=5                    # File log massimi
+CES_LOG_MAX_SIZE=10MB                  # Dimensione massima file log
+CES_LOG_DATE_PATTERN=YYYY-MM-DD        # Pattern data rotazione log
 ```
 
-#### 8. Enterprise Security
+#### 7. Security Enterprise (Sicurezza)
 
 ```bash
-CES_ENABLE_AUTH=false                   # Enable authentication
-CES_JWT_SECRET=ces-jwt-secret-uuid      # JWT secret (auto-generated)
-CES_JWT_EXPIRY=24h                      # JWT expiry time
-CES_CORS_ENABLED=true                   # Enable CORS
-CES_RATE_LIMIT_WINDOW=900000            # Rate limit window (15 minutes)
-CES_RATE_LIMIT_MAX=100                  # Maximum rate limit requests
+CES_ENABLE_AUTH=false                  # Abilita autenticazione
+CES_JWT_SECRET=ces-jwt-secret-uuid     # Secret JWT (auto-generato)
+CES_JWT_EXPIRY=24h                     # Tempo scadenza JWT
+CES_CORS_ENABLED=true                  # Abilita CORS
+CES_RATE_LIMIT_WINDOW=900000           # Finestra rate limit (15 minuti)
+CES_RATE_LIMIT_MAX=100                 # Richieste massime rate limit
 ```
 
-#### 9. Auto Recovery System
+#### 8. Auto Recovery (Sistema Auto-Recovery)
 
 ```bash
-CES_AUTO_RECOVERY_ENABLED=true          # Enable auto-recovery
-CES_AUTO_RESTART_ENABLED=true           # Enable auto-restart
-CES_AUTO_CLEANUP_ENABLED=true           # Enable auto-cleanup
-CES_RECOVERY_CHECK_INTERVAL=10000       # Recovery check interval (10 seconds)
-CES_MAX_RESTART_ATTEMPTS=3              # Maximum restart attempts
+CES_AUTO_RECOVERY_ENABLED=true         # Abilita auto-recovery
+CES_AUTO_RESTART_ENABLED=true          # Abilita auto-restart
+CES_AUTO_CLEANUP_ENABLED=true          # Abilita auto-cleanup
+CES_RECOVERY_CHECK_INTERVAL=10000      # Intervallo check recovery (10 secondi)
+CES_MAX_RESTART_ATTEMPTS=3             # Tentativi restart massimi
 ```
 
-#### 10. Cloud Integration
+### 🛠️ API Gestione Configurazione
 
-```bash
-CES_CLOUD_ENABLED=false                 # Enable cloud integration
-CES_CLOUD_PROVIDER=github               # Cloud provider (github/aws/azure)
-CES_CLOUD_ENCRYPTION_ENABLED=true       # Enable cloud encryption
-CES_CLOUD_AUTO_SYNC=false               # Enable automatic synchronization
-CES_CLOUD_SYNC_INTERVAL=1800000         # Sync interval (30 minutes)
-CES_CLOUD_BACKUP_RETENTION=7            # Backup retention days
-```
-
-#### 11. Dashboard Configuration
-
-```bash
-CES_DASHBOARD_ENABLED=true              # Enable dashboard
-CES_DASHBOARD_REFRESH_INTERVAL=2000     # Refresh interval (2 seconds)
-CES_DASHBOARD_COMPACT_MODE=false        # Enable compact mode
-CES_DASHBOARD_SHOW_GRAPHS=true          # Show performance graphs
-```
-
-### 🛠️ Configuration Management API
-
-#### TypeScript Configuration Access
+#### Accesso Configurazione TypeScript
 
 ```typescript
 import { envConfig } from '../config/EnvironmentConfig.js';
 
-// Get specific configuration value
+// Ottenere valore configurazione specifico
 const sessionTimeout = envConfig.get<number>('sessionTimeout');
 const analyticsEnabled = envConfig.get<boolean>('analytics.enabled');
 const logLevel = envConfig.get<string>('logging.level');
 
-// 🆕 Get Anthropic configuration
-const anthropicConfig = envConfig.get('anthropic');
-const apiKey = anthropicConfig.apiKey;
-const defaultModel = anthropicConfig.defaultModel;
-
-// Get project paths
+// Ottenere percorsi progetto
 const projectRoot = envConfig.getProjectRoot();
 const absolutePath = envConfig.getAbsolutePath('src/components');
 const relativePath = envConfig.getRelativePath('/full/path/to/file');
-
-// 🆕 Integration mode detection
-const operationMode = envConfig.getIntegrationMode(); // 'standalone' | 'integrated'
-const cesRoot = envConfig.getCesRoot();
-const operationRoot = envConfig.getOperationRoot();
 ```
 
-#### Configuration Validation
+#### Validazione Configurazione
 
 ```typescript
-// Validate current configuration
+// Validare configurazione corrente
 const validation = envConfig.validateConfig();
 if (!validation.valid) {
-    console.error('Configuration errors:', validation.errors);
+    console.error('Errori configurazione:', validation.errors);
 }
 
-// Get configuration metadata
+// Ottenere metadata configurazione
 const metadata = envConfig.getMetadata();
-console.log('Config loaded:', metadata.loadTime);
+console.log('Config caricata:', metadata.loadTime);
 console.log('Project root:', metadata.projectRoot);
-console.log('Operation mode:', metadata.operationMode); // 🆕
-console.log('Installation type:', metadata.installationType); // 🆕
 ```
 
-### 🔧 Configuration CLI Commands
+### 🔧 Comandi CLI Configurazione
 
-#### View Configuration
+#### Visualizzare Configurazione
 
 ```bash
-# Show current configuration
+# Mostrare configurazione corrente
 npm run dev -- config show
 
-# Show specific configuration section
+# Mostrare sezione configurazione specifica
 npm run dev -- config show --section=analytics
 npm run dev -- config show --section=logging
-npm run dev -- config show --section=anthropic  # 🆕
 ```
 
-#### Modify Configuration
+#### Modificare Configurazione
 
 ```bash
-# Interactive configuration editor
+# Editor configurazione interattivo
 npm run dev -- config edit
 
-# Edit specific configuration file
+# Modificare file configurazione specifico
 npm run dev -- config edit .env
 ```
 
-#### Validate Configuration
+#### Validare Configurazione
 
 ```bash
-# Validate current configuration
+# Validare configurazione corrente
 npm run dev -- config validate
 
-# Validate with detailed output
+# Validare con output dettagliato
 npm run dev -- config validate --verbose
 ```
 
 ### 🚀 Dynamic Project Root Detection
 
-The configuration system automatically detects the project root directory regardless of installation location:
+Il sistema di configurazione rileva automaticamente la directory root del progetto indipendentemente dalla posizione di installazione:
 
-#### Detection Logic
+#### Logica Rilevamento
 
-1. **Search for package.json** with project name
-2. **Traverse directory tree** upward until project root found
-3. **Fallback to current directory** if not found
-4. **Cache result** for performance
+1. **Ricerca package.json** con nome progetto
+2. **Risalita directory tree** fino a trovare project root
+3. **Fallback a directory corrente** se non trovato
+4. **Cache risultato** per performance
 
-#### Benefits
+#### Benefici
 
-- **Portable Installation**: Works in any directory
-- **No Hardcoded Paths**: All paths relative to detected root
-- **Cross-Platform**: Works on Windows, macOS, Linux
-- **Container-Friendly**: Works in Docker and other containers
-- **🆕 Integration Support**: Detects when installed as subdirectory
+- **Installazione Portabile**: Funziona in qualsiasi directory
+- **No Percorsi Hardcoded**: Tutti i percorsi relativi al root rilevato
+- **Cross-Platform**: Funziona su Windows, macOS, Linux
+- **Container-Friendly**: Funziona in Docker e altri container
 
-### 🆕 Integration Mode Detection ✨ NEW in v2.7.0
+### 🔐 Considerazioni Sicurezza
 
-CES v2.7.0 introduces intelligent operation mode detection:
+#### Variabili Ambiente
 
-#### Standalone Mode
-- Traditional installation as primary project
-- Full control over directory structure
-- Complete feature access
-- Ideal for CES-focused development
+- **Nessun dato sensibile in .env**: Usare gestione credenziali sicura
+- **Identificatori basati UUID**: Identificatori univoci enterprise-grade
+- **Generazione automatica secret**: Secret JWT auto-generati
+- **Validazione configurazione**: Previene impostazioni invalide o pericolose
 
-#### Integrated Mode
-- Install CES as subdirectory in existing projects
-- Clean integration without contaminating host project
-- Maintains full functionality while staying isolated
-- Perfect for adding CES capabilities to existing codebases
-
-#### Automatic Detection
-
-```typescript
-// Automatic mode detection based on installation context
-const mode = envConfig.getIntegrationMode();
-
-if (mode === 'integrated') {
-    // CES is installed as subdirectory
-    console.log('Host project:', envConfig.getProjectRoot());
-    console.log('CES location:', envConfig.getCesRoot());
-} else {
-    // CES is standalone installation
-    console.log('CES project root:', envConfig.getProjectRoot());
-}
-```
-
-### 🔐 Security Considerations
-
-#### Environment Variables
-
-- **No sensitive data in .env**: Use secure credential management
-- **UUID-based identifiers**: Enterprise-grade unique identifiers
-- **Automatic secret generation**: Auto-generated JWT secrets
-- **Configuration validation**: Prevents invalid or dangerous settings
-- **🆕 API Key Security**: Secure Anthropic API key handling
-
-#### Environment Best Practices
+#### Best Practices per Ambiente
 
 ```bash
-# Production environment
+# Ambiente production
 NODE_ENV=production
 CES_DEBUG_ENABLED=false
 CES_VERBOSE_LOGGING=false
 CES_ERROR_STACK_TRACE=false
-ANTHROPIC_API_KEY=secure-production-key  # 🆕
 
-# Development environment
+# Ambiente development
 NODE_ENV=development
 CES_DEBUG_ENABLED=true
 CES_VERBOSE_LOGGING=true
 CES_ERROR_STACK_TRACE=true
-ANTHROPIC_API_KEY=development-key  # 🆕
 ```
 
-### 📊 Configuration Templates
+### 📊 Template Configurazione
 
-#### Development Template (.env.development)
+#### Template Development (.env.development)
 
 ```bash
 NODE_ENV=development
-CES_VERSION=2.7.0
 CES_DEBUG_ENABLED=true
 CES_VERBOSE_LOGGING=true
 CES_ANALYTICS_ENABLED=true
 CES_AI_SESSION_ENABLED=true
 CES_AUTO_RECOVERY_ENABLED=true
 CES_DASHBOARD_ENABLED=true
-
-# 🆕 Anthropic Configuration
-ANTHROPIC_API_KEY=your-development-key
-CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229
-CES_ANTHROPIC_MAX_TOKENS=4096
-CES_ANTHROPIC_TEMPERATURE=0.7
 ```
 
-#### Production Template (.env.production)
+#### Template Production (.env.production)
 
 ```bash
 NODE_ENV=production
-CES_VERSION=2.7.0
 CES_DEBUG_ENABLED=false
 CES_VERBOSE_LOGGING=false
 CES_ANALYTICS_ENABLED=true
 CES_AI_SESSION_ENABLED=true
 CES_AUTO_RECOVERY_ENABLED=true
 CES_DASHBOARD_ENABLED=false
-
-# 🆕 Anthropic Configuration
-ANTHROPIC_API_KEY=your-production-key
-CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229
-CES_ANTHROPIC_MAX_TOKENS=2048
-CES_ANTHROPIC_TEMPERATURE=0.5
 ```
 
-### 🔄 Configuration Migration
+### 🔄 Migrazione Configurazione
 
-During CES version upgrades, configuration migration is handled automatically:
+Durante l'upgrade delle versioni CES, la migrazione configurazione è gestita automaticamente:
 
-1. **Backup current configuration**
-2. **Load new configuration template**
-3. **Migrate existing values**
-4. **Validate migrated configuration**
-5. **Report migration results**
-6. **🆕 Migrate Anthropic settings** - New in v2.7.0
+1. **Backup configurazione corrente**
+2. **Caricamento nuovo template configurazione**
+3. **Migrazione valori esistenti**
+4. **Validazione configurazione migrata**
+5. **Report risultati migrazione**
 
-### 📚 Complete References
+### 📚 Riferimenti Completi
 
-For complete configuration reference:
+Per riferimento configurazione completo:
 
-- **`.env.template`** - Complete configuration template with all variables
-- **`src/config/EnvironmentConfig.ts`** - TypeScript configuration interface
-- **CLI Help** - `npm run dev -- config --help`
-- **🆕 Anthropic Setup Guide** - See examples/anthropic-usage.ts
-
-### 🧪 Configuration Testing
-
-```bash
-# Test configuration validity
-npm run dev -- validate
-
-# Test with specific environment
-NODE_ENV=production npm run dev -- validate
-
-# Test Anthropic integration  # 🆕
-npm run dev -- ai stats
-```
+- **`.env.template`** - Template configurazione completo con tutte le variabili
+- **`src/config/EnvironmentConfig.ts`** - Interface configurazione TypeScript
+- **Aiuto CLI** - `npm run dev -- config --help`
 
 ---
 
-**📌 Next**: After understanding configuration, proceed with **003-SETUP-INSTALLATION** for practical system installation and **🆕 Anthropic API setup**.
+**📌 Prossimo**: Dopo aver compreso la configurazione, procedere con **003-SETUP-INSTALLAZIONE** per installazione pratica del sistema.

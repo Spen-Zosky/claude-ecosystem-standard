@@ -1,26 +1,23 @@
 # 003 - SETUP AND INSTALLATION
 
-## 🚀 Complete CES v2.7.0 Enterprise Installation Guide
+## 🚀 Complete Installation Guide CES v2.7.0 Enterprise
 
 **Read after enterprise configuration** - Practical procedure for complete installation and setup.
 
 ### ⚡ Quick Setup (1 Minute)
 
 ```bash
-# 1. Clone repository
+# 1. Repository clone
 git clone https://github.com/anthropics/claude-ecosystem-standard.git
 cd claude-ecosystem-standard
 
-# 2. Enterprise automatic setup
+# 2. Automatic enterprise setup
 bash quick-setup.sh
 
 # 3. System validation
 npm run dev -- validate
 
-# 4. 🆕 Configure Anthropic API (optional but recommended)
-echo "ANTHROPIC_API_KEY=your-api-key-here" >> .env
-
-# 5. Start enterprise session
+# 4. Enterprise session startup
 **start session
 ```
 
@@ -29,21 +26,21 @@ echo "ANTHROPIC_API_KEY=your-api-key-here" >> .env
 #### 1. Base Environment
 
 | Component | Minimum Version | Recommended Version |
-|-----------|----------------|-------------------|
+|-----------|----------------|---------------------|
 | **Node.js** | 18.0.0 | 20.19.0+ |
 | **npm** | 8.0.0 | 11.5.0+ |
 | **System** | Ubuntu 18.04+ | Ubuntu 22.04+ |
 | **Memory** | 2GB RAM | 4GB+ RAM |
-| **Storage** | 1GB free | 5GB+ free |
+| **Space** | 1GB free | 5GB+ free |
 
 #### 2. Prerequisites Verification
 
 ```bash
-# Version checks
+# Version check
 node --version    # >= v18.0.0
 npm --version     # >= 8.0.0
 
-# System checks
+# System check
 whoami           # current user
 pwd              # working directory
 df -h .          # available space
@@ -58,10 +55,10 @@ free -h          # available memory
 # 1. Setup NodeSource repository
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
-# 2. Install Node.js 20 LTS
+# 2. Node.js 20 LTS installation
 sudo apt install -y nodejs
 
-# 3. Verify installation
+# 3. Installation verification
 node --version    # v20.x.x
 npm --version     # 10.x.x+
 ```
@@ -69,13 +66,13 @@ npm --version     # 10.x.x+
 #### Option 2: Node Version Manager (NVM)
 
 ```bash
-# 1. Install NVM
+# 1. NVM installation
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
 # 2. Reload shell
 source ~/.bashrc
 
-# 3. Install Node.js
+# 3. Node.js installation
 nvm install 20
 nvm use 20
 nvm alias default 20
@@ -84,7 +81,7 @@ nvm alias default 20
 #### Option 3: Snap Package
 
 ```bash
-# Install via snap
+# Installation via snap
 sudo snap install node --classic
 ```
 
@@ -112,7 +109,7 @@ npm install
 # If errors occur, use:
 npm install --no-package-lock --force
 
-# Install development dependencies
+# Development dependencies installation
 npm install --include=dev
 ```
 
@@ -124,10 +121,6 @@ cp .env.template .env
 
 # Generate enterprise configuration
 npm run dev -- config generate --enterprise
-
-# 🆕 Add Anthropic API key (recommended)
-echo "ANTHROPIC_API_KEY=your-anthropic-api-key" >> .env
-echo "CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229" >> .env
 
 # Validate configuration
 npm run dev -- config validate
@@ -144,8 +137,8 @@ npm run build
 # Build with watch mode
 npm run build:watch
 
-# Verify build
-ls .dist/    # Should contain compiled .js files
+# Build verification
+ls dist/    # Should contain compiled .js files
 ```
 
 #### Functionality Testing
@@ -167,7 +160,7 @@ npm run test:coverage
 #### 1. Core Environment Variables
 
 ```bash
-# Minimal enterprise configuration
+# Minimum enterprise configuration
 NODE_ENV=production
 CES_VERSION=2.7.0
 CES_PROJECT_NAME=claude-ecosystem-standard
@@ -198,18 +191,6 @@ CES_ANALYTICS_RETENTION_DAYS=90
 CES_ANALYTICS_EXPORT_FORMAT=json
 ```
 
-#### 4. 🆕 Anthropic SDK Configuration ✨ NEW in v2.7.0
-
-```bash
-# Anthropic AI configuration
-ANTHROPIC_API_KEY=your-api-key-here          # Required for AI features
-CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229 # Default Claude model
-CES_ANTHROPIC_MAX_TOKENS=4096                # Maximum tokens per request
-CES_ANTHROPIC_TEMPERATURE=0.7                # Response creativity (0.0-1.0)
-CES_ANTHROPIC_TIMEOUT=30000                  # Request timeout (30 seconds)
-CES_ANTHROPIC_MAX_RETRIES=2                  # Maximum retry attempts
-```
-
 ### 🧪 Installation Validation
 
 #### 1. Base Tests
@@ -230,9 +211,6 @@ npm run dev -- status
 ```bash
 # Test AI Session Management
 npm run dev -- ai-session --insights
-
-# 🆕 Test Anthropic integration
-npm run dev -- ai ask "Hello, can you help me test the integration?"
 
 # Test Analytics System
 npm run dev -- analytics --dashboard
@@ -257,44 +235,6 @@ npm run dev -- validate --report
 npm run dev -- diagnose
 ```
 
-### 🆕 Anthropic API Setup ✨ NEW in v2.7.0
-
-#### 1. Get API Key
-
-1. Visit [Anthropic Console](https://console.anthropic.com/)
-2. Create account or sign in
-3. Generate API key
-4. Copy the key for configuration
-
-#### 2. Configure API Key
-
-```bash
-# Method 1: Environment variable
-export ANTHROPIC_API_KEY=your-api-key-here
-
-# Method 2: Add to .env file
-echo "ANTHROPIC_API_KEY=your-api-key-here" >> .env
-
-# Method 3: Interactive configuration
-npm run dev -- config edit
-```
-
-#### 3. Test Anthropic Integration
-
-```bash
-# Test basic API connection
-npm run dev -- ai ask "Hello from CES v2.7.0!"
-
-# Test streaming responses
-npm run dev -- ai ask --stream "Explain TypeScript interfaces"
-
-# Test code analysis
-npm run dev -- ai analyze src/index.ts --type security
-
-# Test interactive chat
-npm run dev -- ai chat
-```
-
 ### 🐳 Container Setup (Optional)
 
 #### Docker Setup
@@ -307,7 +247,6 @@ docker build -t ces-enterprise .
 docker run -d --name ces \
   -p 3000:3000 \
   -v $(pwd)/.claude:/app/.claude \
-  -e ANTHROPIC_API_KEY=your-api-key \
   ces-enterprise
 
 # Verify container
@@ -329,59 +268,58 @@ services:
     environment:
       - NODE_ENV=production
       - CES_VERSION=2.7.0
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
 ```
 
-### 🚀 First Use Startup
+### 🚀 First Usage Startup
 
 #### 1. System Initialization
 
 ```bash
-# Enterprise initial setup
+# Initial enterprise setup
 npm run dev -- init --enterprise
 
-# Create user profile
+# User profile creation
 npm run dev -- profile create --name "enterprise-user"
 
-# Setup development environment
+# Development environment setup
 npm run dev -- env setup --type development
 ```
 
 #### 2. Claude Code Session Startup
 
 ```bash
-# Start enterprise session
+# Enterprise session startup
 **start session
 
-# Verify MCP integration
+# MCP integration verification
 **status mcp
 
-# Test integration
+# Integration test
 **test connection
 ```
 
 #### 3. Dashboard Configuration
 
 ```bash
-# Start monitoring dashboard
+# Dashboard monitoring startup
 npm run dev -- dashboard --start
 
-# Configure dashboard
+# Dashboard configuration
 npm run dev -- dashboard --configure --port 3000
 
-# Access dashboard
+# Dashboard access
 # Browser: http://localhost:3000
 ```
 
 ### 🔧 Troubleshooting
 
-#### Common Problems
+#### Common Issues
 
 **1. "tsx: not found"**
 ```bash
 npm install -g tsx
 # or
-npx tsx .src/index.ts --help
+npx tsx src/index.ts --help
 ```
 
 **2. "Permission denied"**
@@ -393,7 +331,7 @@ export PATH=~/.npm-global/bin:$PATH
 
 **3. "Module not found"**
 ```bash
-rm -rf .node_modules package-lock.json
+rm -rf node_modules package-lock.json
 npm cache clean --force
 npm install
 ```
@@ -404,28 +342,16 @@ npx tsc --noEmit --skipLibCheck
 npm run build:force
 ```
 
-**5. 🆕 "Anthropic API errors"**
-```bash
-# Check API key
-npm run dev -- config show --section=anthropic
-
-# Test API connection
-npm run dev -- ai stats
-
-# Verify model availability
-npm run dev -- ai ask --model claude-3-haiku-20240307 "Test"
-```
-
 #### Debug Mode
 
 ```bash
-# Start in debug mode
+# Debug mode startup
 DEBUG=ces:* npm run dev -- --debug
 
 # Verbose logging
 npm run dev -- --verbose --log-level debug
 
-# Full diagnostics
+# Problem diagnostics
 npm run dev -- diagnose --full
 ```
 
@@ -436,11 +362,10 @@ npm run dev -- diagnose --full
 - [ ] **Node.js 18+** installed and working
 - [ ] **npm 8+** installed and configured
 - [ ] **Repository cloned** and dependencies installed
-- [ ] **TypeScript build** completed without errors
-- [ ] **System tests** all passing
-- [ ] **Configuration .env** created and validated
-- [ ] **🆕 Anthropic API** configured and tested
-- [ ] **Claude Code CLI** integrated correctly
+- [ ] **Build TypeScript** completed without errors
+- [ ] **Test sistema** all pass
+- [ ] **Configurazione .env** created and validated
+- [ ] **Claude Code CLI** correctly integrated
 - [ ] **MCP servers** configured and working
 - [ ] **Dashboard** accessible and operational
 
@@ -453,9 +378,6 @@ npm run dev -- test-all
 # System status report
 npm run dev -- system-report
 
-# 🆕 AI functionality test
-npm run dev -- ai ask "Generate a simple TypeScript function"
-
 # Configuration backup
 npm run dev -- backup create --name "post-installation"
 ```
@@ -466,51 +388,16 @@ After setup completion:
 
 1. **004-CLI-REFERENCE** - Complete CLI commands reference
 2. **005-LOGGING-MONITORING** - Advanced logging and monitoring setup
-3. **006-DEPLOYMENT-PRODUCTION** - Production environment configuration
-4. **🆕 Anthropic Usage Examples** - See examples/anthropic-usage.ts
+3. **006-DEPLOYMENT-PRODUZIONE** - Production environment configuration
 
 ### 📞 Support
 
-For installation problems:
+For installation issues:
 
 - **GitHub Issues**: [Repository Issues](https://github.com/anthropics/claude-ecosystem-standard/issues)
-- **Documentation**: Check `TROUBLESHOOTING.md` file
+- **Documentation**: Check file `TROUBLESHOOTING.md`
 - **Logs**: Check `.claude/logs/` for detailed errors
-- **🆕 Anthropic Support**: [Anthropic Documentation](https://docs.anthropic.com/)
-
-### 🆕 Integration Mode Setup ✨ NEW in v2.7.0
-
-#### Installing CES as Subdirectory
-
-```bash
-# In your existing project
-mkdir ces
-cd ces
-git clone https://github.com/anthropics/claude-ecosystem-standard.git .
-
-# Set integration mode
-echo "CES_OPERATION_MODE=integrated" >> .env
-echo "CES_PROJECT_ROOT=$(dirname $(pwd))" >> .env
-
-# Install and configure
-npm install
-npm run build
-npm run dev -- validate
-```
-
-#### Standalone Installation
-
-```bash
-# Traditional standalone installation
-git clone https://github.com/anthropics/claude-ecosystem-standard.git
-cd claude-ecosystem-standard
-
-# Standalone mode is automatic
-npm install
-npm run build
-npm run dev -- validate
-```
 
 ---
 
-**📌 Setup Complete**: The CES v2.7.0 Enterprise system is now ready for production-ready use with **🆕 native Anthropic AI capabilities**.
+**📌 Setup Complete**: The CES v2.7.0 Enterprise system is now ready for production-ready usage.

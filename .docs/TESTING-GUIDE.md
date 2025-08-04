@@ -1,4 +1,4 @@
-# 🧪 GUIDA COMPLETA AI TEST CES v2.6.0
+# 🧪 GUIDA COMPLETA AI TEST CES v2.7.0
 
 ## ⚠️ **PREREQUISITI SISTEMA**
 
@@ -274,4 +274,4 @@ ls .claude/cloud/config.json    # Configurazione cloud
 
 ---
 
-**✅ Una volta risolti i problemi di ambiente, tutti i test confermeranno che le 4 implementazioni v2.6.0 funzionano perfettamente!**
+**✅ Una volta risolti i problemi di ambiente, tutti i test confermeranno che le 4 implementazioni v2.7.0 funzionano perfettamente!**

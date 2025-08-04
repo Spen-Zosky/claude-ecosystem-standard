@@ -1,9 +1,9 @@
-# 🚀 COMANDI TEST RAPIDI CES v2.6.0
+# 🚀 COMANDI TEST RAPIDI CES v2.7.0
 
 ## ✅ **AMBIENTE VERIFICATO**
 - **Node.js**: v20.19.4 ✅
 - **npm**: v11.5.1 ✅  
-- **Progetto**: CES v2.6.0 completo ✅
+- **Progetto**: CES v2.7.0 completo ✅
 
 ## 🧪 **COMANDI PER TESTARE LE 4 NUOVE FUNZIONALITÀ**
 
@@ -198,4 +198,4 @@ Ogni comando dovrebbe:
 
 ---
 
-**🎉 Tutti questi comandi testeranno le 4 implementazioni v2.6.0 completate con successo!**
+**🎉 Tutti questi comandi testeranno le 4 implementazioni v2.7.0 completate con successo!**

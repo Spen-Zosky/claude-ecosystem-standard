@@ -1,5 +1,5 @@
 /**
- * CES Portable Path Resolution Utility v2.6.0
+ * CES Portable Path Resolution Utility v2.7.0
  * 
  * Provides dynamic path detection for portable CES installations.
  * Auto-detects CES installation location and manages paths dynamically.

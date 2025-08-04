@@ -1,12 +1,12 @@
 # 006 - DEPLOYMENT PRODUZIONE
 
-## 🚀 Deployment Production CES v2.6.0 Enterprise
+## 🚀 Deployment Production CES v2.7.0 Enterprise
 
 **Leggi dopo logging e monitoring** - Guida completa al deployment enterprise in ambiente production.
 
 ### 🏗️ Architettura Production
 
-Il deployment production CES v2.6.0 è progettato per ambienti enterprise con:
+Il deployment production CES v2.7.0 è progettato per ambienti enterprise con:
 
 - **🔄 Zero-Downtime Deployment**: Rolling updates senza interruzioni
 - **🔍 Health Monitoring**: Monitoring continuo e auto-recovery
@@ -41,7 +41,7 @@ npm run benchmark --save-baseline
 ```bash
 # Configurazione ambiente production
 NODE_ENV=production
-CES_VERSION=2.5.0
+CES_VERSION=2.7.0
 CES_ENVIRONMENT=production
 CES_INSTANCE_ID=ces-prod-$(uuidgen)
 
@@ -133,7 +133,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - CES_VERSION=2.5.0
+      - CES_VERSION=2.7.0
       - CES_ENVIRONMENT=production
       - CES_REDIS_URL=redis://redis:6379
       - CES_DATABASE_URL=postgresql://user:pass@postgres:5432/ces
@@ -210,7 +210,7 @@ metadata:
   name: ces-app
   labels:
     app: ces
-    version: v2.6.0
+    version: v2.7.0
 spec:
   replicas: 3
   strategy:
@@ -225,7 +225,7 @@ spec:
     metadata:
       labels:
         app: ces
-        version: v2.6.0
+        version: v2.7.0
     spec:
       containers:
       - name: ces-app
@@ -536,7 +536,7 @@ promClient.collectDefaultMetrics();
 ```json
 {
   "dashboard": {
-    "title": "CES v2.6.0 Production Dashboard",
+    "title": "CES v2.7.0 Production Dashboard",
     "panels": [
       {
         "title": "Request Rate",
@@ -781,4 +781,4 @@ spec:
 
 ---
 
-**📌 Il deployment production CES v2.6.0 Enterprise garantisce alta affidabilità, sicurezza e performance per ambienti enterprise critici.**
+**📌 Il deployment production CES v2.7.0 Enterprise garantisce alta affidabilità, sicurezza e performance per ambienti enterprise critici.**

@@ -1,6 +1,6 @@
-# 🔧 Troubleshooting Guide - CES v2.6.0
+# 🔧 Troubleshooting Guide - CES v2.7.0
 
-**Claude Ecosystem Standard v2.6.0 Enterprise Edition** - Comprehensive troubleshooting guide with Anthropic AI integration support
+**Claude Ecosystem Standard v2.7.0 Enterprise Edition** - Comprehensive troubleshooting guide with Anthropic AI integration support
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ npm run dev -- status
 # Comprehensive validation
 npm run dev -- validate --verbose
 
-# AI integration check (NEW v2.6.0)
+# AI integration check (NEW v2.7.0)
 npm run dev -- ai config test
 
 # View recent errors
@@ -195,7 +195,7 @@ export CES_DASHBOARD_PORT=3012
 npm run dev -- config show
 ```
 
-## AI Integration Issues (NEW v2.6.0)
+## AI Integration Issues (NEW v2.7.0)
 
 ### 1. API Key Problems
 
@@ -1105,5 +1105,5 @@ tail -50 .ces.logs/ces-error.log
 
 ---
 
-*CES v2.6.0 Enterprise Edition - Troubleshooting Guide*  
+*CES v2.7.0 Enterprise Edition - Troubleshooting Guide*  
 *Last Updated: $(date)*

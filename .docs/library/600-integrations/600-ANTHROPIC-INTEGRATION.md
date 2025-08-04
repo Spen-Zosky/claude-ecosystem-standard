@@ -1,6 +1,6 @@
 # 🚀 Anthropic AI Integration Guide
 
-**CES v2.6.0 Enterprise Edition** - Complete guide for integrating and using native Anthropic SDK capabilities
+**CES v2.7.0 Enterprise Edition** - Complete guide for integrating and using native Anthropic SDK capabilities
 
 ## Table of Contents
 
@@ -49,14 +49,14 @@ npm run dev -- ai stats
 
 ### Prerequisites
 
-- **CES v2.6.0+**: Ensure you have the latest version
+- **CES v2.7.0+**: Ensure you have the latest version
 - **Node.js 18+**: Required for Anthropic SDK
 - **Active Internet**: API connectivity required
 - **Valid API Key**: From Anthropic Console
 
 ### Automatic Installation
 
-The Anthropic SDK is automatically installed with CES v2.6.0:
+The Anthropic SDK is automatically installed with CES v2.7.0:
 
 ```bash
 # SDK is included in package.json
@@ -172,18 +172,18 @@ npm run dev -- ai ask --temperature 0.9 "Creative coding ideas"
 
 ```bash
 # Analyze single file
-npm run dev -- ai analyze src/index.ts
+npm run dev -- ai analyze .src/index.ts
 
 # Analyze multiple files
-npm run dev -- ai analyze src/config.ts src/utils.ts
+npm run dev -- ai analyze .src/config.ts .src/utils.ts
 
 # Specific analysis type
-npm run dev -- ai analyze src/auth.ts --type security
-npm run dev -- ai analyze src/api.ts --type performance
-npm run dev -- ai analyze src/components.ts --type quality
+npm run dev -- ai analyze .src/auth.ts --type security
+npm run dev -- ai analyze .src/api.ts --type performance
+npm run dev -- ai analyze .src/components.ts --type quality
 
 # Comprehensive analysis
-npm run dev -- ai analyze src/ --type all
+npm run dev -- ai analyze .src/ --type all
 ```
 
 ### 3. Code Generation
@@ -295,7 +295,7 @@ import { AnthropicIntegrationHelper } from './integrations/anthropic/AnthropicIn
 const helper = new AnthropicIntegrationHelper(configManager, sessionManager);
 
 const results = await helper.analyzeProject(
-    ["src/auth.ts", "src/api.ts", "src/utils.ts"],
+    [".src/auth.ts", ".src/api.ts", ".src/utils.ts"],
     "security"
 );
 
@@ -358,7 +358,7 @@ anthropic.on('error', (error) => {
 
 ```bash
 # 1. Analyze for issues
-npm run dev -- ai analyze src/new-feature.ts --type all
+npm run dev -- ai analyze .src/new-feature.ts --type all
 
 # 2. Generate improvements
 npm run dev -- ai ask "Based on this analysis, how can I improve the code?"
@@ -403,7 +403,7 @@ npm run dev -- ai chat
 
 ```typescript
 // 1. Full project scan
-const files = await glob('src/**/*.ts');
+const files = await glob('.src/**/*.ts');
 const results = await helper.analyzeProject(files, 'all');
 
 // 2. Filter critical issues
@@ -443,7 +443,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          npm run dev -- ai analyze src/ --type security > analysis.txt
+          npm run dev -- ai analyze .src/ --type security > analysis.txt
           cat analysis.txt
       
       - name: Upload Analysis
@@ -680,7 +680,7 @@ const anthropic = new Anthropic({
             ...init,
             headers: {
                 ...init?.headers,
-                'User-Agent': 'CES-v2.6.0',
+                'User-Agent': 'CES-v2.7.0',
                 'X-Request-ID': generateRequestId()
             }
         });
@@ -818,9 +818,9 @@ grep "performance" .ces.logs/ces-performance.log | grep -i anthropic
 4. **Configure for Production**: Follow security guidelines
 5. **Monitor Usage**: Set up cost alerts and budgets
 
-**Happy AI-powered development with CES v2.6.0!** 🚀
+**Happy AI-powered development with CES v2.7.0!** 🚀
 
 ---
 
-*CES v2.6.0 Enterprise Edition - Anthropic AI Integration Guide*  
+*CES v2.7.0 Enterprise Edition - Anthropic AI Integration Guide*  
 *Last Updated: $(date)*

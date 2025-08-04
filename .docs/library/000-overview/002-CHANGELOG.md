@@ -3,7 +3,7 @@
 All notable changes to the Claude Ecosystem Standard project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.7.0.html).
 
 ## [2.6.0] - 2025-08-02 - "Portable Edition" 🚀
 
@@ -88,7 +88,7 @@ cd ces-project && ./init.sh
 
 ### 📈 Migration Information
 
-#### From v2.5.0
+#### From v2.7.0
 - **Breaking Changes**: None - fully backward compatible
 - **Migration Time**: Immediate - no action required
 - **Data Migration**: Automatic with existing configurations
@@ -115,7 +115,7 @@ This release transforms CES into a Fortune 500 grade enterprise platform with co
 - **Complete Bibliography**: 7 comprehensive documents with guided reading path
 - **000-INDICE-BIBLIOGRAFIA.md**: Master index with navigation and competency levels
 - **001-GENERAL-INTRODUCTION.md**: Complete system overview and architecture
-- **002-ENTERPRISE-CONFIGURATION.md**: 69+ environment variables with TypeScript API
+- **002-ENTERPRISE-CONFIGURATION.md**: 75+ environment variables with TypeScript API
 - **003-SETUP-INSTALLATION.md**: Complete installation and setup guide
 - **004-CLI-REFERENCE.md**: 40+ CLI commands with enterprise examples
 - **005-LOGGING-MONITORING.md**: Winston framework and real-time monitoring
@@ -228,7 +228,7 @@ This release transforms CES into a Fortune 500 grade enterprise platform with co
 
 ### 📈 Migration Information
 
-#### From v2.4.0
+#### From v2.7.0
 - **Breaking Changes**: None - fully backward compatible
 - **Migration Time**: < 5 minutes
 - **Data Migration**: Automatic with backup

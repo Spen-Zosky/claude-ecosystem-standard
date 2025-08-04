@@ -1,6 +1,6 @@
 # 🤖 Anthropic AI Integration - API Reference
 
-**CES v2.6.0 Enterprise Edition** - Complete API documentation for native Anthropic SDK integration
+**CES v2.7.0 Enterprise Edition** - Complete API documentation for native Anthropic SDK integration
 
 ## Table of Contents
 
@@ -716,5 +716,5 @@ npm run dev -- validate
 
 ---
 
-*CES v2.6.0 Enterprise Edition - Anthropic AI Integration*  
+*CES v2.7.0 Enterprise Edition - Anthropic AI Integration*  
 *Generated: $(date)*

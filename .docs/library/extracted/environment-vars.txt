@@ -1,5 +1,5 @@
 === Environment Variables ===
-# Claude Ecosystem Standard (CES) v2.6.0 Portable Edition Configuration Template
+# Claude Ecosystem Standard (CES) v2.7.0 Portable Edition Configuration Template
 # Copy this file to .env and configure your environment-specific values
 
 # ================================
@@ -8,7 +8,7 @@
 
 # Project and Environment
 NODE_ENV=development
-CES_VERSION=2.6.0
+CES_VERSION=2.7.0
 CES_PROJECT_NAME=claude-ecosystem-standard
 CES_INSTANCE_ID=
 

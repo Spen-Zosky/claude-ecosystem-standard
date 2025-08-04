@@ -1,6 +1,6 @@
 /**
  * AI-Powered Session Manager - Intelligent Session Optimization and Management
- * Enterprise v2.6.0 - Production-ready with enterprise configuration
+ * Enterprise v2.7.0 - Production-ready with enterprise configuration
  * 
  * Provides AI-driven session optimization, smart profile recommendations,
  * intelligent command prediction, and automatic environment adaptation.

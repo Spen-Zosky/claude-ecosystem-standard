@@ -147,7 +147,7 @@ const defaultModel = anthropicConfig.defaultModel;
 
 // Get project paths
 const projectRoot = envConfig.getProjectRoot();
-const absolutePath = envConfig.getAbsolutePath('src/components');
+const absolutePath = envConfig.getAbsolutePath('.src/components');
 const relativePath = envConfig.getRelativePath('/full/path/to/file');
 
 // 🆕 Integration mode detection
@@ -342,7 +342,7 @@ During CES version upgrades, configuration migration is handled automatically:
 For complete configuration reference:
 
 - **`.env.template`** - Complete configuration template with all variables
-- **`src/config/EnvironmentConfig.ts`** - TypeScript configuration interface
+- **`.src/config/EnvironmentConfig.ts`** - TypeScript configuration interface
 - **CLI Help** - `npm run dev -- config --help`
 - **🆕 Anthropic Setup Guide** - See examples/anthropic-usage.ts
 

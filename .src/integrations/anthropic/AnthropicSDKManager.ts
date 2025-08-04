@@ -1,6 +1,6 @@
 /**
  * Anthropic SDK Manager - Direct API Integration with Claude
- * CES v2.6.0 Enterprise Edition
+ * CES v2.7.0 Enterprise Edition
  */
 
 import Anthropic from '@anthropic-ai/sdk';

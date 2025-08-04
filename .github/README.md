@@ -2,7 +2,7 @@
 
 ## 📋 Overview
 
-This directory contains the complete CI/CD pipeline for Claude Ecosystem Standard (CES) v2.6.0, built with GitHub Actions and designed for enterprise-grade automation.
+This directory contains the complete CI/CD pipeline for Claude Ecosystem Standard (CES) v2.7.0, built with GitHub Actions and designed for enterprise-grade automation.
 
 ## 🏗️ Pipeline Architecture
 
@@ -162,7 +162,7 @@ DEV_URL=https://dev.claude-ecosystem-standard.com
 
 ```bash
 # Manual Deployment
-gh workflow run environments.yml -f environment=staging -f version=v2.6.0
+gh workflow run environments.yml -f environment=staging -f version=v2.7.0
 
 # Manual Release
 gh workflow run release.yml -f version=2.6.1 -f release_type=patch
@@ -218,8 +218,8 @@ chore: bump dependencies to latest versions
 - `hotfix/*` - Critical fixes
 
 ### Release Versioning
-- `v2.6.0` - Major release
-- `v2.6.1` - Patch release
+- `v2.7.0` - Major release
+- `v2.7.0` - Patch release
 - `v2.7.0-beta.1` - Pre-release
 
 ## 🚀 Enterprise Features

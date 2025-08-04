@@ -27,11 +27,11 @@ export class SessionManager {
     private runningProcesses: Map<string, ChildProcess> = new Map();
 
     constructor(private configManager: ConfigManager) {
-        // Usa i percorsi dalla configurazione integrata
+        // Use paths from integrated configuration
         this.claudeDir = envConfig.getClaudeDir();
         this.sessionDir = path.join(this.claudeDir, 'sessions');
         
-        // Log percorsi utilizzati
+        // Log paths used
         logger.info('SessionManager initialized', {
             component: 'SessionManager',
             action: 'initialization',

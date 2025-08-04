@@ -1,6 +1,6 @@
 # 🚀 Anthropic AI Integration Guide
 
-**CES v2.6.0 Enterprise Edition** - Complete guide for integrating and using native Anthropic SDK capabilities
+**CES v2.7.0 Enterprise Edition** - Complete guide for integrating and using native Anthropic SDK capabilities
 
 ## Table of Contents
 
@@ -49,14 +49,14 @@ npm run dev -- ai stats
 
 ### Prerequisites
 
-- **CES v2.6.0+**: Ensure you have the latest version
+- **CES v2.7.0+**: Ensure you have the latest version
 - **Node.js 18+**: Required for Anthropic SDK
 - **Active Internet**: API connectivity required
 - **Valid API Key**: From Anthropic Console
 
 ### Automatic Installation
 
-The Anthropic SDK is automatically installed with CES v2.6.0:
+The Anthropic SDK is automatically installed with CES v2.7.0:
 
 ```bash
 # SDK is included in package.json
@@ -680,7 +680,7 @@ const anthropic = new Anthropic({
             ...init,
             headers: {
                 ...init?.headers,
-                'User-Agent': 'CES-v2.6.0',
+                'User-Agent': 'CES-v2.7.0',
                 'X-Request-ID': generateRequestId()
             }
         });
@@ -818,9 +818,9 @@ grep "performance" .ces.logs/ces-performance.log | grep -i anthropic
 4. **Configure for Production**: Follow security guidelines
 5. **Monitor Usage**: Set up cost alerts and budgets
 
-**Happy AI-powered development with CES v2.6.0!** 🚀
+**Happy AI-powered development with CES v2.7.0!** 🚀
 
 ---
 
-*CES v2.6.0 Enterprise Edition - Anthropic AI Integration Guide*  
+*CES v2.7.0 Enterprise Edition - Anthropic AI Integration Guide*  
 *Last Updated: $(date)*

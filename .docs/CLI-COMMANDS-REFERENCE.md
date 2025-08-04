@@ -1,6 +1,6 @@
-# 🛠️ CLI Commands Reference - CES v2.6.0 Enterprise Edition
+# 🛠️ CLI Commands Reference - CES v2.7.0 Enterprise Edition
 
-Comprehensive guide to all available CLI commands in the Claude Ecosystem Standard v2.6.0.
+Comprehensive guide to all available CLI commands in the Claude Ecosystem Standard v2.7.0.
 
 ## 📋 Command Overview
 
@@ -366,7 +366,7 @@ npm run dev -- validate --quick
 npm run dev -- validate --fix --report
 ```
 
-## 🤖 Anthropic AI Integration Commands (NEW v2.6.0)
+## 🤖 Anthropic AI Integration Commands (NEW v2.7.0)
 
 ### 13. AI Commands
 

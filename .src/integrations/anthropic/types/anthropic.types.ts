@@ -1,6 +1,6 @@
 /**
  * Type definitions for Anthropic SDK integration
- * CES v2.6.0 Enterprise Edition
+ * CES v2.7.0 Enterprise Edition
  */
 
 export interface AnthropicConfig {

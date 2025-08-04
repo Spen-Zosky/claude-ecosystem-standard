@@ -1,4 +1,4 @@
-# 🏢 Claude Ecosystem Standard (CES) v2.6.0 - Enterprise Edition with Anthropic SDK
+# 🏢 Claude Ecosystem Standard (CES) v2.7.0 - Enterprise Edition with Anthropic SDK
 
 🚀 **Enterprise-grade TypeScript Claude development framework** with **native Anthropic SDK integration**, complete portability, dynamic configuration, structured logging, auto-recovery systems, AI-powered capabilities, and production-ready architecture that **works as drop-in subdirectory in any project**.
 
@@ -8,11 +8,11 @@
 [![Validation Score](https://img.shields.io/badge/Validation-100%2F100-success.svg)](https://github.com/anthropics/claude-ecosystem-standard)
 [![AI Integration](https://img.shields.io/badge/AI-Anthropic%20SDK-blue.svg)](https://www.anthropic.com/)
 
-## ✨ What is CES v2.6.0?
+## ✨ What is CES v2.7.0?
 
-CES v2.6.0 is an **enterprise-grade TypeScript framework** with **native Anthropic SDK integration** that expands into a complete Claude development environment with **complete portability** - works as drop-in subdirectory in any project:
+CES v2.7.0 is an **enterprise-grade TypeScript framework** with **native Anthropic SDK integration** that expands into a complete Claude development environment with **complete portability** - works as drop-in subdirectory in any project:
 
-## 🏢 Enterprise Features v2.6.0
+## 🏢 Enterprise Features v2.7.0
 
 ### 🤖 NEW: Native Anthropic SDK Integration
 - **🎯 Direct Claude API Access**: Native Claude integration via official Anthropic SDK
@@ -41,7 +41,7 @@ CES v2.6.0 is an **enterprise-grade TypeScript framework** with **native Anthrop
 - **☁️ Cloud Integration**: Session backup and sync capabilities
 - **🔐 Enterprise Security**: UUID-based identifiers and secure configuration patterns
 
-## 🎯 Portability Capabilities v2.6.0
+## 🎯 Portability Capabilities v2.7.0
 
 ### 📁 Drop-in Installation
 - **Zero Host Impact**: Install in any project without modifying existing files
@@ -64,7 +64,7 @@ CES v2.6.0 is an **enterprise-grade TypeScript framework** with **native Anthrop
 - **Backward Compatible**: Existing ces-init-private.sh continues to work
 - **Rollback System**: Complete rollback to pre-portable state with automatic backups
 - **Validation**: Comprehensive test suite ensures reliability
-- **Non-Breaking**: Fully compatible with existing v2.5.0 installations
+- **Non-Breaking**: Fully compatible with existing v2.7.0 installations
 
 ## 💎 Core Capabilities
 
@@ -132,7 +132,7 @@ npm run dev -- --help
 bash ces-init-private.sh
 ```
 
-**CES v2.6.0 Portable Edition automatically configures:**
+**CES v2.7.0 Portable Edition automatically configures:**
 - ✅ **🚀 Complete Portability**: Install as drop-in subdirectory in any project with zero impact
 - ✅ **🤖 Anthropic SDK Integration**: Direct Claude API access for enhanced AI capabilities
 - ✅ **🔍 Auto-Detection**: Intelligent path detection and installation type recognition
@@ -150,7 +150,7 @@ bash ces-init-private.sh
 - ✅ **Production Systems**: Enterprise backup, logging, and recovery systems
 - ✅ **Error-Free Installation**: Robust installation with comprehensive validation
 
-## 🤖 Anthropic AI Integration - NEW v2.6.0
+## 🤖 Anthropic AI Integration - NEW v2.7.0
 
 ### 🎯 Direct Claude API Access
 ```bash
@@ -167,12 +167,12 @@ npm run dev -- ai ask --model claude-3-opus-20240229 "Complex analysis task"
 ### 🔍 Code Analysis
 ```bash
 # Comprehensive code analysis
-npm run dev -- ai analyze src/index.ts --type security
-npm run dev -- ai analyze src/config/ --type performance
+npm run dev -- ai analyze .src/index.ts --type security
+npm run dev -- ai analyze .src/config/ --type performance
 npm run dev -- ai analyze . --type quality
 
 # Multi-file project analysis
-npm run dev -- ai analyze src/cli/*.ts src/config/*.ts --type all
+npm run dev -- ai analyze .src/cli/*.ts .src/config/*.ts --type all
 ```
 
 ### ⚡ Code Generation
@@ -432,7 +432,7 @@ npm run dev -- close-session
 ### 7. AI Commands
 ```bash
 npm run dev -- ai ask "Help me with TypeScript"
-npm run dev -- ai analyze src/ --type quality
+npm run dev -- ai analyze .src/ --type quality
 npm run dev -- ai generate --language typescript
 npm run dev -- ai chat
 ```
@@ -588,9 +588,9 @@ ces_logs_view [type]                   # View system/session logs
 **clean reset                            # Reset completo sistema coordinato
 **clean reset --dry-run                  # Anteprima reset coordinato
 
-# 🤖 AI Commands (NUOVO v2.6.0)
+# 🤖 AI Commands (NUOVO v2.7.0)
 npm run dev -- ai ask "question"          # Ask Claude directly
-npm run dev -- ai analyze src/ --type security  # AI code analysis
+npm run dev -- ai analyze .src/ --type security  # AI code analysis
 npm run dev -- ai generate --language typescript # AI code generation
 npm run dev -- ai chat                    # Interactive AI chat
 npm run dev -- ai stats                   # AI usage statistics
@@ -909,7 +909,7 @@ This is the ultra-minimal template repository. For development:
 
 | Component | Details |
 |-----------|---------|
-| **🚀 Version** | v2.6.0 Enterprise Edition with Anthropic SDK |
+| **🚀 Version** | v2.7.0 Enterprise Edition with Anthropic SDK |
 | **🔷 Language** | TypeScript with strict enterprise configuration |
 | **🤖 AI Integration** | Native Anthropic SDK with streaming support |
 | **🎯 Status** | Production Ready - Validation Score 100/100 |
@@ -941,7 +941,7 @@ This is the ultra-minimal template repository. For development:
 
 ## 🤖 AI Features Summary
 
-CES v2.6.0 brings the power of Claude directly to your development workflow:
+CES v2.7.0 brings the power of Claude directly to your development workflow:
 
 - **Direct API Access**: Native Claude integration without needing Claude Code CLI for AI tasks
 - **Code Analysis**: Security, performance, quality, and bug detection

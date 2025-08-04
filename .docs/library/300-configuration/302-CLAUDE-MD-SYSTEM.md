@@ -72,12 +72,12 @@ npm run dev -- ai ask --model claude-3-opus-20240229 "Complex analysis task"
 ### **🔍 Code Analysis**
 ```bash
 # Comprehensive code analysis
-npm run dev -- ai analyze src/index.ts --type security
-npm run dev -- ai analyze src/config/ --type performance
+npm run dev -- ai analyze .src/index.ts --type security
+npm run dev -- ai analyze .src/config/ --type performance
 npm run dev -- ai analyze . --type quality
 
 # Multi-file project analysis
-npm run dev -- ai analyze src/cli/*.ts src/config/*.ts --type all
+npm run dev -- ai analyze .src/cli/*.ts .src/config/*.ts --type all
 ```
 
 ### **⚡ Code Generation**
@@ -249,7 +249,7 @@ npm run type-check   # TypeScript checking
 
 ## Project Structure
 ```
-src/
+.src/
 ├── cli/                         # CLI managers and components
 │   ├── AISessionManager.ts     # AI-powered session optimization
 │   ├── AnalyticsManager.ts     # Usage analytics and insights
@@ -511,13 +511,13 @@ npm run dev -- ai ask --model claude-3-opus-20240229 "Complex architectural ques
 ### Code Analysis
 ```bash
 # Security analysis
-npm run dev -- ai analyze src/auth/ --type security
+npm run dev -- ai analyze .src/auth/ --type security
 
 # Performance analysis  
-npm run dev -- ai analyze src/api/routes.ts --type performance
+npm run dev -- ai analyze .src/api/routes.ts --type performance
 
 # Complete project analysis
-npm run dev -- ai analyze src/ --type all
+npm run dev -- ai analyze .src/ --type all
 ```
 
 ### Code Generation
@@ -555,7 +555,7 @@ npm run dev -- start-session
 npm run dev -- profiles --apply fullstack-development
 
 # 3. Analyze existing code
-npm run dev -- ai analyze src/ --type quality
+npm run dev -- ai analyze .src/ --type quality
 
 # 4. Generate new feature
 npm run dev -- ai generate --language typescript --with-tests

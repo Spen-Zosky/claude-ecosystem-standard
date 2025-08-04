@@ -1,8 +1,8 @@
-# 🚀 NODE.JS INSTALLATION GUIDE for CES v2.6.0
+# 🚀 NODE.JS INSTALLATION GUIDE for CES v2.7.0
 
 ## 📋 **SYSTEM REQUIREMENTS**
 
-CES v2.6.0 requires:
+CES v2.7.0 requires:
 - **Node.js**: version >= 18.0.0 
 - **npm**: version >= 8.0.0
 - **System**: Ubuntu/Linux compatible
@@ -204,7 +204,7 @@ npm install
 npx tsx --version
 ```
 
-### **3. Test CES v2.6.0**
+### **3. Test CES v2.7.0**
 ```bash
 # Test compilation
 npm run build
@@ -230,7 +230,7 @@ npm install tsx --save-dev
 npm install -g tsx
 
 # Use npx as alternative
-npx tsx src/index.ts --help
+npx tsx .src/index.ts --help
 ```
 
 ### **Error: "Permission denied"**
@@ -268,9 +268,9 @@ cat package.json
 - [ ] All dependencies installed correctly
 - [ ] TypeScript compiles without errors
 - [ ] tsx/ts-node work for development
-- [ ] CES v2.6.0 commands are accessible
+- [ ] CES v2.7.0 commands are accessible
 - [ ] Basic test of new features passes
 
 ---
 
-**🎉 Once Node.js installation is complete, CES v2.6.0 with all 4 new features (AI, Analytics, Cloud, Quick Commands) will be fully operational!**
+**🎉 Once Node.js installation is complete, CES v2.7.0 with all 4 new features (AI, Analytics, Cloud, Quick Commands) will be fully operational!**

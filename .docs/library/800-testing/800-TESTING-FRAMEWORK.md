@@ -1,4 +1,4 @@
-# 🧪 COMPLETE TESTING GUIDE CES v2.6.0
+# 🧪 COMPLETE TESTING GUIDE CES v2.7.0
 
 ## ⚠️ **PREREQUISITI SISTEMA**
 
@@ -16,7 +16,7 @@ npm install
 npm install -g tsx
 
 # Alternativa: usare npx
-npx tsx src/index.ts --help
+npx tsx .src/index.ts --help
 ```
 
 ### **2. Compilazione TypeScript**
@@ -122,14 +122,14 @@ npm run dev -- quick --cheat
 npm install -g tsx
 
 # Soluzione 2: Usare npx
-npx tsx src/index.ts analytics --dashboard
+npx tsx .src/index.ts analytics --dashboard
 
 # Soluzione 3: Compilare e usare Node
 npm run build
 node dist/index.js analytics --dashboard
 
 # Soluzione 4: Usare ts-node
-npx ts-node src/index.ts analytics --dashboard
+npx ts-node .src/index.ts analytics --dashboard
 ```
 
 ### **Problema: Dipendenze mancanti**
@@ -274,4 +274,4 @@ ls .claude/cloud/config.json    # Cloud configuration
 
 ---
 
-**✅ Una volta risolti i problemi di ambiente, tutti i test confermeranno che le 4 implementazioni v2.6.0 funzionano perfettamente!**
+**✅ Una volta risolti i problemi di ambiente, tutti i test confermeranno che le 4 implementazioni v2.7.0 funzionano perfettamente!**

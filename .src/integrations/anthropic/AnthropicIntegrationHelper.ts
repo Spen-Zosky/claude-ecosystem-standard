@@ -1,6 +1,6 @@
 /**
  * Anthropic Integration Helper - Smart Execution and Project Analysis
- * CES v2.6.0 Enterprise Edition
+ * CES v2.7.0 Enterprise Edition
  */
 
 import { AnthropicSDKManager } from './AnthropicSDKManager.js';

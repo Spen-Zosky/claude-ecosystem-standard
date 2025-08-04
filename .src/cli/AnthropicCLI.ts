@@ -1,6 +1,6 @@
 /**
  * Anthropic CLI Commands - Interactive AI Integration
- * CES v2.6.0 Enterprise Edition
+ * CES v2.7.0 Enterprise Edition
  */
 
 import { Command } from 'commander';

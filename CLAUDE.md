@@ -249,7 +249,7 @@ npm run type-check   # TypeScript checking
 
 ## Project Structure
 ```
-src/
+.src/
 ├── cli/                         # CLI managers and components
 │   ├── AISessionManager.ts     # AI-powered session optimization
 │   ├── AnalyticsManager.ts     # Usage analytics and insights

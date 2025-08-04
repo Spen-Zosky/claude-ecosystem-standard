@@ -233,7 +233,7 @@ stateDiagram-v2
 #!/bin/bash
 # test-dual-claude.sh - Test suite per sistema doppio CLAUDE.md
 # Versione: 1.0.0
-# Compatibilità: CES v2.5.0+
+# Compatibilità: CES v2.7.0+
 
 set -e
 

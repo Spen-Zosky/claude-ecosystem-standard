@@ -38,7 +38,7 @@ my-project-01/                 # Progetto utente
 #!/bin/bash
 # integrate.sh - Integrazione CES in progetti ospite
 # Versione: 1.0.0
-# Compatibilità: CES v2.5.0+
+# Compatibilità: CES v2.7.0+
 
 set -e
 

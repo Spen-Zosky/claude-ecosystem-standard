@@ -1,5 +1,5 @@
 /**
- * Enterprise Logging System for CES v2.6.0
+ * Enterprise Logging System for CES v2.7.0
  * 
  * Provides structured, configurable logging with:
  * - Multiple transports (file, console)
