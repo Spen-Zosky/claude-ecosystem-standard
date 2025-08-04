@@ -27,20 +27,20 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "./.dist",
-    "rootDir": "./.src",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "removeComments": false,
     "importHelpers": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": ["./.node_modules/@types", "./.src/types"]
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": [
-    ".src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    ".node_modules",
-    ".dist",
+    "node_modules",
+    "dist",
     "**/*.test.ts",
     "**/*.spec.ts"
   ],
