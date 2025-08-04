@@ -1,0 +1,212 @@
+# CES v2.7.0 Configuration Guide
+
+*Auto-extracted from codebase*
+
+## Environment Variables
+
+- 196:    const mode = process.env.CES_OPERATION_MODE || 'standalone';
+- 201:      const projectRoot = process.env.CES_PROJECT_ROOT || path.dirname(cesRoot);
+- 207:        claudeDir: process.env.CES_CLAUDE_DIR || path.join(projectRoot, '.claude')
+- 393:        apiKey: process.env.ANTHROPIC_API_KEY,
+- 407:    return process.env[key] || defaultValue;
+- 414:    const value = process.env[key];
+- 430:    const value = process.env[key];
+
+## Configuration Interfaces
+
+export interface IntegrationConfig {
+  mode: 'standalone' | 'integrated';
+  projectRoot: string;
+  cesRoot: string;
+  operationRoot: string;
+  claudeDir: string;
+}
+
+export interface CESEnvironmentConfig {
+  // Core System
+  nodeEnv: 'development' | 'staging' | 'production';
+  cesVersion: string;
+  projectName: string;
+  instanceId: string;
+
+  // Session Management
+  sessionTimeout: number;
+  maxSessions: number;
+  sessionCleanupInterval: number;
+
+  // Timer and Monitoring
+  contextAnalysisInterval: number;
+  recommendationsInterval: number;
+  healthCheckInterval: number;
+  metricsCollectionInterval: number;
+
+  // Retry and Recovery
+  maxRetries: number;
+  retryDelay: number;
+
+## Environment Template
+
+```bash
+# Claude Ecosystem Standard (CES) v2.7.0 Portable Edition Configuration Template
+# Copy this file to .env and configure your environment-specific values
+
+# ================================
+# CORE SYSTEM CONFIGURATION
+# ================================
+
+# Project and Environment
+NODE_ENV=development
+CES_VERSION=2.7.0
+CES_PROJECT_NAME=claude-ecosystem-standard
+CES_INSTANCE_ID=
+
+# Session Management
+CES_SESSION_TIMEOUT=3600000
+CES_MAX_SESSIONS=10
+CES_SESSION_CLEANUP_INTERVAL=300000
+
+# Timer and Monitoring
+CES_CONTEXT_ANALYSIS_INTERVAL=30000
+CES_RECOMMENDATIONS_INTERVAL=300000
+CES_HEALTH_CHECK_INTERVAL=60000
+CES_METRICS_COLLECTION_INTERVAL=60000
+
+# Retry and Recovery
+CES_MAX_RETRIES=3
+CES_RETRY_DELAY=5000
+CES_RECOVERY_TIMEOUT=10000
+CES_MAX_RECOVERY_ATTEMPTS=3
+
+# ================================
+# ANALYTICS CONFIGURATION
+# ================================
+
+CES_ANALYTICS_ENABLED=true
+CES_ANALYTICS_BATCH_SIZE=50
+CES_ANALYTICS_MAX_BUFFER_SIZE=1000
+CES_ANALYTICS_RETENTION_DAYS=30
+CES_ANALYTICS_EXPORT_FORMAT=json
+
+# ================================
+# AI SESSION CONFIGURATION
+# ================================
+
+CES_AI_SESSION_ENABLED=true
+CES_AI_LEARNING_MODE=standard
+CES_AI_ADAPTATION_LEVEL=standard
+CES_AI_PREDICTION_ACCURACY=80
+CES_AI_AUTO_OPTIMIZATION=true
+CES_AI_SMART_RECOMMENDATIONS=true
+CES_AI_CONTEXT_AWARENESS=true
+
+# ================================
+# CLOUD INTEGRATION
+# ================================
+
+CES_CLOUD_ENABLED=false
+CES_CLOUD_PROVIDER=github
+CES_CLOUD_ENCRYPTION_ENABLED=true
+CES_CLOUD_AUTO_SYNC=false
+CES_CLOUD_SYNC_INTERVAL=1800000
+CES_CLOUD_BACKUP_RETENTION=7
+
+# ================================
+# LOGGING CONFIGURATION
+# ================================
+
+CES_LOG_LEVEL=info
+CES_LOG_FORMAT=json
+CES_LOG_MAX_FILES=5
+CES_LOG_MAX_SIZE=10MB
+CES_LOG_DATE_PATTERN=YYYY-MM-DD
+
+# ================================
+# NETWORK AND PORTS
+# ================================
+
+CES_DEFAULT_PORT=3000
+CES_MONITOR_PORT=3001
+CES_DASHBOARD_PORT=3002
+CES_HOST=localhost
+
+# ================================
+# SECURITY CONFIGURATION
+# ================================
+
+CES_ENABLE_AUTH=false
+CES_JWT_SECRET=
+CES_JWT_EXPIRY=24h
+CES_CORS_ENABLED=true
+CES_RATE_LIMIT_WINDOW=900000
+CES_RATE_LIMIT_MAX=100
+
+# ================================
+# DATABASE AND STORAGE
+# ================================
+
+CES_DATA_DIR=.ces-data
+CES_LOGS_DIR=.ces-logs
+CES_CACHE_DIR=.ces-cache
+CES_TEMP_DIR=.ces-temp
+CES_BACKUP_DIR=.ces-backups
+
+# ================================
+# DEVELOPMENT AND DEBUG
+# ================================
+
+CES_DEBUG_ENABLED=false
+CES_VERBOSE_LOGGING=false
+CES_PERFORMANCE_MONITORING=true
+CES_ERROR_STACK_TRACE=true
+
+# ================================
+# MCP SERVERS CONFIGURATION
+# ================================
+
+CES_MCP_SERVERS_ENABLED=true
+CES_MCP_SERVERS_TIMEOUT=30000
+CES_MCP_SERVERS_RETRY_ATTEMPTS=3
+
+# ================================
+# AUTO RECOVERY CONFIGURATION
+# ================================
+
+CES_AUTO_RECOVERY_ENABLED=true
+CES_AUTO_RESTART_ENABLED=true
+CES_AUTO_CLEANUP_ENABLED=true
+CES_RECOVERY_CHECK_INTERVAL=10000
+CES_MAX_RESTART_ATTEMPTS=3
+
+# ================================
+# DASHBOARD CONFIGURATION
+# ================================
+
+CES_DASHBOARD_ENABLED=true
+CES_DASHBOARD_REFRESH_INTERVAL=2000
+CES_DASHBOARD_COMPACT_MODE=false
+CES_DASHBOARD_SHOW_GRAPHS=true
+
+# ================================
+# ANTHROPIC API CONFIGURATION
+# ================================
+
+# Anthropic API Key (required for AI features)
+# Get your key from: https://console.anthropic.com/
+ANTHROPIC_API_KEY=your-api-key-here
+
+# Anthropic Model Configuration
+CES_ANTHROPIC_MODEL=claude-3-sonnet-20240229
+CES_ANTHROPIC_MAX_TOKENS=4096
+CES_ANTHROPIC_TEMPERATURE=0.7
+CES_ANTHROPIC_TIMEOUT=30000
+CES_ANTHROPIC_MAX_RETRIES=2
+
+# ================================
+# PATHS CONFIGURATION (Auto-detected)
+# ================================
+# These are automatically populated by the system
+# CES_PROJECT_ROOT=
+# CES_SRC_DIR=
+# CES_DIST_DIR=
+# CES_NODE_MODULES_DIR=
+# CES_CLAUDE_DIR=```

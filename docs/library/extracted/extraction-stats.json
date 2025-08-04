@@ -1,0 +1,23 @@
+{
+    "extraction_date": "2025-08-04T18:06:36+00:00",
+    "ces_version": "2.7.0",
+    "extractor_version": "1.0.0",
+    "statistics": {
+        "source_files": {
+            "typescript": 28,
+            "javascript": 0,
+            "configuration": 48,
+            "documentation": 79
+        },
+        "extracted_files": {
+            "markdown": 8,
+            "total_size": "248K"
+        },
+        "content_analysis": {
+            "cli_commands": 0,
+            "config_variables": 0,
+            "api_methods": 391,
+            "interfaces": 94
+        }
+    }
+}
