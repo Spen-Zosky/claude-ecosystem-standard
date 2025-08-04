@@ -14,7 +14,7 @@ import {
     HealthCheck,
     ConfigError,
     LANGUAGE_PATTERNS
-} from '../types/index.js';
+} from '../types/index';
 
 export class ConfigManager {
     private projectRoot: string;

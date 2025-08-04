@@ -129,7 +129,7 @@ export class PathResolver {
   private detectFromModuleLocation(): string | null {
     try {
       // Get the directory of this file
-      let currentDir = __dirname;
+      const currentDir = __dirname;
       
       // Navigate up to find CES root
       // From src/utils/ we need to go up 2 levels to reach CES root
