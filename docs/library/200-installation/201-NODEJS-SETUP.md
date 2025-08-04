@@ -230,7 +230,7 @@ npm install tsx --save-dev
 npm install -g tsx
 
 # Use npx as alternative
-npx tsx .src/index.ts --help
+npx tsx src/index.ts --help
 ```
 
 ### **Error: "Permission denied"**

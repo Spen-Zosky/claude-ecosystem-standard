@@ -3,7 +3,7 @@
 
 set -e
 
-DOCS_DIR=".docs/library"
+DOCS_DIR="docs/library"
 ERRORS=0
 WARNINGS=0
 
@@ -75,7 +75,7 @@ MISSED_CONTENT=0
 
 # Check if important files exist in project but not in documentation
 for pattern in "INSTALL" "SETUP" "CONFIG" "DEPLOY" "TEST" "API" "SECURITY"; do
-    found_in_project=$(find . -name "*$pattern*" -type f ! -path "*/.docs/library/*" ! -path "*/node_modules/*" ! -path "*/.backups/*" | wc -l)
+    found_in_project=$(find . -name "*$pattern*" -type f ! -path "*/docs/library/*" ! -path "*/node_modules/*" ! -path "*/.backups/*" | wc -l)
     found_in_docs=$(find "$DOCS_DIR" -name "*$pattern*" -type f | wc -l)
     
     if [ $found_in_project -gt $found_in_docs ]; then

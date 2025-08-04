@@ -12,7 +12,7 @@ Il sistema CES v2.7.0 implementa un framework di logging enterprise-grade basato
 
 ```typescript
 // Struttura logging enterprise
-.src/utils/Logger.ts              # Framework logging principale
+src/utils/Logger.ts              # Framework logging principale
 .claude/logs/                    # Directory log centralizzata
 ├── ces-combined.log             # Log completi sistema
 ├── ces-error.log                # Log errori dedicati

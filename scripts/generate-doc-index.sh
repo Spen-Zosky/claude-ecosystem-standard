@@ -3,7 +3,7 @@
 
 set -e
 
-DOCS_DIR=".docs/library"
+DOCS_DIR="docs/library"
 INDEX_FILE="$DOCS_DIR/000-overview/001-INDEX-DOCUMENTATION.md"
 
 # Create index header

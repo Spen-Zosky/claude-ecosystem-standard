@@ -184,7 +184,7 @@ your-project/
 ├── .env                        # ← Environment config (project-level)
 ├── ces/                        # ← CES isolated installation
 │   ├── .claude -> ../.claude   # ← Symlink to project .claude
-│   ├── .src/
+│   ├── src/
 │   │   ├── cli/
 │   │   ├── config/
 │   │   └── session/

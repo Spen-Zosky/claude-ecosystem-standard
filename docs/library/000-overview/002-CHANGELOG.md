@@ -304,5 +304,5 @@ This release transforms CES into a Fortune 500 grade enterprise platform with co
 
 For enterprise support, deployment assistance, or custom implementations:
 - Contact: enterprise@anthropic.com
-- Documentation: `.docs/` directory
+- Documentation: `docs/` directory
 - Professional Services: Available for Fortune 500 implementations

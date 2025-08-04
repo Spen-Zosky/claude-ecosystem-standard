@@ -41,12 +41,12 @@ graph TB
 - **Features**: Backup creation, validation, error handling, metadata generation
 - **Execution**: Called by TypeScript utilities and direct CLI commands
 
-#### 2. **ClaudeDocManager** (`.src/utils/ClaudeDocManager.ts`)
+#### 2. **ClaudeDocManager** (`src/utils/ClaudeDocManager.ts`)
 - **Purpose**: Enterprise-grade TypeScript utility for document management
 - **Features**: File watching, caching, validation, backup/restore
 - **Pattern**: Singleton for consistent state management
 
-#### 3. **Documentation Commands** (`.src/cli/DocumentationCommands.ts`)
+#### 3. **Documentation Commands** (`src/cli/DocumentationCommands.ts`)
 - **Purpose**: CLI interface for documentation operations
 - **Features**: Interactive commands, colored output, auto-regeneration
 - **Integration**: Integrated into main CLIManager for seamless UX
@@ -521,10 +521,10 @@ class ClaudeDocManager {
 
 ## 📄 Related Documentation
 
-- **[CES Architecture Overview](.docs/ARCHITECTURE-OVERVIEW.md)** - System architecture details
-- **[CLI Commands Reference](.docs/CLI-COMMANDS-REFERENCE.md)** - Complete CLI documentation  
-- **[Testing Guide](.docs/TESTING-GUIDE.md)** - Testing procedures and frameworks
-- **[Troubleshooting Guide](.docs/TROUBLESHOOTING-GUIDE.md)** - Problem resolution procedures
+- **[CES Architecture Overview](docs/ARCHITECTURE-OVERVIEW.md)** - System architecture details
+- **[CLI Commands Reference](docs/CLI-COMMANDS-REFERENCE.md)** - Complete CLI documentation  
+- **[Testing Guide](docs/TESTING-GUIDE.md)** - Testing procedures and frameworks
+- **[Troubleshooting Guide](docs/TROUBLESHOOTING-GUIDE.md)** - Problem resolution procedures
 
 ---
 

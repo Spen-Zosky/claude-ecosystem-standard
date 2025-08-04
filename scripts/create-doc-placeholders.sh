@@ -3,7 +3,7 @@
 
 set -e
 
-DEST_DIR=".docs/library"
+DEST_DIR="docs/library"
 
 # Template for new document
 create_placeholder() {

@@ -14,8 +14,8 @@ queries:
 
 # 📁 Analysis paths
 paths:
-  - ".src/**/*.ts"
-  - ".src/**/*.js"
+  - "src/**/*.ts"
+  - "src/**/*.js"
   - "scripts/**/*.js"
   - "scripts/**/*.sh"
 

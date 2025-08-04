@@ -400,7 +400,7 @@ After installation, your project will have:
 your-project/
 ├── 📁 .ces.config/         # CES configuration & validation
 ├── 📁 .ces.session/        # Session management & persistence  
-├── 📁 .ces.docs/          # Project documentation
+├── 📁 .cesdocs/          # Project documentation
 ├── 📁 .ces.backup/        # Automated backup system
 ├── 📁 .ces.logs/          # System & session logs
 ├── 📁 .ces.cache/         # Cache & temporary files
@@ -890,7 +890,7 @@ After installation, comprehensive documentation will be available:
 - **CLAUDE.md**: Main project documentation with Anthropic integration
 - **.ces.session/README-PERSISTENCE.md**: Session management guide  
 - **.ces.session/DEPLOYMENT-GUIDE.md**: Deployment instructions
-- **.ces.docs/**: Complete system documentation
+- **.cesdocs/**: Complete system documentation
 - **examples/anthropic-usage.ts**: Comprehensive AI integration examples
 
 ## 🤝 Contributing

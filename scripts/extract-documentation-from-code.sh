@@ -3,7 +3,7 @@
 
 set -e
 
-OUTPUT_DIR=".docs/library/extracted"
+OUTPUT_DIR="docs/library/extracted"
 mkdir -p "$OUTPUT_DIR"
 
 echo "🔍 Extracting documentation from code..."

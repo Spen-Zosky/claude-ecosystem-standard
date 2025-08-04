@@ -5,25 +5,25 @@
 * @ces-team
 
 # 📁 Core source code
-/.src/ @ces-team @anthropic-integration-lead
-/.src/index.ts @ces-lead @ces-team
+/src/ @ces-team @anthropic-integration-lead
+/src/index.ts @ces-lead @ces-team
 
 # 🤖 Anthropic AI Integration
-/.src/integrations/anthropic/ @anthropic-integration-lead @ces-team
-/.src/cli/AnthropicCLI.ts @anthropic-integration-lead @ces-team
-/.src/cli/AISessionManager.ts @anthropic-integration-lead @ces-team
+/src/integrations/anthropic/ @anthropic-integration-lead @ces-team
+/src/cli/AnthropicCLI.ts @anthropic-integration-lead @ces-team
+/src/cli/AISessionManager.ts @anthropic-integration-lead @ces-team
 
 # ⚙️ Configuration & Environment
-/.src/config/ @ces-lead @security-lead
-/.src/config/EnvironmentConfig.ts @ces-lead @ces-team
+/src/config/ @ces-lead @security-lead
+/src/config/EnvironmentConfig.ts @ces-lead @ces-team
 .env.template @security-lead @ces-team
 
 # 🛡️ Security & Auth
-/.src/utils/Logger.ts @security-lead @ces-team
-/.src/session/SessionManager.ts @ces-lead @security-lead
+/src/utils/Logger.ts @security-lead @ces-team
+/src/session/SessionManager.ts @ces-lead @security-lead
 
 # 🧪 Testing
-/.src/__tests__/ @ces-team
+/src/__tests__/ @ces-team
 jest.config.js @ces-team
 tsconfig.json @ces-team
 
@@ -66,22 +66,22 @@ docker-compose.yml @devops-lead @ces-team
 /.claude/agents/ @anthropic-integration-lead @ces-team
 
 # 📊 Analytics & Monitoring
-/.src/cli/AnalyticsManager.ts @data-engineer @ces-team
-/.src/cli/DashboardManager.ts @frontend-lead @ces-team
-/.src/cli/SessionMonitor.ts @devops-lead @ces-team
+/src/cli/AnalyticsManager.ts @data-engineer @ces-team
+/src/cli/DashboardManager.ts @frontend-lead @ces-team
+/src/cli/SessionMonitor.ts @devops-lead @ces-team
 
 # 🔄 Session & Profile Management
-/.src/cli/SessionProfileManager.ts @ces-lead @ux-lead
-/.src/cli/QuickCommandManager.ts @ux-lead @ces-team
-/.src/cli/AutoTaskManager.ts @ai-engineer @ces-team
+/src/cli/SessionProfileManager.ts @ces-lead @ux-lead
+/src/cli/QuickCommandManager.ts @ux-lead @ces-team
+/src/cli/AutoTaskManager.ts @ai-engineer @ces-team
 
 # 🏥 Auto-Recovery & System
-/.src/cli/AutoRecoveryManager.ts @devops-lead @reliability-engineer
-/.src/cli/SystemCleanupManager.ts @devops-lead @ces-team
-/.src/cli/CLIManager.ts @ces-lead @ux-lead
+/src/cli/AutoRecoveryManager.ts @devops-lead @reliability-engineer
+/src/cli/SystemCleanupManager.ts @devops-lead @ces-team
+/src/cli/CLIManager.ts @ces-lead @ux-lead
 
 # ☁️ Cloud Integration
-/.src/cli/CloudIntegrationManager.ts @cloud-architect @security-lead
+/src/cli/CloudIntegrationManager.ts @cloud-architect @security-lead
 
 # 🎨 Frontend & UI (if applicable)
 *.css @frontend-lead @design-lead
@@ -108,7 +108,7 @@ docker-compose.yml @devops-lead @ces-team
 
 # 📊 Data & Analytics
 /docs/ @technical-writer @data-analyst
-/.examples/ @technical-writer @developer-advocate
+/examples/ @technical-writer @developer-advocate
 
 # 🌍 Internationalization (if applicable)
 /locales/ @i18n-lead @community-lead

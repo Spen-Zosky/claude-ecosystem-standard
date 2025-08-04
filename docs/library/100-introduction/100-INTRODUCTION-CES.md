@@ -24,7 +24,7 @@ The system is designed with:
 ### 💎 Core Components
 
 ```
-.src/
+src/
 ├── cli/                         # Enterprise CLI managers
 │   ├── AISessionManager.ts     # AI session optimization
 │   ├── AnalyticsManager.ts     # Usage analytics and insights

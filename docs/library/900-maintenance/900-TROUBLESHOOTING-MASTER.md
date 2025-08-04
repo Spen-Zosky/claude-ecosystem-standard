@@ -148,7 +148,7 @@ npm run dev -- config validate
 node -e "console.log(require.resolve('./dist/index.js'))"
 
 # Verify file extensions
-find .src/ -name "*.ts" -exec grep -l "from.*\.js'" {} \;
+find src/ -name "*.ts" -exec grep -l "from.*\.js'" {} \;
 ```
 
 **Solutions**:

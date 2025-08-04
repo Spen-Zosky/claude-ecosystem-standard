@@ -79,7 +79,7 @@ CES v2.7.0 is a TypeScript-first enterprise development framework with native An
 ### 1. CLI Layer
 
 #### AnthropicCLI (NEW v2.7.0)
-**File**: `.src/cli/AnthropicCLI.ts`
+**File**: `src/cli/AnthropicCLI.ts`
 
 ```typescript
 export class AnthropicCLI {
@@ -103,7 +103,7 @@ export class AnthropicCLI {
 - Error handling and recovery
 
 #### CLIManager
-**File**: `.src/cli/CLIManager.ts`
+**File**: `src/cli/CLIManager.ts`
 
 **Responsibilities**:
 - Main CLI coordination
@@ -120,7 +120,7 @@ export class AnthropicCLI {
 ### 2. Business Logic Layer
 
 #### SessionManager
-**File**: `.src/session/SessionManager.ts`
+**File**: `src/session/SessionManager.ts`
 
 ```typescript
 export class SessionManager {
@@ -138,7 +138,7 @@ export class SessionManager {
 - Integration with AI usage tracking
 
 #### AnalyticsManager
-**File**: `.src/cli/AnalyticsManager.ts`
+**File**: `src/cli/AnalyticsManager.ts`
 
 **Responsibilities**:
 - Usage data collection
@@ -147,7 +147,7 @@ export class SessionManager {
 - Report generation and export
 
 #### AutoRecoveryManager
-**File**: `.src/cli/AutoRecoveryManager.ts`
+**File**: `src/cli/AutoRecoveryManager.ts`
 
 **Responsibilities**:
 - System health monitoring
@@ -158,7 +158,7 @@ export class SessionManager {
 ### 3. AI Integration Layer (NEW v2.7.0)
 
 #### AnthropicSDKManager
-**File**: `.src/integrations/anthropic/AnthropicSDKManager.ts`
+**File**: `src/integrations/anthropic/AnthropicSDKManager.ts`
 
 ```typescript
 export class AnthropicSDKManager extends EventEmitter {
@@ -179,7 +179,7 @@ export class AnthropicSDKManager extends EventEmitter {
 - Streaming response coordination
 
 #### AnthropicIntegrationHelper
-**File**: `.src/integrations/anthropic/AnthropicIntegrationHelper.ts`
+**File**: `src/integrations/anthropic/AnthropicIntegrationHelper.ts`
 
 ```typescript
 export class AnthropicIntegrationHelper {
@@ -198,7 +198,7 @@ export class AnthropicIntegrationHelper {
 ### 4. Infrastructure Layer
 
 #### ConfigManager
-**File**: `.src/config/ConfigManager.ts`
+**File**: `src/config/ConfigManager.ts`
 
 ```typescript
 export class ConfigManager {
@@ -218,7 +218,7 @@ export class ConfigManager {
 - Hot-reloading support
 
 #### Logger
-**File**: `.src/utils/Logger.ts`
+**File**: `src/utils/Logger.ts`
 
 ```typescript
 export class LoggerService {
@@ -237,7 +237,7 @@ export class LoggerService {
 - Multiple transport support
 
 #### PathResolver
-**File**: `.src/utils/PathResolver.ts`
+**File**: `src/utils/PathResolver.ts`
 
 **Responsibilities**:
 - Dynamic project root detection
