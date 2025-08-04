@@ -35,14 +35,14 @@ on:
       - 'src/**/*.ts'
       - 'CLAUDE.md'
       - 'README.md'
-      - '.docs/**'
+      - 'docs/**'
   pull_request:
     branches: [main]
     paths:
       - 'src/**/*.ts'
       - 'CLAUDE.md'
       - 'README.md'
-      - '.docs/**'
+      - 'docs/**'
 
 env:
   NODE_VERSION: '20.x'

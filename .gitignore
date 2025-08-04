@@ -93,6 +93,7 @@ backups/
 .src/
 .scripts/
 .docs/
+.examples/
 
 # Claude Code CLI - keep configuration and structure
 .claude/*

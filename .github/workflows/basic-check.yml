@@ -10,7 +10,7 @@ jobs:
       - name: ✅ Repository check
         run: |
           echo "Repository checked successfully"
-          echo "Files in .src directory:"
-          ls -la .src/
+          echo "Files in src directory:"
+          ls -la src/
           echo "Node version:"
           node --version

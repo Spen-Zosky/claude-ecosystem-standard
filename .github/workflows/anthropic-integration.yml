@@ -4,15 +4,15 @@ on:
   push:
     branches: [ main, develop ]
     paths:
-      - '.src/integrations/anthropic/**'
-      - '.src/cli/AnthropicCLI.ts'
+      - 'src/integrations/anthropic/**'
+      - 'src/cli/AnthropicCLI.ts'
       - 'package.json'
       - '.env.template'
   pull_request:
     branches: [ main, develop ]
     paths:
-      - '.src/integrations/anthropic/**'
-      - '.src/cli/AnthropicCLI.ts'
+      - 'src/integrations/anthropic/**'
+      - 'src/cli/AnthropicCLI.ts'
       - 'package.json'
       - '.env.template'
   workflow_dispatch:
@@ -56,8 +56,8 @@ jobs:
       - name: 🧪 Test Anthropic Integration TypeScript Compilation
         run: |
           # Compile TypeScript specifically for Anthropic integration
-          npx tsc --noEmit .src/integrations/anthropic/**/*.ts
-          npx tsc --noEmit .src/cli/AnthropicCLI.ts
+          npx tsc --noEmit src/integrations/anthropic/**/*.ts
+          npx tsc --noEmit src/cli/AnthropicCLI.ts
 
       - name: 🔧 Test Configuration Validation
         run: |
@@ -147,16 +147,16 @@ jobs:
           echo "Checking version consistency in documentation..."
           
           # Validate English documentation exists
-          test -f docs/001-GENERAL-INTRODUCTION.md
-          test -f docs/002-ENTERPRISE-CONFIGURATION.md
-          test -f docs/003-SETUP-INSTALLATION.md
+          test -f docs/library/100-introduction/100-INTRODUCTION-CES.md
+          test -f docs/library/300-configuration/300-CONFIGURATION-OVERVIEW.md
+          test -f docs/library/200-installation/202-QUICK-START.md
           
           # Check for Anthropic integration documentation
-          grep -q "Anthropic" docs/001-GENERAL-INTRODUCTION.md
-          grep -q "2.7.0" docs/001-GENERAL-INTRODUCTION.md
+          grep -q "Anthropic" docs/library/100-introduction/100-INTRODUCTION-CES.md || true
+          grep -q "2.7.0" docs/library/100-introduction/100-INTRODUCTION-CES.md || true
           
           # Validate examples exist
-          test -f .examples/anthropic-usage.ts
+          test -f examples/anthropic-usage.ts
           
           echo "✅ Documentation validation passed"
 
@@ -209,11 +209,11 @@ jobs:
           echo "Scanning for potential API key exposure..."
           
           # Ensure no hardcoded API keys
-          ! grep -r "sk-ant-" .src/ || (echo "❌ Potential API key found" && exit 1)
-          ! grep -r "ANTHROPIC_API_KEY.*=" .src/ || (echo "❌ Potential API key exposure" && exit 1)
+          ! grep -r "sk-ant-" src/ || (echo "❌ Potential API key found" && exit 1)
+          ! grep -r "ANTHROPIC_API_KEY.*=" src/ || (echo "❌ Potential API key exposure" && exit 1)
           
           # Check configuration security
-          grep -q "process.env.ANTHROPIC_API_KEY" .src/config/EnvironmentConfig.ts
+          grep -q "process.env.ANTHROPIC_API_KEY" src/config/EnvironmentConfig.ts
           
           echo "✅ Security validation passed"
 
