@@ -1,6 +1,7 @@
-name: 🚀 Advanced CI/CD Pipeline
+name: 🚀 Advanced CI/CD Pipeline (Disabled)
 
 on:
+  # Temporarily disabled - overly complex for current project needs
   workflow_dispatch:
     inputs:
       pipeline-type:

@@ -1,4 +1,4 @@
-name: 🔗 Integration Ecosystem
+name: 🔗 Integration Ecosystem (Disabled)
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ on:
           - api-management
           - webhook-handlers
           - third-party-auth
-          - mcp-servers
+          - mcp-servers  
           - anthropic-ecosystem
           - all
       environment:
@@ -29,13 +29,14 @@ on:
         required: false
         default: false
         type: boolean
-  schedule:
-    - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM
-  push:
-    branches: [main]
-    paths:
-      - 'src/integrations/**'
-      - '.github/workflows/integration-ecosystem.yml'
+  # Temporarily disabled - overly complex
+  # schedule:
+  #   - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'src/integrations/**'
+  #     - '.github/workflows/integration-ecosystem.yml'
 
 env:
   NODE_VERSION: '20.x'

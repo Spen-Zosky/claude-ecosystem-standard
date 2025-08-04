@@ -1,4 +1,4 @@
-name: 🏢 Enterprise Integration
+name: 🏢 Enterprise Integration (Disabled)
 
 on:
   workflow_dispatch:
@@ -35,13 +35,14 @@ on:
           - HIPAA
           - PCI-DSS
           - Custom
-  schedule:
-    - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/enterprise-integration.yml'
-      - 'src/cli/CloudIntegrationManager.ts'
+  # Temporarily disabled - overly complex
+  # schedule:
+  #   - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - '.github/workflows/enterprise-integration.yml'
+  #     - 'src/cli/CloudIntegrationManager.ts'
 
 env:
   NODE_VERSION: '20.x'

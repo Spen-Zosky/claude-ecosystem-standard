@@ -1,11 +1,12 @@
-name: 🧪 Release Candidate
+name: 🧪 Release Candidate (Disabled)
 
 on:
-  push:
-    branches: [develop, release/*]
-  pull_request:
-    branches: [main]
-    types: [opened, synchronize, ready_for_review]
+  # Temporarily disabled - overly complex
+  # push:
+  #   branches: [develop, release/*]
+  # pull_request:
+  #   branches: [main]
+  #   types: [opened, synchronize, ready_for_review]
   workflow_dispatch:
     inputs:
       rc-version:

@@ -1,13 +1,14 @@
-name: 🚀 Release Automation
+name: 🚀 Release Automation (Disabled)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'package.json'
-      - 'CLAUDE.md'
-      - 'README.md'
+  # Temporarily disabled - overly complex
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'src/**'
+  #     - 'package.json'
+  #     - 'CLAUDE.md'
+  #     - 'README.md'
   workflow_dispatch:
     inputs:
       release-type:
