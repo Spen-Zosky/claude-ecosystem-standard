@@ -1,0 +1,4 @@
+Configuration file: ./tsconfig.json
+Configuration file: ./.config/version.json
+Configuration file: ./.claude/claude_desktop_config.json
+Configuration file: ./.github/codeql/codeql-config.yml

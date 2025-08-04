@@ -147,13 +147,13 @@ jobs:
           echo "Checking version consistency in documentation..."
           
           # Validate English documentation exists
-          test -f .docs/001-GENERAL-INTRODUCTION.md
-          test -f .docs/002-ENTERPRISE-CONFIGURATION.md
-          test -f .docs/003-SETUP-INSTALLATION.md
+          test -f docs/001-GENERAL-INTRODUCTION.md
+          test -f docs/002-ENTERPRISE-CONFIGURATION.md
+          test -f docs/003-SETUP-INSTALLATION.md
           
           # Check for Anthropic integration documentation
-          grep -q "Anthropic" .docs/001-GENERAL-INTRODUCTION.md
-          grep -q "2.7.0" .docs/001-GENERAL-INTRODUCTION.md
+          grep -q "Anthropic" docs/001-GENERAL-INTRODUCTION.md
+          grep -q "2.7.0" docs/001-GENERAL-INTRODUCTION.md
           
           # Validate examples exist
           test -f .examples/anthropic-usage.ts

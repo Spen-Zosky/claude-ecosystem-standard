@@ -83,7 +83,6 @@ performance-reports/
 
 # Documentation (not needed in container)
 docs/
-.docs/
 *.md
 !package.json
 

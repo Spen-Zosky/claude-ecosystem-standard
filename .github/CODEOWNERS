@@ -107,7 +107,7 @@ docker-compose.yml @devops-lead @ces-team
 /.github/workflows/cd.yml @devops-lead @cloud-architect
 
 # 📊 Data & Analytics
-/.docs/ @technical-writer @data-analyst
+/docs/ @technical-writer @data-analyst
 /.examples/ @technical-writer @developer-advocate
 
 # 🌍 Internationalization (if applicable)

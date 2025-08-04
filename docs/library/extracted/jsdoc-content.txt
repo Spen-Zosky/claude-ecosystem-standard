@@ -1,0 +1,3317 @@
+/*.test.ts',
+    '*
+/*.ts',
+    '!src/*
+/*.test.ts',
+    '!src/*
+
+ * Claude Merge System - EventEmitter-based Utility Helper
+ * Comprehensive system for managing dual Claude documentation with real-time events
+ *
+ * Features:
+ * - EventEmitter-based architecture for real-time notifications
+ * - Configuration conflict detection and resolution
+ * - Cache system for performance optimization
+ * - Advanced file watching with debouncing
+ * - Backup management with retention policies
+ * - Performance metrics and monitoring
+ * - Plugin architecture for extensibility
+ 
+
+ * Main Claude Merge System class with EventEmitter architecture
+ 
+
+     * Initialize the merge system
+     
+
+     * Execute merge operation with full event lifecycle
+     
+
+     * Start file watching with debouncing
+     
+
+     * Handle file changes with debouncing
+     
+
+     * Conflict detection and resolution
+     
+
+     * Cache management
+     
+
+     * Plugin management
+     
+
+     * System status and health
+     
+
+     * Configuration management
+     
+
+     * Shutdown and cleanup
+     
+
+ * CES Portable Path Resolution Utility v2.7.0
+ *
+ * Provides dynamic path detection for portable CES installations.
+ * Auto-detects CES installation location and manages paths dynamically.
+ *
+ * Key Features:
+ * - Auto-detection of CES root from any execution context
+ * - Singleton pattern for global access
+ * - Cross-platform compatibility (Windows/Linux/macOS)
+ * - Multiple fallback strategies for robust detection
+ * - Support for both subdirectory and standalone installations
+ 
+
+     * Comprehensive path detection using multiple strategies
+     
+
+     * Detect CES root from module location
+     
+
+     * Detect CES root using marker files
+     
+
+     * Detect CES root using package.json
+     
+
+     * Validate if a directory is a valid CES root
+     
+
+     * Determine project root based on CES installation type
+     
+
+     * Get CES root directory path
+     
+
+     * Get project root directory path
+     
+
+     * Get path relative to CES root
+     
+
+     * Get path relative to project root
+     
+
+     * Get relative path between two absolute paths
+     
+
+     * Get CES relative path (for project integration)
+     
+
+     * Get detection information for debugging
+     
+
+     * Get all computed paths
+     
+
+     * Check if running in subdirectory installation mode
+     
+
+     * Check if running in standalone installation mode
+     
+
+     * Normalize path for cross-platform compatibility
+     
+
+     * Resolve path relative to CES or project root based on prefix
+     
+
+ * Enterprise Logging System for CES v2.7.0
+ *
+ * Provides structured, configurable logging with:
+ * - Multiple transports (file, console)
+ * - Log rotation and archival
+ * - Environment-based configuration
+ * - Structured JSON logging
+ * - Performance metrics integration
+ 
+
+     * Log info message with optional context
+     
+
+     * Log warning message with optional context
+     
+
+     * Log error message with optional context
+     
+
+     * Log debug message with optional context
+     
+
+     * Log performance metrics
+     
+
+     * Log session events
+     
+
+     * Log system events
+     
+
+     * Log security events
+     
+
+     * Generic log method
+     
+
+     * Create child logger with default context
+     
+
+     * Get recent metrics for monitoring
+     
+
+     * Clear metrics buffer
+     
+
+     * Flush all logs
+     
+
+     * Graceful shutdown
+     
+
+ * Component-specific logger with default context
+ 
+
+ * CES Portable Path Resolution Utility v2.7.0
+ *
+ * Provides dynamic path detection for portable CES installations.
+ * Auto-detects CES installation location and manages paths dynamically.
+ *
+ * Key Features:
+ * - Auto-detection of CES root from any execution context
+ * - Singleton pattern for global access
+ * - Cross-platform compatibility (Windows/Linux/macOS)
+ * - Multiple fallback strategies for robust detection
+ * - Support for both subdirectory and standalone installations
+ 
+
+     * Comprehensive path detection using multiple strategies
+     
+
+     * Detect CES root from module location
+     
+
+     * Detect CES root using marker files
+     
+
+     * Detect CES root using package.json
+     
+
+     * Validate if a directory is a valid CES root
+     
+
+     * Determine project root based on CES installation type
+     
+
+     * Get CES root directory path
+     
+
+     * Get project root directory path
+     
+
+     * Get path relative to CES root
+     
+
+     * Get path relative to project root
+     
+
+     * Get relative path between two absolute paths
+     
+
+     * Get CES relative path (for project integration)
+     
+
+     * Get detection information for debugging
+     
+
+     * Get all computed paths
+     
+
+     * Check if running in subdirectory installation mode
+     
+
+     * Check if running in standalone installation mode
+     
+
+     * Normalize path for cross-platform compatibility
+     
+
+     * Resolve path relative to CES or project root based on prefix
+     
+
+ * Enterprise Logging System for CES v2.7.0
+ *
+ * Provides structured, configurable logging with:
+ * - Multiple transports (file, console)
+ * - Log rotation and archival
+ * - Environment-based configuration
+ * - Structured JSON logging
+ * - Performance metrics integration
+ 
+
+     * Log info message with optional context
+     
+
+     * Log warning message with optional context
+     
+
+     * Log error message with optional context
+     
+
+     * Log debug message with optional context
+     
+
+     * Log performance metrics
+     
+
+     * Log session events
+     
+
+     * Log system events
+     
+
+     * Log security events
+     
+
+     * Generic log method
+     
+
+     * Create child logger with default context
+     
+
+     * Get recent metrics for monitoring
+     
+
+     * Clear metrics buffer
+     
+
+     * Flush all logs
+     
+
+     * Graceful shutdown
+     
+
+ * Component-specific logger with default context
+ 
+
+ * Claude Merge System - EventEmitter-based Utility Helper
+ * Comprehensive system for managing dual Claude documentation with real-time events
+ *
+ * Features:
+ * - EventEmitter-based architecture for real-time notifications
+ * - Configuration conflict detection and resolution
+ * - Cache system for performance optimization
+ * - Advanced file watching with debouncing
+ * - Backup management with retention policies
+ * - Performance metrics and monitoring
+ * - Plugin architecture for extensibility
+ 
+
+ * Main Claude Merge System class with EventEmitter architecture
+ 
+
+     * Initialize the merge system
+     
+
+     * Execute merge operation with full event lifecycle
+     
+
+     * Start file watching with debouncing
+     
+
+     * Handle file changes with debouncing
+     
+
+     * Conflict detection and resolution
+     
+
+     * Cache management
+     
+
+     * Plugin management
+     
+
+     * System status and health
+     
+
+     * Configuration management
+     
+
+     * Shutdown and cleanup
+     
+
+ * Claude Documentation Manager for Dual Claude System
+ * Manages Claude documentation files, merging, watching, and utilities
+ 
+
+ * Main Claude Documentation Manager Class
+ * Singleton pattern for enterprise-grade document management
+ 
+
+     * Get singleton instance
+     
+
+     * Initialize the document manager
+     
+
+     * Get file metadata
+     
+
+     * Search content in Claude documentation files
+     
+
+     * Create backup of a Claude documentation file
+     
+
+     * Restore from backup
+     
+
+     * Get list of backups for a file
+     
+
+     * Watch Claude documentation files for changes
+     
+
+     * Stop watching files
+     
+
+     * Validate Claude documentation setup
+     
+
+     * Execute merge operation using external script
+     
+
+     * Get performance metrics
+     
+
+     * Cleanup resources
+     
+
+ * Claude Documentation Manager for Dual Claude System
+ * Manages Claude documentation files, merging, watching, and utilities
+ 
+
+ * Main Claude Documentation Manager Class
+ * Singleton pattern for enterprise-grade document management
+ 
+
+     * Get singleton instance
+     
+
+     * Initialize the document manager
+     
+
+     * Get file metadata
+     
+
+     * Search content in Claude documentation files
+     
+
+     * Create backup of a Claude documentation file
+     
+
+     * Restore from backup
+     
+
+     * Get list of backups for a file
+     
+
+     * Watch Claude documentation files for changes
+     
+
+     * Stop watching files
+     
+
+     * Validate Claude documentation setup
+     
+
+     * Execute merge operation using external script
+     
+
+     * Get performance metrics
+     
+
+     * Cleanup resources
+     
+
+ * TypeScript type definitions for Claude Ecosystem Standard (CES)
+ 
+
+ * TypeScript type definitions for Claude Ecosystem Standard (CES)
+ 
+
+ * Claude Ecosystem Standard (CES) - Main Entry Point
+ * Enterprise-grade Claude Code CLI ecosystem with comprehensive session management
+ 
+
+ * CLI Manager for Claude Ecosystem Standard (CES)
+ * Handles interactive CLI, status display, and user interactions
+ 
+
+     * Show current system and session status
+     
+
+     * Handle configuration commands
+     
+
+     * Handle documentation commands for Dual Claude System
+     
+
+     * Start interactive CLI mode
+     
+
+     * Display project information
+     
+
+     * Display session information
+     
+
+     * Display health check results
+     
+
+     * Display MCP servers
+     
+
+     * Display agents
+     
+
+     * Show configuration
+     
+
+     * Reset configuration
+     
+
+     * Interactive start session
+     
+
+     * Interactive create checkpoint
+     
+
+     * Interactive close session
+     
+
+     * Interactive clean history
+     
+
+     * Interactive documentation commands menu
+     
+
+     * Comprehensive validation of CES setup and Claude Code CLI integration
+     
+
+ * AutoTaskManager - Intelligent Multi-Agent Task Dispatcher
+ *
+ * Automatically analyzes user prompts and coordinates multiple agents
+ * for optimal parallel/sequential execution without manual agent selection.
+ 
+
+     * Main entry point for automatic task dispatch
+     
+
+     * Analyze user prompt using pattern matching and keyword analysis
+     
+
+     * Select optimal execution strategy based on analysis
+     
+
+     * Generate coordinated multi-agent prompt
+     
+
+     * Generate parallel execution prompt
+     
+
+     * Generate sequential execution prompt
+     
+
+     * Generate hybrid execution prompt
+     
+
+     * Generate coordination instructions
+     
+
+     * Initialize task pattern database
+     
+
+     * Calculate confidence score for pattern matching
+     
+
+     * Determine task complexity
+     
+
+     * Get strategy template for task type
+     
+
+     * Adapt strategy based on complexity and domains
+     
+
+     * Display analysis results
+     
+
+     * Display execution strategy
+     
+
+     * Display the generated coordinated prompt
+     
+
+ * Anthropic CLI Commands - Interactive AI Integration
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Dashboard Manager - Real-time System Monitoring and Visualization
+ *
+ * Provides live dashboard for monitoring all CES components, sessions,
+ * MCP servers, processes, and system metrics in real-time.
+ 
+
+     * Show live dashboard with real-time updates
+     
+
+     * Show static dashboard snapshot
+     
+
+     * Display the dashboard
+     
+
+     * Display dashboard header
+     
+
+     * Display detailed dashboard view
+     
+
+     * Display compact dashboard view
+     
+
+     * Display system status section
+     
+
+     * Display session status section
+     
+
+     * Display MCP servers status section
+     
+
+     * Display process status section
+     
+
+     * Display performance metrics section
+     
+
+     * Display alerts section
+     
+
+     * Display mini performance graphs
+     
+
+     * Create a mini ASCII graph
+     
+
+     * Display dashboard footer
+     
+
+     * Collect all system metrics
+     
+
+     * Collect system metrics
+     
+
+     * Collect session metrics
+     
+
+     * Collect MCP server metrics
+     
+
+     * Collect process metrics
+     
+
+     * Collect performance metrics
+     
+
+     * Collect alerts
+     
+
+     * Export metrics to file
+     
+
+     * Stop live dashboard
+     
+
+     * Utility methods
+     
+
+ * SystemCleanupManager - Complete System Reset for Development Environment
+ *
+ * Provides aggressive cleanup capabilities for development environments where
+ * Claude Code CLI has full system control. Safely resets services, ports,
+ * and processes to return to a clean state.
+ 
+
+     * Main entry point for complete system cleanup
+     
+
+     * Create backup before cleanup
+     
+
+     * Kill Claude Code CLI related processes
+     
+
+     * Kill common development server processes
+     
+
+     * Free up common development ports
+     
+
+     * Kill all Node.js processes
+     
+
+     * Reset Docker containers
+     
+
+     * Clean temporary files and caches
+     
+
+     * Clear system cache
+     
+
+     * Reset network connections
+     
+
+     * Verify clean state
+     
+
+     * Kill processes by pattern
+     
+
+     * Free specific port
+     
+
+     * Get current processes
+     
+
+     * Get Node.js processes
+     
+
+     * Get processes by pattern
+     
+
+     * Get processes on specific port
+     
+
+     * Get used ports
+     
+
+     * Parse process output
+     
+
+     * Display cleanup report
+     
+
+ * SystemCleanupManager - Complete System Reset for Development Environment
+ *
+ * Provides aggressive cleanup capabilities for development environments where
+ * Claude Code CLI has full system control. Safely resets services, ports,
+ * and processes to return to a clean state.
+ 
+
+     * Main entry point for complete system cleanup
+     
+
+     * Create backup before cleanup
+     
+
+     * Kill Claude Code CLI related processes
+     
+
+     * Kill common development server processes
+     
+
+     * Free up common development ports
+     
+
+     * Kill all Node.js processes
+     
+
+     * Reset Docker containers
+     
+
+     * Clean temporary files and caches
+     
+
+     * Clear system cache
+     
+
+     * Reset network connections
+     
+
+     * Verify clean state
+     
+
+     * Kill processes by pattern
+     
+
+     * Free specific port
+     
+
+     * Get current processes
+     
+
+     * Get Node.js processes
+     
+
+     * Get processes by pattern
+     
+
+     * Get processes on specific port
+     
+
+     * Get used ports
+     
+
+     * Parse process output
+     
+
+     * Display cleanup report
+     
+
+ * AI-Powered Session Manager - Intelligent Session Optimization and Management
+ * Enterprise v2.7.0 - Production-ready with enterprise configuration
+ *
+ * Provides AI-driven session optimization, smart profile recommendations,
+ * intelligent command prediction, and automatic environment adaptation.
+ 
+
+     * Initialize AI session management
+     
+
+     * Start AI-powered session monitoring
+     
+
+     * Start AI monitoring only if explicitly requested
+     
+
+     * Stop AI monitoring
+     
+
+     * Get smart profile recommendations based on context
+     
+
+     * Get intelligent command suggestions
+     
+
+     * Optimize current session automatically
+     
+
+     * Learn from user behavior and adapt
+     
+
+     * Show AI session insights
+     
+
+     * Configure AI behavior
+     
+
+     * Private helper methods
+     
+
+ * Cloud Integration Manager - Session Sync and Backup in the Cloud
+ *
+ * Provides cloud-based session synchronization, backup, and restoration
+ * capabilities for distributed development teams and multi-device workflows.
+ 
+
+     * Initialize cloud integration
+     
+
+     * Configure cloud integration
+     
+
+     * Create a complete session backup
+     
+
+     * Restore session from backup
+     
+
+     * Synchronize with cloud
+     
+
+     * Show cloud integration status
+     
+
+     * Start automatic sync
+     
+
+     * Stop automatic sync
+     
+
+     * Export cloud data
+     
+
+     * Private helper methods
+     
+
+ * Documentation Commands for Dual Claude System
+ * Manages Claude documentation with CLI commands for show, regenerate, validate, edit, and debug
+ 
+
+     * Handle documentation commands
+     
+
+     * Display merged CLAUDE-MASTER.md documentation
+     
+
+     * Regenerate CLAUDE-MASTER.md from source files
+     
+
+     * Validate documentation compatibility and status
+     
+
+     * Edit project CLAUDE.md with auto-regeneration
+     
+
+     * Display debug information about documentation system
+     
+
+     * Show command usage information
+     
+
+ * AutoTaskManager - Intelligent Multi-Agent Task Dispatcher
+ *
+ * Automatically analyzes user prompts and coordinates multiple agents
+ * for optimal parallel/sequential execution without manual agent selection.
+ 
+
+     * Main entry point for automatic task dispatch
+     
+
+     * Analyze user prompt using pattern matching and keyword analysis
+     
+
+     * Select optimal execution strategy based on analysis
+     
+
+     * Generate coordinated multi-agent prompt
+     
+
+     * Generate parallel execution prompt
+     
+
+     * Generate sequential execution prompt
+     
+
+     * Generate hybrid execution prompt
+     
+
+     * Generate coordination instructions
+     
+
+     * Initialize task pattern database
+     
+
+     * Calculate confidence score for pattern matching
+     
+
+     * Determine task complexity
+     
+
+     * Get strategy template for task type
+     
+
+     * Adapt strategy based on complexity and domains
+     
+
+     * Display analysis results
+     
+
+     * Display execution strategy
+     
+
+     * Display the generated coordinated prompt
+     
+
+ * Session Monitor - Monitors Claude Code CLI commands and coordinates CES actions
+ *
+ * Provides intelligent coordination between Claude Code CLI native commands
+ * and CES SessionManager for unified workflow experience.
+ 
+
+     * Start monitoring Claude Code CLI session commands
+     
+
+     * Stop monitoring
+     
+
+     * Create monitoring script that watches for Claude commands
+     
+
+     * Start background monitoring process
+     
+
+     * Trigger manual checkpoint (for **register session integration)
+     
+
+     * Trigger manual close (for **close session integration)
+     
+
+     * Trigger clean-reset (for **clean reset integration)
+     
+
+     * Check if monitoring is active
+     
+
+     * Get monitoring status
+     
+
+     * Log messages to file and console
+     
+
+ * Analytics Manager - Centralized Usage Analytics and Performance Insights
+ *
+ * Provides comprehensive analytics across all CES components including
+ * usage patterns, performance metrics, trends analysis, and business intelligence.
+ 
+
+     * Initialize analytics system
+     
+
+     * Start analytics data collection
+     
+
+     * Stop analytics data collection
+     
+
+     * Log an analytics event
+     
+
+     * Generate comprehensive analytics report
+     
+
+     * Show analytics dashboard
+     
+
+     * Export analytics data
+     
+
+     * Show real-time analytics
+     
+
+     * Calculate usage metrics
+     
+
+     * Calculate performance metrics
+     
+
+     * Calculate trend analysis
+     
+
+     * Generate insights from analytics data
+     
+
+     * Generate recommendations
+     
+
+     * Helper methods
+     
+
+ * Quick Command Manager - Rapid Session Management and Aliases
+ *
+ * Provides quick commands, aliases, and shortcuts for common CES operations
+ * to maximize development velocity and reduce typing.
+ 
+
+     * Set optional dependencies (called after all managers are initialized)
+     
+
+     * Initialize with built-in quick commands
+     
+
+     * Create all built-in quick commands
+     
+
+     * Execute a quick command
+     
+
+     * List all quick commands
+     
+
+     * Create a custom quick command
+     
+
+     * Update an existing quick command
+     
+
+     * Delete a custom quick command
+     
+
+     * Show quick command details
+     
+
+     * Show quick command statistics
+     
+
+     * Show quick command cheat sheet
+     
+
+     * Interactive quick command selector
+     
+
+     * Export quick commands
+     
+
+     * Import quick commands
+     
+
+     * Private helper methods
+     
+
+     * Execute profile-related commands
+     
+
+     * Execute dashboard-related commands
+     
+
+     * Execute recovery-related commands
+     
+
+     * Execute monitor-related commands
+     
+
+ * Anthropic CLI Commands - Interactive AI Integration
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Auto-Recovery Manager - Self-Healing System for CES
+ *
+ * Provides continuous health monitoring, automatic restart of failed services,
+ * crash detection and recovery, and intelligent system self-healing.
+ 
+
+     * Start continuous auto-recovery monitoring
+     
+
+     * Stop auto-recovery monitoring
+     
+
+     * Get current system health status
+     
+
+     * Manually trigger recovery for a specific service
+     
+
+     * Show recovery system status and recent actions
+     
+
+     * Enable or disable recovery mode
+     
+
+     * Export recovery logs and health data
+     
+
+     * Start monitoring loop
+     
+
+     * Perform comprehensive health checks
+     
+
+     * Perform regular health checks
+     
+
+     * Execute automatic recovery actions
+     
+
+     * Check health of a specific service
+     
+
+     * Check Claude Code CLI status
+     
+
+     * Check MCP servers status
+     
+
+     * Check session system status
+     
+
+     * Check development servers status
+     
+
+     * Check generic process status
+     
+
+     * Restart a service
+     
+
+     * Cleanup a service
+     
+
+     * Repair a service
+     
+
+     * Escalate recovery when automatic recovery fails
+     
+
+     * Service-specific restart methods
+     
+
+     * Service-specific repair methods
+     
+
+     * Calculate overall system health
+     
+
+     * Log recovery action
+     
+
+     * Load recovery configuration
+     
+
+     * Utility methods
+     
+
+ * Analytics Manager - Centralized Usage Analytics and Performance Insights
+ *
+ * Provides comprehensive analytics across all CES components including
+ * usage patterns, performance metrics, trends analysis, and business intelligence.
+ 
+
+     * Initialize analytics system
+     
+
+     * Start analytics data collection
+     
+
+     * Stop analytics data collection
+     
+
+     * Log an analytics event
+     
+
+     * Generate comprehensive analytics report
+     
+
+     * Show analytics dashboard
+     
+
+     * Export analytics data
+     
+
+     * Show real-time analytics
+     
+
+     * Calculate usage metrics
+     
+
+     * Calculate performance metrics
+     
+
+     * Calculate trend analysis
+     
+
+     * Generate insights from analytics data
+     
+
+     * Generate recommendations
+     
+
+     * Helper methods
+     
+
+ * Auto-Recovery Manager - Self-Healing System for CES
+ *
+ * Provides continuous health monitoring, automatic restart of failed services,
+ * crash detection and recovery, and intelligent system self-healing.
+ 
+
+     * Start continuous auto-recovery monitoring
+     
+
+     * Stop auto-recovery monitoring
+     
+
+     * Get current system health status
+     
+
+     * Manually trigger recovery for a specific service
+     
+
+     * Show recovery system status and recent actions
+     
+
+     * Enable or disable recovery mode
+     
+
+     * Export recovery logs and health data
+     
+
+     * Start monitoring loop
+     
+
+     * Perform comprehensive health checks
+     
+
+     * Perform regular health checks
+     
+
+     * Execute automatic recovery actions
+     
+
+     * Check health of a specific service
+     
+
+     * Check Claude Code CLI status
+     
+
+     * Check MCP servers status
+     
+
+     * Check session system status
+     
+
+     * Check development servers status
+     
+
+     * Check generic process status
+     
+
+     * Restart a service
+     
+
+     * Cleanup a service
+     
+
+     * Repair a service
+     
+
+     * Escalate recovery when automatic recovery fails
+     
+
+     * Service-specific restart methods
+     
+
+     * Service-specific repair methods
+     
+
+     * Calculate overall system health
+     
+
+     * Log recovery action
+     
+
+     * Load recovery configuration
+     
+
+     * Utility methods
+     
+
+ * Session Profile Manager - Configurable Development Environment Profiles
+ *
+ * Provides predefined and custom session profiles for different development scenarios,
+ * with intelligent configuration and fast profile switching.
+ 
+
+     * Initialize with built-in profiles
+     
+
+     * Create all built-in profiles
+     
+
+     * List all available profiles
+     
+
+     * Get profile by ID
+     
+
+     * Apply a session profile
+     
+
+     * Create a custom profile
+     
+
+     * Update an existing profile
+     
+
+     * Delete a custom profile
+     
+
+     * Show detailed profile information
+     
+
+     * Show profile statistics
+     
+
+     * Quick profile switching interface
+     
+
+     * Export profile configuration
+     
+
+     * Import profile from file
+     
+
+     * Private helper methods
+     
+
+     * Get current active profile
+     
+
+     * Reset to no active profile
+     
+
+ * Dashboard Manager - Real-time System Monitoring and Visualization
+ *
+ * Provides live dashboard for monitoring all CES components, sessions,
+ * MCP servers, processes, and system metrics in real-time.
+ 
+
+     * Show live dashboard with real-time updates
+     
+
+     * Show static dashboard snapshot
+     
+
+     * Display the dashboard
+     
+
+     * Display dashboard header
+     
+
+     * Display detailed dashboard view
+     
+
+     * Display compact dashboard view
+     
+
+     * Display system status section
+     
+
+     * Display session status section
+     
+
+     * Display MCP servers status section
+     
+
+     * Display process status section
+     
+
+     * Display performance metrics section
+     
+
+     * Display alerts section
+     
+
+     * Display mini performance graphs
+     
+
+     * Create a mini ASCII graph
+     
+
+     * Display dashboard footer
+     
+
+     * Collect all system metrics
+     
+
+     * Collect system metrics
+     
+
+     * Collect session metrics
+     
+
+     * Collect MCP server metrics
+     
+
+     * Collect process metrics
+     
+
+     * Collect performance metrics
+     
+
+     * Collect alerts
+     
+
+     * Export metrics to file
+     
+
+     * Stop live dashboard
+     
+
+     * Utility methods
+     
+
+ * Cloud Integration Manager - Session Sync and Backup in the Cloud
+ *
+ * Provides cloud-based session synchronization, backup, and restoration
+ * capabilities for distributed development teams and multi-device workflows.
+ 
+
+     * Initialize cloud integration
+     
+
+     * Configure cloud integration
+     
+
+     * Create a complete session backup
+     
+
+     * Restore session from backup
+     
+
+     * Synchronize with cloud
+     
+
+     * Show cloud integration status
+     
+
+     * Start automatic sync
+     
+
+     * Stop automatic sync
+     
+
+     * Export cloud data
+     
+
+     * Private helper methods
+     
+
+ * Session Monitor - Monitors Claude Code CLI commands and coordinates CES actions
+ *
+ * Provides intelligent coordination between Claude Code CLI native commands
+ * and CES SessionManager for unified workflow experience.
+ 
+
+     * Start monitoring Claude Code CLI session commands
+     
+
+     * Stop monitoring
+     
+
+     * Create monitoring script that watches for Claude commands
+     
+
+     * Start background monitoring process
+     
+
+     * Trigger manual checkpoint (for **register session integration)
+     
+
+     * Trigger manual close (for **close session integration)
+     
+
+     * Trigger clean-reset (for **clean reset integration)
+     
+
+     * Check if monitoring is active
+     
+
+     * Get monitoring status
+     
+
+     * Log messages to file and console
+     
+
+ * Quick Command Manager - Rapid Session Management and Aliases
+ *
+ * Provides quick commands, aliases, and shortcuts for common CES operations
+ * to maximize development velocity and reduce typing.
+ 
+
+     * Set optional dependencies (called after all managers are initialized)
+     
+
+     * Initialize with built-in quick commands
+     
+
+     * Create all built-in quick commands
+     
+
+     * Execute a quick command
+     
+
+     * List all quick commands
+     
+
+     * Create a custom quick command
+     
+
+     * Update an existing quick command
+     
+
+     * Delete a custom quick command
+     
+
+     * Show quick command details
+     
+
+     * Show quick command statistics
+     
+
+     * Show quick command cheat sheet
+     
+
+     * Interactive quick command selector
+     
+
+     * Export quick commands
+     
+
+     * Import quick commands
+     
+
+     * Private helper methods
+     
+
+     * Execute profile-related commands
+     
+
+     * Execute dashboard-related commands
+     
+
+     * Execute recovery-related commands
+     
+
+     * Execute monitor-related commands
+     
+
+ * CLI Manager for Claude Ecosystem Standard (CES)
+ * Handles interactive CLI, status display, and user interactions
+ 
+
+     * Show current system and session status
+     
+
+     * Handle configuration commands
+     
+
+     * Handle documentation commands for Dual Claude System
+     
+
+     * Start interactive CLI mode
+     
+
+     * Display project information
+     
+
+     * Display session information
+     
+
+     * Display health check results
+     
+
+     * Display MCP servers
+     
+
+     * Display agents
+     
+
+     * Show configuration
+     
+
+     * Reset configuration
+     
+
+     * Interactive start session
+     
+
+     * Interactive create checkpoint
+     
+
+     * Interactive close session
+     
+
+     * Interactive clean history
+     
+
+     * Interactive documentation commands menu
+     
+
+     * Comprehensive validation of CES setup and Claude Code CLI integration
+     
+
+ * AI-Powered Session Manager - Intelligent Session Optimization and Management
+ * Enterprise v2.7.0 - Production-ready with enterprise configuration
+ *
+ * Provides AI-driven session optimization, smart profile recommendations,
+ * intelligent command prediction, and automatic environment adaptation.
+ 
+
+     * Initialize AI session management
+     
+
+     * Start AI-powered session monitoring
+     
+
+     * Start AI monitoring only if explicitly requested
+     
+
+     * Stop AI monitoring
+     
+
+     * Get smart profile recommendations based on context
+     
+
+     * Get intelligent command suggestions
+     
+
+     * Optimize current session automatically
+     
+
+     * Learn from user behavior and adapt
+     
+
+     * Show AI session insights
+     
+
+     * Configure AI behavior
+     
+
+     * Private helper methods
+     
+
+ * Documentation Commands for Dual Claude System
+ * Manages Claude documentation with CLI commands for show, regenerate, validate, edit, and debug
+ 
+
+     * Handle documentation commands
+     
+
+     * Display merged CLAUDE-MASTER.md documentation
+     
+
+     * Regenerate CLAUDE-MASTER.md from source files
+     
+
+     * Validate documentation compatibility and status
+     
+
+     * Edit project CLAUDE.md with auto-regeneration
+     
+
+     * Display debug information about documentation system
+     
+
+     * Show command usage information
+     
+
+ * Session Profile Manager - Configurable Development Environment Profiles
+ *
+ * Provides predefined and custom session profiles for different development scenarios,
+ * with intelligent configuration and fast profile switching.
+ 
+
+     * Initialize with built-in profiles
+     
+
+     * Create all built-in profiles
+     
+
+     * List all available profiles
+     
+
+     * Get profile by ID
+     
+
+     * Apply a session profile
+     
+
+     * Create a custom profile
+     
+
+     * Update an existing profile
+     
+
+     * Delete a custom profile
+     
+
+     * Show detailed profile information
+     
+
+     * Show profile statistics
+     
+
+     * Quick profile switching interface
+     
+
+     * Export profile configuration
+     
+
+     * Import profile from file
+     
+
+     * Private helper methods
+     
+
+     * Get current active profile
+     
+
+     * Reset to no active profile
+     
+
+ * Session Manager for Claude Ecosystem Standard (CES)
+ * Handles session lifecycle, checkpoints, and state management
+ 
+
+     * Start a new Claude Code CLI session
+     
+
+     * Create a checkpoint of the current session
+     
+
+     * Close the current session
+     
+
+     * Clean session history with backup
+     
+
+     * Get current session
+     
+
+     * Get session status
+     
+
+     * Run startup hook
+     
+
+     * Start MCP servers (simplified implementation)
+     
+
+     * Capture current system state
+     
+
+     * Capture Git status
+     
+
+     * Stop all running processes
+     
+
+     * Save current session to disk
+     
+
+     * Display session information
+     
+
+     * Get session duration
+     
+
+ * Session Manager for Claude Ecosystem Standard (CES)
+ * Handles session lifecycle, checkpoints, and state management
+ 
+
+     * Start a new Claude Code CLI session
+     
+
+     * Create a checkpoint of the current session
+     
+
+     * Close the current session
+     
+
+     * Clean session history with backup
+     
+
+     * Get current session
+     
+
+     * Get session status
+     
+
+     * Run startup hook
+     
+
+     * Start MCP servers (simplified implementation)
+     
+
+     * Capture current system state
+     
+
+     * Capture Git status
+     
+
+     * Stop all running processes
+     
+
+     * Save current session to disk
+     
+
+     * Display session information
+     
+
+     * Get session duration
+     
+
+ * Anthropic SDK Manager - Direct API Integration with Claude
+ * CES v2.7.0 Enterprise Edition
+ 
+
+     * Send a completion request to Anthropic API
+     
+
+     * Stream a completion response
+     
+
+     * Continue a conversation with context
+     
+
+     * Analyze code with specific focus
+     
+
+     * Generate code based on specifications
+     
+
+     * Calculate cost estimate for usage
+     
+
+     * Get conversation history
+     
+
+     * Clear conversation history
+     
+
+     * Get total tokens used
+     
+
+     * Private helper methods
+     
+
+ * Anthropic Integration Helper - Smart Execution and Project Analysis
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Helper to integrate both Anthropic SDK and Claude Code CLI
+ 
+
+     * Smart execution - uses best tool for the job
+     
+
+     * Analyze entire project
+     
+
+     * Generate code with review
+     
+
+     * Interactive coding session
+     
+
+     * Utility methods
+     
+
+     * Get managers for direct access
+     
+
+ * Type definitions for Anthropic SDK integration
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Type definitions for Anthropic SDK integration
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Anthropic SDK Manager - Direct API Integration with Claude
+ * CES v2.7.0 Enterprise Edition
+ 
+
+     * Send a completion request to Anthropic API
+     
+
+     * Stream a completion response
+     
+
+     * Continue a conversation with context
+     
+
+     * Analyze code with specific focus
+     
+
+     * Generate code based on specifications
+     
+
+     * Calculate cost estimate for usage
+     
+
+     * Get conversation history
+     
+
+     * Clear conversation history
+     
+
+     * Get total tokens used
+     
+
+     * Private helper methods
+     
+
+ * Anthropic Integration Helper - Smart Execution and Project Analysis
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Helper to integrate both Anthropic SDK and Claude Code CLI
+ 
+
+     * Smart execution - uses best tool for the job
+     
+
+     * Analyze entire project
+     
+
+     * Generate code with review
+     
+
+     * Interactive coding session
+     
+
+     * Utility methods
+     
+
+     * Get managers for direct access
+     
+
+ * Claude Ecosystem Standard (CES) - Main Entry Point
+ * Enterprise-grade Claude Code CLI ecosystem with comprehensive session management
+ 
+
+ * Enterprise Environment Configuration Manager for CES v2.7.0
+ *
+ * Provides type-safe, validated configuration management with:
+ * - Dynamic project root detection
+ * - Environment variable loading and validation
+ * - Relative path management
+ * - Default value fallbacks
+ * - Configuration hot-reloading
+ 
+
+     * Load and validate configuration from environment variables
+     
+
+     * Get environment variable value with fallback
+     
+
+     * Get environment variable as number with validation
+     
+
+     * Get environment variable as boolean with validation
+     
+
+     * Generate unique instance ID
+     
+
+     * Generate JWT secret for development
+     
+
+     * Get current configuration
+     
+
+     * Get specific configuration value by path
+     
+
+     * Get relative path from project root
+     
+
+     * Get absolute path from project-relative path
+     
+
+     * Ensure directory exists
+     
+
+     * Reload configuration (for hot-reloading)
+     
+
+     * Validate configuration
+     
+
+     * Get configuration metadata
+     
+
+     * Get path resolution information for debugging
+     
+
+ * Configuration Manager for Claude Ecosystem Standard (CES)
+ * Handles environment detection, project configuration, and MCP/Agent setup
+ 
+
+     * Initialize configuration by detecting environment
+     
+
+     * Get current configuration
+     
+
+     * Detect programming languages in the project
+     
+
+     * Detect frameworks based on detected languages
+     
+
+     * Detect development tools
+     
+
+     * Check if project is a Git repository
+     
+
+     * Check for MCP configuration
+     
+
+     * Check for agents
+     
+
+     * Load MCP server configurations
+     
+
+     * Load agent configurations
+     
+
+     * Parse agent markdown file
+     
+
+     * Perform health check
+     
+
+     * Get MCP server priority
+     
+
+     * Get priority order for sorting
+     
+
+     * Reset configuration to defaults
+     
+
+     * Get project root directory
+     
+
+     * Get project name
+     
+
+     * Check if a file exists
+     
+
+     * Check if a script exists in package.json
+     
+
+ * Configuration Manager for Claude Ecosystem Standard (CES)
+ * Handles environment detection, project configuration, and MCP/Agent setup
+ 
+
+     * Initialize configuration by detecting environment
+     
+
+     * Get current configuration
+     
+
+     * Detect programming languages in the project
+     
+
+     * Detect frameworks based on detected languages
+     
+
+     * Detect development tools
+     
+
+     * Check if project is a Git repository
+     
+
+     * Check for MCP configuration
+     
+
+     * Check for agents
+     
+
+     * Load MCP server configurations
+     
+
+     * Load agent configurations
+     
+
+     * Parse agent markdown file
+     
+
+     * Perform health check
+     
+
+     * Get MCP server priority
+     
+
+     * Get priority order for sorting
+     
+
+     * Reset configuration to defaults
+     
+
+     * Get project root directory
+     
+
+     * Get project name
+     
+
+     * Check if a file exists
+     
+
+     * Check if a script exists in package.json
+     
+
+ * Enterprise Environment Configuration Manager for CES v2.7.0
+ *
+ * Provides type-safe, validated configuration management with:
+ * - Dynamic project root detection
+ * - Environment variable loading and validation
+ * - Relative path management
+ * - Default value fallbacks
+ * - Configuration hot-reloading
+ 
+
+     * Load and validate configuration from environment variables
+     
+
+     * Get environment variable value with fallback
+     
+
+     * Get environment variable as number with validation
+     
+
+     * Get environment variable as boolean with validation
+     
+
+     * Generate unique instance ID
+     
+
+     * Generate JWT secret for development
+     
+
+     * Get current configuration
+     
+
+     * Get specific configuration value by path
+     
+
+     * Get relative path from project root
+     
+
+     * Get absolute path from project-relative path
+     
+
+     * Ensure directory exists
+     
+
+     * Reload configuration (for hot-reloading)
+     
+
+     * Validate configuration
+     
+
+     * Get configuration metadata
+     
+
+     * Get path resolution information for debugging
+     
+
+ * Claude Documentation Manager for Dual Claude System
+ * Manages Claude documentation files, merging, watching, and utilities
+ 
+
+ * Main Claude Documentation Manager Class
+ * Singleton pattern for enterprise-grade document management
+ 
+
+     * Get singleton instance
+     
+
+     * Initialize the document manager
+     
+
+     * Get file metadata
+     
+
+     * Search content in Claude documentation files
+     
+
+     * Create backup of a Claude documentation file
+     
+
+     * Restore from backup
+     
+
+     * Get list of backups for a file
+     
+
+     * Watch Claude documentation files for changes
+     
+
+     * Stop watching files
+     
+
+     * Validate Claude documentation setup
+     
+
+     * Execute merge operation using external script
+     
+
+     * Get performance metrics
+     
+
+     * Cleanup resources
+     
+
+ * Enterprise Logging System for CES v2.7.0
+ * 
+ * Provides structured, configurable logging with:
+ * - Multiple transports (file, console)
+ * - Log rotation and archival
+ * - Environment-based configuration
+ * - Structured JSON logging
+ * - Performance metrics integration
+ 
+
+   * Log info message with optional context
+   
+
+   * Log warning message with optional context
+   
+
+   * Log error message with optional context
+   
+
+   * Log debug message with optional context
+   
+
+   * Log performance metrics
+   
+
+   * Log session events
+   
+
+   * Log system events
+   
+
+   * Log security events
+   
+
+   * Generic log method
+   
+
+   * Create child logger with default context
+   
+
+   * Get recent metrics for monitoring
+   
+
+   * Clear metrics buffer
+   
+
+   * Flush all logs
+   
+
+   * Graceful shutdown
+   
+
+ * Component-specific logger with default context
+ 
+
+ * CES Portable Path Resolution Utility v2.7.0
+ * 
+ * Provides dynamic path detection for portable CES installations.
+ * Auto-detects CES installation location and manages paths dynamically.
+ * 
+ * Key Features:
+ * - Auto-detection of CES root from any execution context
+ * - Singleton pattern for global access
+ * - Cross-platform compatibility (Windows/Linux/macOS)
+ * - Multiple fallback strategies for robust detection
+ * - Support for both subdirectory and standalone installations
+ 
+
+   * Comprehensive path detection using multiple strategies
+   
+
+   * Detect CES root from module location
+   
+
+   * Detect CES root using marker files
+   
+
+   * Detect CES root using package.json
+   
+
+   * Validate if a directory is a valid CES root
+   
+
+   * Determine project root based on CES installation type
+   
+
+   * Get CES root directory path
+   
+
+   * Get project root directory path
+   
+
+   * Get path relative to CES root
+   
+
+   * Get path relative to project root  
+   
+
+   * Get relative path between two absolute paths
+   
+
+   * Get CES relative path (for project integration)
+   
+
+   * Get detection information for debugging
+   
+
+   * Get all computed paths
+   
+
+   * Check if running in subdirectory installation mode
+   
+
+   * Check if running in standalone installation mode
+   
+
+   * Normalize path for cross-platform compatibility
+   
+
+   * Resolve path relative to CES or project root based on prefix
+   
+
+ * Claude Merge System - EventEmitter-based Utility Helper
+ * Comprehensive system for managing dual Claude documentation with real-time events
+ * 
+ * Features:
+ * - EventEmitter-based architecture for real-time notifications
+ * - Configuration conflict detection and resolution
+ * - Cache system for performance optimization
+ * - Advanced file watching with debouncing
+ * - Backup management with retention policies
+ * - Performance metrics and monitoring
+ * - Plugin architecture for extensibility
+ 
+
+ * Main Claude Merge System class with EventEmitter architecture
+ 
+
+     * Initialize the merge system
+     
+
+     * Execute merge operation with full event lifecycle
+     
+
+     * Start file watching with debouncing
+     
+
+     * Handle file changes with debouncing
+     
+
+     * Conflict detection and resolution
+     
+
+     * Cache management
+     
+
+     * Plugin management
+     
+
+     * System status and health
+     
+
+     * Configuration management
+     
+
+     * Shutdown and cleanup
+     
+
+ * TypeScript type definitions for Claude Ecosystem Standard (CES)
+ 
+
+ * Auto-Recovery Manager - Self-Healing System for CES
+ * 
+ * Provides continuous health monitoring, automatic restart of failed services,
+ * crash detection and recovery, and intelligent system self-healing.
+ 
+
+     * Start continuous auto-recovery monitoring
+     
+
+     * Stop auto-recovery monitoring
+     
+
+     * Get current system health status
+     
+
+     * Manually trigger recovery for a specific service
+     
+
+     * Show recovery system status and recent actions
+     
+
+     * Enable or disable recovery mode
+     
+
+     * Export recovery logs and health data
+     
+
+     * Start monitoring loop
+     
+
+     * Perform comprehensive health checks
+     
+
+     * Perform regular health checks
+     
+
+     * Execute automatic recovery actions
+     
+
+     * Check health of a specific service
+     
+
+     * Check Claude Code CLI status
+     
+
+     * Check MCP servers status
+     
+
+     * Check session system status
+     
+
+     * Check development servers status
+     
+
+     * Check generic process status
+     
+
+     * Restart a service
+     
+
+     * Cleanup a service
+     
+
+     * Repair a service
+     
+
+     * Escalate recovery when automatic recovery fails
+     
+
+     * Service-specific restart methods
+     
+
+     * Service-specific repair methods
+     
+
+     * Calculate overall system health
+     
+
+     * Log recovery action
+     
+
+     * Load recovery configuration
+     
+
+     * Utility methods
+     
+
+ * Anthropic CLI Commands - Interactive AI Integration
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * CLI Manager for Claude Ecosystem Standard (CES)
+ * Handles interactive CLI, status display, and user interactions
+ 
+
+     * Show current system and session status
+     
+
+     * Handle configuration commands
+     
+
+     * Handle documentation commands for Dual Claude System
+     
+
+     * Start interactive CLI mode
+     
+
+     * Display project information
+     
+
+     * Display session information
+     
+
+     * Display health check results
+     
+
+     * Display MCP servers
+     
+
+     * Display agents
+     
+
+     * Show configuration
+     
+
+     * Reset configuration
+     
+
+     * Interactive start session
+     
+
+     * Interactive create checkpoint
+     
+
+     * Interactive close session
+     
+
+     * Interactive clean history
+     
+
+     * Interactive documentation commands menu
+     
+
+     * Comprehensive validation of CES setup and Claude Code CLI integration
+     
+
+ * Session Profile Manager - Configurable Development Environment Profiles
+ * 
+ * Provides predefined and custom session profiles for different development scenarios,
+ * with intelligent configuration and fast profile switching.
+ 
+
+     * Initialize with built-in profiles
+     
+
+     * Create all built-in profiles
+     
+
+     * List all available profiles
+     
+
+     * Get profile by ID
+     
+
+     * Apply a session profile
+     
+
+     * Create a custom profile
+     
+
+     * Update an existing profile
+     
+
+     * Delete a custom profile
+     
+
+     * Show detailed profile information
+     
+
+     * Show profile statistics
+     
+
+     * Quick profile switching interface
+     
+
+     * Export profile configuration
+     
+
+     * Import profile from file
+     
+
+     * Private helper methods
+     
+
+     * Get current active profile
+     
+
+     * Reset to no active profile
+     
+
+ * AutoTaskManager - Intelligent Multi-Agent Task Dispatcher
+ * 
+ * Automatically analyzes user prompts and coordinates multiple agents
+ * for optimal parallel/sequential execution without manual agent selection.
+ 
+
+     * Main entry point for automatic task dispatch
+     
+
+     * Analyze user prompt using pattern matching and keyword analysis
+     
+
+     * Select optimal execution strategy based on analysis
+     
+
+     * Generate coordinated multi-agent prompt
+     
+
+     * Generate parallel execution prompt
+     
+
+     * Generate sequential execution prompt
+     
+
+     * Generate hybrid execution prompt
+     
+
+     * Generate coordination instructions
+     
+
+     * Initialize task pattern database
+     
+
+     * Calculate confidence score for pattern matching
+     
+
+     * Determine task complexity
+     
+
+     * Get strategy template for task type
+     
+
+     * Adapt strategy based on complexity and domains
+     
+
+     * Display analysis results
+     
+
+     * Display execution strategy
+     
+
+     * Display the generated coordinated prompt
+     
+
+ * Quick Command Manager - Rapid Session Management and Aliases
+ * 
+ * Provides quick commands, aliases, and shortcuts for common CES operations
+ * to maximize development velocity and reduce typing.
+ 
+
+     * Set optional dependencies (called after all managers are initialized)
+     
+
+     * Initialize with built-in quick commands
+     
+
+     * Create all built-in quick commands
+     
+
+     * Execute a quick command
+     
+
+     * List all quick commands
+     
+
+     * Create a custom quick command
+     
+
+     * Update an existing quick command
+     
+
+     * Delete a custom quick command
+     
+
+     * Show quick command details
+     
+
+     * Show quick command statistics
+     
+
+     * Show quick command cheat sheet
+     
+
+     * Interactive quick command selector
+     
+
+     * Export quick commands
+     
+
+     * Import quick commands
+     
+
+     * Private helper methods
+     
+
+     * Execute profile-related commands
+     
+
+     * Execute dashboard-related commands
+     
+
+     * Execute recovery-related commands
+     
+
+     * Execute monitor-related commands
+     
+
+ * Session Monitor - Monitors Claude Code CLI commands and coordinates CES actions
+ * 
+ * Provides intelligent coordination between Claude Code CLI native commands
+ * and CES SessionManager for unified workflow experience.
+ 
+
+     * Start monitoring Claude Code CLI session commands
+     
+
+     * Stop monitoring
+     
+
+     * Create monitoring script that watches for Claude commands
+     
+
+     * Start background monitoring process
+     
+
+     * Trigger manual checkpoint (for **register session integration)
+     
+
+     * Trigger manual close (for **close session integration)
+     
+
+     * Trigger clean-reset (for **clean reset integration)
+     
+
+     * Check if monitoring is active
+     
+
+     * Get monitoring status
+     
+
+     * Log messages to file and console
+     
+
+ * SystemCleanupManager - Complete System Reset for Development Environment
+ * 
+ * Provides aggressive cleanup capabilities for development environments where
+ * Claude Code CLI has full system control. Safely resets services, ports, 
+ * and processes to return to a clean state.
+ 
+
+     * Main entry point for complete system cleanup
+     
+
+     * Create backup before cleanup
+     
+
+     * Kill Claude Code CLI related processes
+     
+
+     * Kill common development server processes
+     
+
+     * Free up common development ports
+     
+
+     * Kill all Node.js processes
+     
+
+     * Reset Docker containers
+     
+
+     * Clean temporary files and caches
+     
+
+     * Clear system cache
+     
+
+     * Reset network connections
+     
+
+     * Verify clean state
+     
+
+     * Kill processes by pattern
+     
+
+     * Free specific port
+     
+
+     * Get current processes
+     
+
+     * Get Node.js processes
+     
+
+     * Get processes by pattern
+     
+
+     * Get processes on specific port
+     
+
+     * Get used ports
+     
+
+     * Parse process output
+     
+
+     * Display cleanup report
+     
+
+ * Dashboard Manager - Real-time System Monitoring and Visualization
+ * 
+ * Provides live dashboard for monitoring all CES components, sessions,
+ * MCP servers, processes, and system metrics in real-time.
+ 
+
+     * Show live dashboard with real-time updates
+     
+
+     * Show static dashboard snapshot
+     
+
+     * Display the dashboard
+     
+
+     * Display dashboard header
+     
+
+     * Display detailed dashboard view
+     
+
+     * Display compact dashboard view
+     
+
+     * Display system status section
+     
+
+     * Display session status section
+     
+
+     * Display MCP servers status section
+     
+
+     * Display process status section
+     
+
+     * Display performance metrics section
+     
+
+     * Display alerts section
+     
+
+     * Display mini performance graphs
+     
+
+     * Create a mini ASCII graph
+     
+
+     * Display dashboard footer
+     
+
+     * Collect all system metrics
+     
+
+     * Collect system metrics
+     
+
+     * Collect session metrics
+     
+
+     * Collect MCP server metrics
+     
+
+     * Collect process metrics
+     
+
+     * Collect performance metrics
+     
+
+     * Collect alerts
+     
+
+     * Export metrics to file
+     
+
+     * Stop live dashboard
+     
+
+     * Utility methods
+     
+
+ * Analytics Manager - Centralized Usage Analytics and Performance Insights
+ * 
+ * Provides comprehensive analytics across all CES components including
+ * usage patterns, performance metrics, trends analysis, and business intelligence.
+ 
+
+     * Initialize analytics system
+     
+
+     * Start analytics data collection
+     
+
+     * Stop analytics data collection
+     
+
+     * Log an analytics event
+     
+
+     * Generate comprehensive analytics report
+     
+
+     * Show analytics dashboard
+     
+
+     * Export analytics data
+     
+
+     * Show real-time analytics
+     
+
+     * Calculate usage metrics
+     
+
+     * Calculate performance metrics
+     
+
+     * Calculate trend analysis
+     
+
+     * Generate insights from analytics data
+     
+
+     * Generate recommendations
+     
+
+     * Helper methods
+     
+
+ * AI-Powered Session Manager - Intelligent Session Optimization and Management
+ * Enterprise v2.7.0 - Production-ready with enterprise configuration
+ * 
+ * Provides AI-driven session optimization, smart profile recommendations,
+ * intelligent command prediction, and automatic environment adaptation.
+ 
+
+     * Initialize AI session management
+     
+
+     * Start AI-powered session monitoring
+     
+
+     * Start AI monitoring only if explicitly requested
+     
+
+     * Stop AI monitoring
+     
+
+     * Get smart profile recommendations based on context
+     
+
+     * Get intelligent command suggestions
+     
+
+     * Optimize current session automatically
+     
+
+     * Learn from user behavior and adapt
+     
+
+     * Show AI session insights
+     
+
+     * Configure AI behavior
+     
+
+     * Private helper methods
+     
+
+ * Documentation Commands for Dual Claude System
+ * Manages Claude documentation with CLI commands for show, regenerate, validate, edit, and debug
+ 
+
+     * Handle documentation commands
+     
+
+     * Display merged CLAUDE-MASTER.md documentation
+     
+
+     * Regenerate CLAUDE-MASTER.md from source files
+     
+
+     * Validate documentation compatibility and status
+     
+
+     * Edit project CLAUDE.md with auto-regeneration
+     
+
+     * Display debug information about documentation system
+     
+
+     * Show command usage information
+     
+
+ * Cloud Integration Manager - Session Sync and Backup in the Cloud
+ * 
+ * Provides cloud-based session synchronization, backup, and restoration
+ * capabilities for distributed development teams and multi-device workflows.
+ 
+
+     * Initialize cloud integration
+     
+
+     * Configure cloud integration
+     
+
+     * Create a complete session backup
+     
+
+     * Restore session from backup
+     
+
+     * Synchronize with cloud
+     
+
+     * Show cloud integration status
+     
+
+     * Start automatic sync
+     
+
+     * Stop automatic sync
+     
+
+     * Export cloud data
+     
+
+     * Private helper methods
+     
+
+ * Session Manager for Claude Ecosystem Standard (CES)
+ * Handles session lifecycle, checkpoints, and state management
+ 
+
+     * Start a new Claude Code CLI session
+     
+
+     * Create a checkpoint of the current session
+     
+
+     * Close the current session
+     
+
+     * Clean session history with backup
+     
+
+     * Get current session
+     
+
+     * Get session status
+     
+
+     * Run startup hook
+     
+
+     * Start MCP servers (simplified implementation)
+     
+
+     * Capture current system state
+     
+
+     * Capture Git status
+     
+
+     * Stop all running processes
+     
+
+     * Save current session to disk
+     
+
+     * Display session information
+     
+
+     * Get session duration
+     
+
+ * Anthropic Integration Helper - Smart Execution and Project Analysis
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Helper to integrate both Anthropic SDK and Claude Code CLI
+ 
+
+     * Smart execution - uses best tool for the job
+     
+
+     * Analyze entire project
+     
+
+     * Generate code with review
+     
+
+     * Interactive coding session
+     
+
+     * Utility methods
+     
+
+     * Get managers for direct access
+     
+
+ * Type definitions for Anthropic SDK integration
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Anthropic SDK Manager - Direct API Integration with Claude
+ * CES v2.7.0 Enterprise Edition
+ 
+
+     * Send a completion request to Anthropic API
+     
+
+     * Stream a completion response
+     
+
+     * Continue a conversation with context
+     
+
+     * Analyze code with specific focus
+     
+
+     * Generate code based on specifications
+     
+
+     * Calculate cost estimate for usage
+     
+
+     * Get conversation history
+     
+
+     * Clear conversation history
+     
+
+     * Get total tokens used
+     
+
+     * Private helper methods
+     
+
+ * Comprehensive TypeScript test suite for Dual Claude System
+ * Tests all TypeScript components including ClaudeDocManager and DocumentationCommands
+ 
+
+ * PathResolver Tests
+ * 
+ * Tests for the portable path resolution utility
+ 
+
+ * Tests for ConfigManager
+ 
+
+ * Claude Ecosystem Standard (CES) - Main Entry Point
+ * Enterprise-grade Claude Code CLI ecosystem with comprehensive session management
+ 
+
+ * Enterprise Environment Configuration Manager for CES v2.7.0
+ * 
+ * Provides type-safe, validated configuration management with:
+ * - Dynamic project root detection
+ * - Environment variable loading and validation
+ * - Relative path management
+ * - Default value fallbacks
+ * - Configuration hot-reloading
+ 
+
+   * Load and validate configuration from environment variables
+   
+
+   * Get environment variable value with fallback
+   
+
+   * Get environment variable as number with validation
+   
+
+   * Get environment variable as boolean with validation
+   
+
+   * Generate unique instance ID
+   
+
+   * Generate JWT secret for development
+   
+
+   * Get current configuration
+   
+
+   * Get specific configuration value by path
+   
+
+   * Get relative path from project root
+   
+
+   * Get absolute path from project-relative path
+   
+
+   * Ensure directory exists
+   
+
+   * Reload configuration (for hot-reloading)
+   
+
+   * Validate configuration
+   
+
+   * Get configuration metadata
+   
+
+   * Get path resolution information for debugging
+   
+
+ * Configuration Manager for Claude Ecosystem Standard (CES)
+ * Handles environment detection, project configuration, and MCP/Agent setup
+ 
+
+     * Initialize configuration by detecting environment
+     
+
+     * Get current configuration
+     
+
+     * Detect programming languages in the project
+     
+
+     * Detect frameworks based on detected languages
+     
+
+     * Detect development tools
+     
+
+     * Check if project is a Git repository
+     
+
+     * Check for MCP configuration
+     
+
+     * Check for agents
+     
+
+     * Load MCP server configurations
+     
+
+     * Load agent configurations
+     
+
+     * Parse agent markdown file
+     
+
+     * Perform health check
+     
+
+     * Get MCP server priority
+     
+
+     * Get priority order for sorting
+     
+
+     * Reset configuration to defaults
+     
+
+     * Get project root directory
+     
+
+     * Get project name
+     
+
+     * Check if a file exists
+     
+
+     * Check if a script exists in package.json
+     
+
+ * Anthropic SDK Integration Usage Examples
+ * CES v2.7.0 Enterprise Edition
+ 
+
+ * Anthropic SDK Integration Usage Examples
+ * CES v2.7.0 Enterprise Edition
+ 
