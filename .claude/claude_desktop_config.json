@@ -126,6 +126,17 @@
         "KUBECONFIG": "${KUBECONFIG:-~/.kube/config}",
         "K8S_NAMESPACE": "${K8S_NAMESPACE:-default}"
       }
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@missionsquad/mcp-github"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN:-}",
+        "GITHUB_API_BASE_URL": "${GITHUB_API_BASE_URL:-https://api.github.com}"
+      }
     }
   }
 }
