@@ -13,7 +13,7 @@ This is an **enterprise-grade TypeScript foundation project** with integrated Cl
 **start session
 ```
 **Now automatically executes:**
-1. ✅ Claude Code CLI Session + 14 MCP servers
+1. ✅ Claude Code CLI Session + 12 MCP servers
 2. ✅ Universal multi-language startup hook  
 3. ✅ **AUTOMATIC**: `npm run dev -- start-session`
 4. ✅ Custom TypeScript SessionManager
@@ -278,7 +278,7 @@ src/
 └── __tests__/                   # Test suites
 
 .claude/
-├── claude_desktop_config.json  # MCP servers configuration (14 servers)
+├── claude_desktop_config.json  # MCP servers configuration (12 servers)
 ├── startup-hook.cjs            # Universal startup hook
 ├── agents/                     # Custom agents directory
 └── ecosystem.json              # Ecosystem metadata
