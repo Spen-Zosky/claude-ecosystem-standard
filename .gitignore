@@ -69,16 +69,31 @@ tmp/
 temp/
 .tmp/
 
-# Backup files
+# Backup files - comprehensive patterns
 *.backup
 *-backup-*
 *.bak
+*backup*
+backup-*
+*-backup.*
+*.backup.*
 
 # Archive files e backup compressi
 *.tar.gz
 *.zip
-*.rar  
+*.rar
+*.7z
 .backups/
+backups/
+**/backups/
+**/.backups/
+
+# Temporary backup patterns from various tools
+*.tmp
+*.temp
+*~
+.#*
+#*#
 
 # Session files
 session-logs/
