@@ -128,9 +128,8 @@ backups/
 # Dispatcher (temporary integration files)
 .dispatcher/
 
-# CI/CD Artifacts
-.github/workflows/tmp/
-.github/artifacts/
+# CI/CD Artifacts - COMPLETELY DISABLED
+.github/
 release-artifacts/
 build-artifacts/
 test-results/
